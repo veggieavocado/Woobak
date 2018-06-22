@@ -1,4 +1,5 @@
 import os
+import raven
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'raven.contrib.django.raven_compat',
 ]
+
+# add Sentry settings here
+RAVEN_CONFIG = {
+    'dsn': 'https://3bb8b37ca3684f2383fd0562541a60b6:540ce3c5c92c4d069671bb69d0dcaae5@sentry.io/1230682',
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
