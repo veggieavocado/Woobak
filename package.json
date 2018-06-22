@@ -1,0 +1,43 @@
+{
+  "name": "veggieavocado",
+  "version": "0.0.1",
+  "description": "don't learn just use - an English template creator",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "lint": "eslint",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch"
+  },
+  "repository": "git+https://github.com/veggieavocado/Woobak.git",
+  "author": "veggieavocado",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/veggieavocado/Woobak/issues"
+  },
+  "homepage": "https://github.com/veggieavocado/Woobak#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "yarn": "^1.7.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "socket.io-client": "^2.1.1",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.8"
+  }
+}
