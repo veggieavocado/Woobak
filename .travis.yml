@@ -1,0 +1,24 @@
+matrix:
+  include:
+    language: python
+    python:
+        - "3.6"
+    dist: trusty
+    sudo: required
+    env:
+        - DJANGO_VERSION==1.11
+    install:
+        - pip install -q Django=$DJANGO_VERSION
+        - pip install -q -r requirements.txt
+    script:
+        - python manage.py makemigrations
+        - python manage.py migrate
+        - python -m pytest -n 3 --cov-config .coveragerc --cov=.
+
+
+notifications:
+  email:
+    - we.veggieavocado@gmail.com
+    - ppark9553@gmail.com
+  on_success: always
+  on_failure: always
