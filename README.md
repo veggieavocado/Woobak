@@ -13,14 +13,20 @@
 
 -------------------------------------------
 
-우박은 모든 코드를 오픈소스로 공개하며, 프로젝트의 진행 과정을 모든 사람에게 공개할 예정입니다. &nbsp;
-처음 창업을 할 때 기술 스텍을 선정하는게 너무 어려워 환경 구축하는데 모든 시간을 다 쏟았습니다. &nbsp;
+우박은 모든 코드를 오픈소스로 공개하며, 프로젝트의 진행 과정을 모든 사람에게 공개할 예정입니다.
+&nbsp;
+처음 창업을 할 때 기술 스텍을 선정하는게 너무 어려워 환경 구축하는데 모든 시간을 다 쏟았습니다.
+&nbsp;
 결국, 저희만의 쉬우면서도 왠만한 아이디어는 모두 구현할 수 있을 수준의 스텍을 찾았고, 이제 창업에 관심을 가지는 분들이 코드를 가지고 놀며 도움이 되었으면 하는 바렘입니다.
-
 &nbsp;
 
-**서버:** Vultr(&AWS), Bash, Docker &nbsp;
-**백앤드:** Django, Django Restframework, Node.js, PostgreSQL &nbsp;
-**프론트앤드:** HTML, CSS, Javascript (ES6) &nbsp;
-**데브옵스툴:** Github, Travis CI, Sentry &nbsp;
-**모니터링툴:** Munin, InfluxDB, Grafana &nbsp;
+**서버:** Vultr(&AWS), Bash, Docker
+&nbsp;
+**백앤드:** Django, Django Restframework, Node.js, PostgreSQL
+&nbsp;
+**프론트앤드:** HTML, CSS, Javascript (ES6)
+&nbsp;
+**데브옵스툴:** Github, Travis CI, Sentry
+&nbsp;
+**모니터링툴:** Munin, InfluxDB, Grafana
+&nbsp;
