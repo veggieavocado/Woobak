@@ -14,6 +14,7 @@
     "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm run test -- --watch",
     "test:karma": "karma start --single-run --browsers ChromeHeadless karma.conf.js",
+    "test:mocha": "mocha tests/js/*.js",
     "dev": "webpack --mode development",
     "prod": "webpack --mode production",
     "watch": "webpack --mode development --watch"
@@ -26,7 +27,7 @@
   },
   "homepage": "https://github.com/veggieavocado/Woobak#readme",
   "devDependencies": {
-    "babel-eslint": "^8.2.3",
+    "babel-eslint": "^8.2.5",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
     "chai-immutable": "^1.6.0",
@@ -36,6 +37,7 @@
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.12.0",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.2.0",
     "karma": "^2.0.4",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^2.2.0",
@@ -58,6 +60,7 @@
     "css-loader": "^0.28.11",
     "immutable": "^3.8.2",
     "mocha": "^5.2.0",
+    "npm": "^6.1.0",
     "socket.io-client": "^2.1.1",
     "style-loader": "^0.21.0"
   }

@@ -1,9 +1,9 @@
-module.exports = function(config) {
+module.exports = function karmaConfig(config) {
   config.set({
     frameworks: ['mocha', 'chai'],
     files: ['tests/js/**/*.js'],
     reporters: ['progress'],
-    port: 9876,  // karma web server port
+    port: 9876, // karma web server port
     colors: true,
     logLevel: config.LOG_INFO,
     browsers: ['Chrome', 'ChromeHeadless', 'MyHeadlessChrome'],
@@ -14,8 +14,8 @@ module.exports = function(config) {
     customLaunchers: {
       MyHeadlessChrome: {
         base: 'ChromeHeadless',
-        flags: ['--disable-translate', 'disable-extensions', '--remote-debugging-port=9223']
-      }
-    }
-  })
-}
+        flags: ['--disable-translate', 'disable-extensions', '--remote-debugging-port=9223'],
+      },
+    },
+  });
+};
