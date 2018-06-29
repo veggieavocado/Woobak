@@ -10,7 +10,7 @@ import pytest
 # test fixture
 @pytest.fixture
 def travis_worked_string():
-    return'travis worked!'
+    return 'travis worked!'
 
 def test_travis_worked(travis_worked_string):
     # tests if travis ci works properly and that pytest fixtures also work well
