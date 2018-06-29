@@ -6,7 +6,13 @@ Date: 6/29
 '''
 import pytest
 
-def simple_test():
-    var1 = 1
-    var2 = 2
-    assert var1 == var2
+from mhtest.models import Mhtest
+
+@pytest.fixture
+@pytest.mark.django_db
+def save_mhtest_data():
+    mhtest_inst = Mhtest(name='mh')
+
+def simple_test(save_mhtest_data):
+    data_num = Mhtest.objects.all().count()
+    assert data_num == 1
