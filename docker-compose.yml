@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  nginx:
+    container_name: soul_nginx
+    build: ./nginx
+    links:
+      - soul:soul
+    ports:
+      - 8080:3000
+    depends_on:
+      - soul
+
+  soul:
+    container_name: soul_server
+    build: .
+    ports:
+      - 8080
