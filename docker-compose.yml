@@ -3,11 +3,11 @@ version: '3'
 services:
   nginx:
     container_name: soul_nginx
-    build: ./nginx
+    build: ./soul_nginx
     links:
       - soul:soul
     ports:
-      - 8080:3000
+      - 3000:3000
     depends_on:
       - soul
 
@@ -15,4 +15,4 @@ services:
     container_name: soul_server
     build: .
     ports:
-      - 8080
+      - 8080:8080
