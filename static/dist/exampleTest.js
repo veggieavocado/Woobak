@@ -81,25 +81,29 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./js-src/testscript.js":
-/*!******************************!*\
-  !*** ./js-src/testscript.js ***!
-  \******************************/
+/***/ "./js-src/exampleTest.js":
+/*!*******************************!*\
+  !*** ./js-src/exampleTest.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var testString = 'hello';
-var testString2 = 'there stranger!';
+var testFunc = function testFunc() {
+  return 'testing string';
+};
 
-console.log(testString + testString2);
+// export하여 다른 스크립트에서 엑세스 가능하도록 한다
+module.exports = {
+  testFunc: testFunc
+};
 
 /***/ }),
 
@@ -10677,9 +10681,9 @@ module.exports = __webpack_require__(/*! ./modules/_core */ "./node_modules/core
 /***/ }),
 
 /***/ "./node_modules/webpack/buildin/global.js":
-/*!************************************************!*\
-  !*** ./node_modules/webpack/buildin/global.js ***!
-  \************************************************/
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -10707,18 +10711,18 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 0:
-/*!***************************************************!*\
-  !*** multi babel-polyfill ./js-src/testscript.js ***!
-  \***************************************************/
+/***/ 1:
+/*!****************************************************!*\
+  !*** multi babel-polyfill ./js-src/exampleTest.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */"./node_modules/babel-polyfill/lib/index.js");
-module.exports = __webpack_require__(/*! C:\users\hori9\desktop\veggieavocado/js-src/testscript.js */"./js-src/testscript.js");
+module.exports = __webpack_require__(/*! /Users/abc/Desktop/veggieavocado/js-src/exampleTest.js */"./js-src/exampleTest.js");
 
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=test.map
+//# sourceMappingURL=exampleTest.map
