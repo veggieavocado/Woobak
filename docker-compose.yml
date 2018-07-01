@@ -16,3 +16,20 @@ services:
     build: .
     ports:
       - 8080:8080
+    environment:
+      - ENVIRONMENT=docker
+    links:
+      - mongo
+
+  mongo:
+    image: soul_mongo
+    ports:
+      - 27017:27017
+    volumes_from:
+      - mongodata
+
+  mongodata:
+    image: tianon/true
+    volumes:
+      - /data/db
+    command: echo 'Data Container for MongoDB'
