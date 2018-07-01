@@ -30,7 +30,7 @@ matrix:
       install:
         - yarn
       script:
-        - yarn test:mocha
+        - yarn mocha:cov
 
 notifications:
   email:

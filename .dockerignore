@@ -11,8 +11,6 @@ woobak/
 .gitignore
 .travis.yml
 fabfile.py
-jstests.html
-karma.conf.js
 LICENSE
 manage.py
 pytest.ini
