@@ -1,0 +1,4 @@
+[
+  "tests/test_travis.py::test_travis_worked",
+  "tests/test_travis.py::test_travis_with_mh"
+]
