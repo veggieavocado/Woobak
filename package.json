@@ -13,7 +13,7 @@
     "lint:src": "eslint ./js-src --ext .js --fix",
     "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm run test -- --watch",
-    "test:mocha": "mocha tests/js/*.js",
+    "test:mocha": "mocha tests/js/*",
     "mocha:cov": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha tests/js/unit/*.js",
     "js:coverage": "open coverage/lcov-report/index.html",
     "dev": "webpack --mode development",
