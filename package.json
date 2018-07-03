@@ -14,8 +14,9 @@
     "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm run test -- --watch",
     "test:mocha": "mocha tests/js/*.js",
-    "mocha:cov": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha tests/js/unit/vultrAPITest.js",
+    "mocha:cov": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha tests/js/unit/trelloAPITest.js",
     "mocha:vul": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha tests/js/unit/vultrAPITest.js",
+    "mocha:trevis": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha tests/js/unit/trevisAPITest.js",
     "js:coverage": "open coverage/lcov-report/index.html",
     "dev": "webpack --mode development",
     "prod": "webpack --mode production",
@@ -68,6 +69,7 @@
     "nodemon": "^1.17.5",
     "npm": "^6.1.0",
     "socket.io-client": "^2.1.1",
-    "style-loader": "^0.21.0"
+    "style-loader": "^0.21.0",
+    "vultr-api-wrapper": "^1.0.2"
   }
 }
