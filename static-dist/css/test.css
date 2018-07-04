@@ -1,0 +1,167 @@
+/* This is a css for home.html */
+
+/* default css settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+a:hover,
+a:active {
+  text-decoration: none;
+  color: #9b9b9b;
+}
+/* default css settings end here */
+
+/* ALL LAYOUT RELATED CSS HERE */
+.body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+.header {
+  width: 100%;
+  height: 5rem;
+  margin-left: 2rem;
+  font-size: 1.4rem;
+  color: #2BDE73;
+  display: flex;
+  align-items: center;
+}
+
+.main {
+  width: 90%;
+  padding: 0 0 3rem 0;
+  border-bottom: solid 1px #9b9b9b;
+  margin: auto;
+}
+
+.about {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-hello {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.hello {
+  margin-right: 0.3rem;
+}
+
+.about-divider {
+  margin: 1rem 0 2rem 0;
+  width: 30%;
+  height: 0.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divider {
+  width: 80%;
+  height: 0.1rem;
+  background-color: #a0a0a0;
+}
+
+.about > img {
+  width: 100px;
+  height: 119px;
+}
+
+.content {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.dev-btn {
+  cursor: pointer;
+  background-color: white;
+  color: #9b9b9b;
+  font-weight: bold;
+  border: solid 3px #9b9b9b;
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 5px 5px #9b9b9b;
+}
+
+.dev-btn:hover {
+  box-shadow: 6px 6px #9b9b9b;
+}
+
+.table-of-contents {
+  margin: 3rem 0 6rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bolder;
+}
+
+#myProgress {
+  margin-top: 3rem;
+  width: 92%;
+  background-color: #e2e2e2;
+  border-radius: 10px;
+}
+
+#myBar {
+  width: 24%;
+  height: 20px;
+  background-color: #2BDE73;
+  border-radius: 10px;
+  color: #419960;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  width: 100%;
+  color: #969696;
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: 0;
+  right: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+  .main {
+    width: 100%;
+  }
+
+  .about-hello {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+
+  .hello {
+    margin-right: 0.3rem;
+  }
+
+  .about-divider {
+    width: 20%;
+  }
+
+  .divider {
+    width: 50%;
+  }
+
+  #myProgress {
+    width: 70%;
+  }
+}
