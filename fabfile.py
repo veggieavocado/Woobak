@@ -87,6 +87,14 @@ def server_reload():
 ###### INIT DEPLOY TASKS ######
 @task
 @hosts(CONFIG['ip-address']['web'])
+def init_server():
+    env.user = 'root'
+    # env.password = CONFIG['initial-deploy-pw']['web']
+    env.password = CONFIG['common']['ROOT_PW']
+    server_init()
+
+@task
+@hosts(CONFIG['ip-address']['web'])
 def init_web():
     env.user = 'root'
     # env.password = CONFIG['initial-deploy-pw']['web']
@@ -100,4 +108,4 @@ def init_web():
 def root_web_shell():
     env.user = 'root'
     env.password = CONFIG['common']['ROOT_PW']
-    open_shell()
+    web_deploy()

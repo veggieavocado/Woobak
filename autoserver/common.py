@@ -15,6 +15,12 @@ def server_init():
         autoserver.create_user()
     autoserver.start_firewall()
     autoserver.pull_github_code()
+
+def web_deploy():
+    woobak = ConfigOBJ('web') # just set as web
+    config_obj = woobak.get_conf()
+    # deploys webserver using Autoserver instance with 'web' data
+    autoserver = Autoserver(config_obj)
     autoserver.update_and_download_dependencies()
     autoserver.setup_postgresql()
     autoserver.setup_python_virtualenv()
