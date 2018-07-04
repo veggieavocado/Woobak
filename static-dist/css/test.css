@@ -129,7 +129,7 @@ a:active {
   width: 100%;
   color: #969696;
   font-size: 0.8rem;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 1rem;
   display: flex;
