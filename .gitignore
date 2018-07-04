@@ -1,7 +1,8 @@
 __pycache__/
+migrations/
+configs/
 *.pyc
 db.sqlite3
 node_modules/
-config/
 env/
 venv/
