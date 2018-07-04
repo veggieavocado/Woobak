@@ -43,9 +43,6 @@ if testing == 'False':
     if THIS_SYSTEM == 'web':
         ALLOWED_HOSTS.append(CONFIG['ip-address']['web'])
 
-    if THIS_SYSTEM == 'local':
-        INSTALLED_APPS.append('autoserver')
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
