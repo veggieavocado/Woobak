@@ -1,0 +1,44 @@
+/* This is a css for login.html */
+
+/* default css settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+/* default css settings end here */
+
+/* ALL LAYOUT RELATED CSS HERE */
+.body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* Navbar CSS starts here */
+.navbar {
+  background-color: #93ffa9;
+}
+
+/* Content-1 CSS starts here */
+.content-1 {
+  height: 30rem;
+  background-color: #ff8499;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+  .content-1 > .login-input{
+    margin: 0.5rem 0 0.5rem 0;
+    border: 1px solid black;
+  }
+/* Content-1 CSS ends here */
+
+/* footer CSS starts here */
+.footer {
+  height: 5rem;
+  background-color: #a5a5a5;
+}
+/* footers CSS ends here */
