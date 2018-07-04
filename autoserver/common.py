@@ -2,7 +2,7 @@ from fabric.contrib.files import append, exists
 from fabric.api import cd, env, local, run, settings
 from fabric.operations import open_shell
 
-from autoserver.autoserver import Autoserver, ConfigOBJ
+from autoserver.deployer import Autoserver, ConfigOBJ
 
 def server_init():
     woobak = ConfigOBJ('web') # just set as web
