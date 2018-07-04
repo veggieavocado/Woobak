@@ -1,0 +1,78 @@
+  /* This is a css for home.html */
+
+  /* default css settings */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 100%;
+  }
+  /* default css settings end here */
+
+  /* ALL LAYOUT RELATED CSS HERE */
+  .body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Nanum Gothic', sans-serif;
+  }
+
+
+  /* Navbar CSS starts here */
+  .navbar {
+    background-color: #93ffa9;
+  }
+
+    .navbar > .navbar-action {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+    }
+
+      .navbar-action > .action-btn {
+        margin: 0 0.5rem;
+      }
+  /* Navbar CSS ends here */
+
+
+  /* Content-1 CSS starts here */
+  .content-1 {
+    height: 40rem;
+    background-color: #ff8499;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .content-1 > .manage-box {
+    width: 70%;
+    height: 30rem;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    border: solid black 2px;
+    border-radius: 10px;
+  }
+    .content-1 > .manage-box > .manage-btn {
+      width: 100%;
+      display: flex;
+      border: solid black 1px;
+      padding: 3rem 8rem;
+    }
+      .manage-btn {
+        margin: 0 3rem;
+      }
+
+
+
+
+
+  /* Content-1 CSS ends here */
+
+
+
+  .footer {
+    height: 10rem;
+    background-color: #a5a5a5;
+  }
