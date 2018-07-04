@@ -66,7 +66,22 @@
     width: 60%;
     height: 30rem;
     background-color: blue;
+    display: flex;
+    flex-wrap: wrap;
   }
+  .createcontent > .tutor-btn {
+    width:33.3%;
+    height:50%;
+    display:flex;
+    background-color: red;
+    border-right: solid black 2px;
+    border-bottom: solid black 2px;
+    justify-content: center;
+    align-items: center;
+  }
+   .createcontent > .tutor-btn >.tutor-img {
+     width:50%;
+   }
 
 /* Content-2 CSS ends here */
 
