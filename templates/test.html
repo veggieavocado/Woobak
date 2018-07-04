@@ -1,1 +1,57 @@
-hello
+{% load static %}
+<!DOCTYPE html>
+<html lang="kr">
+
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+      <title>베지아보카도</title>
+      <link rel="icon" href="./assets/img/avocado.ico" type="image/x-icon" />
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+      <link rel="stylesheet" href="{% static 'css/test.css' %}" type="text/css" media="all">
+      <link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic" rel="stylesheet">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+
+      <div class="header">
+        VeggieAvocado
+      </div>
+
+      <div class="main">
+        <div class="about">
+          <div class="about-hello">
+            <h5 class="hello">안녕 난 아보카도야.</h5>
+            <h5>우리는 현재 열심히 서비스 출시를 위해 개발 중이란다.</h5>
+          </div>
+          <h6>조금만 기다리면 우리 서비스를 만나볼 수 있어~ 관심가져줘서 고마워!</h6>
+          <div class="about-divider">
+            <div class="divider"></div>
+          </div>
+          <img src="{% static 'img/avocado.png' %}" alt="avocado">
+        </div>
+
+        <div class="content">
+          <a class="dev-btn" href="https://github.com/veggieavocado/Woobak.git">개발 상황 둘러보기</a>
+        </div>
+      </div>
+
+      <div class="table-of-contents">
+        베지아보카도 개발블로그와 서비스 출시
+        <div id="myProgress">
+          <div id="myBar">24%</div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <i class="fas fa-heart" style="margin-right: 0.2rem;"></i> 베지아보카도 2018: 할리 & 피피 & 윌리엄 & 로비 & 제이미
+      </div>
+
+    </body>
+
+</html>
