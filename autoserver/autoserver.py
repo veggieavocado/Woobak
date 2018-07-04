@@ -200,6 +200,7 @@ class Autoserver(object):
                                                                                                   self.NGINX_CONF))
         with settings(warn_only=True):
             run('sudo ln -s etc/nginx/sites-available/{0} /etc/nginx/sites-enabled'.format(self.NGINX_CONF))
+
         cd('/etc/nginx/sites-available'):
             run("vim +\":%s/server_name 127.0.0.1;/server_name {0} veggieavocado.com www.veggieavocado.com;/g | wq\" {1}".format(self.NGINX_CONF,
                                                                                                                                  self.IP_ADDRESS))
