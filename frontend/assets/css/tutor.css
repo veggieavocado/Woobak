@@ -37,21 +37,38 @@
 
 /* Content-1 CSS starts here */
 .content-1 {
-  height: 35rem;
-  background-color: #ff8499;
+  height: 45rem;
+  background-color: white;
   display: flex;
+  flex-direction: column;
   width: 100%;
+  align-items: center;
 }
 
 .content-1 > .heading {
   height: 5rem;
+  width: 100%;
   background-color: red;
-  margin-top: 5rem;
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
 }
+ .content-1 > .heading > .tutor-select {
+   background-color: blue;
+   margin-left: 20rem;
+ }
 
 /* Content-1 CSS ends here */
 
+/* Content-2 CSS stars here */
+  .createcontent {
+    margin-top: 3rem;
+    width: 60%;
+    height: 30rem;
+    background-color: blue;
+  }
 
+/* Content-2 CSS ends here */
 
 .footer {
   height: 5rem;
