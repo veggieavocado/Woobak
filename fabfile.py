@@ -19,6 +19,7 @@ clean_known_hosts
 start_browser
 
 ###### INIT DEPLOY TASKS ######
+init_server
 init_web
 
 ###### OPEN SHELL TASKS ######
@@ -31,7 +32,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from fabric.api import *
 from configs.base import CONFIG
 
-from autoserver.common import server_init
+from autoserver.common import server_init, web_deploy
 
 
 ###### LOCAL FAB TASKS ######
@@ -87,6 +88,14 @@ def server_reload():
 ###### INIT DEPLOY TASKS ######
 @task
 @hosts(CONFIG['ip-address']['web'])
+def send_deploy_script():
+    env.user = 'root'
+    env.password = CONFIG['initial-deploy-pw']['web']
+    # env.password = CONFIG['common']['ROOT_PW']
+    put('./scripts/deploy.sh', '~/deploy.sh')
+
+@task
+@hosts(CONFIG['ip-address']['web'])
 def init_server():
     env.user = 'root'
     # env.password = CONFIG['initial-deploy-pw']['web']
@@ -99,7 +108,7 @@ def init_web():
     env.user = 'root'
     # env.password = CONFIG['initial-deploy-pw']['web']
     env.password = CONFIG['common']['ROOT_PW']
-    server_init()
+    web_deploy()
 
 
 ###### OPEN SHELL TASKS ######
@@ -108,4 +117,4 @@ def init_web():
 def root_web_shell():
     env.user = 'root'
     env.password = CONFIG['common']['ROOT_PW']
-    web_deploy()
+    open_shell()
