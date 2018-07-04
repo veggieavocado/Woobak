@@ -7,8 +7,7 @@ matrix:
     dist: trusty
     sudo: required
     env:
-        - DJANGO_VERSION=1.11
-        - TRAVIS=True
+        - DJANGO_VERSION==1.11
     install:
         - pip install -q Django=$DJANGO_VERSION
         - pip install -q -r requirements.txt
