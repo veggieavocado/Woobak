@@ -1,10 +1,11 @@
 from fabric.api import cd, env, local, run, sudo, settings, put, open_shell
 from fabric.contrib.files import exists
+from fabric.operations import open_shell
 
 from configs.base import CONFIG
 
 
-class WoobakConfig(object):
+class ConfigOBJ(object):
 
     def __init__(self, this_system):
         self.config = {
@@ -141,10 +142,11 @@ class Autoserver(object):
         run('sudo ufw allow 5432')
         # moving postgresql configuration files to server
         # this is needed to allow access from remote computers to server
-        put('./config/postgresql/postgresql.conf', '/etc/postgresql/9.5/main/postgresql.conf')
-        put('./config/postgresql/pg_hba.conf', '/etc/postgresql/9.5/main/pg_hba.conf')
+        with cd('/etc/postgresql/9.5/main'):
+            run("vim +\":%s/#listen_addresses = 'localhost'/listen_addresses = '*'/g | wq\" postgresql.conf")
+            run("vim +\"%s/127.0.0.1\/32/0.0.0.0\/0   /g | %s/::1\/128/::\/0/g | wq\" pg_hba.conf")
         # start, enable and restart postgresql service
-        run('sudo systemctl start postgresql.service')
+        # run('sudo systemctl start postgresql.service')
         run('sudo systemctl enable postgresql.service')
         run('sudo systemctl restart postgresql.service')
 
@@ -170,85 +172,40 @@ class Autoserver(object):
         run('echo "export WORKON_HOME=/home/{}/venv" >> ~/.bashrc'.format(self.USER_ID))
         run('echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.bashrc')
         # final step of this is to reboot server
-        run('source ~/.bashrc')
+        # run('source ~/.bashrc') # does not work, run manually
+        open_shell()
+        # 1. source ~/.bashrc
+        # 2. mkvirtualenv woobak
         return True
 
     def setup_nginx_uwsgi(self):
-        # move all configuration files to server
-        with settings(warn_only=True):
-            run('mkdir /home/{}/config'.format(self.USER_ID))
-        # move nginx conf file
-        put('./config/nginx/{0}'.format(self.NGINX_CONF), \
-            '/home/{0}/config/{1}'.format(self.USER_ID, self.NGINX_CONF))
-        # move uwsgi conf files
-        put('./config/uwsgi/{0}'.format(self.UWSGI_INI), \
-            '/home/{0}/config/{1}'.format(self.USER_ID, self.UWSGI_INI))
-        put('./config/uwsgi/{0}'.format(self.UWSGI_SERVICE), \
-            '/home/{0}/config/{1}'.format(self.USER_ID, self.UWSGI_SERVICE))
         # install nginx and uwsgi on server
         # needs build-essential to compile uwsgi correctly, since it is run on a C++ platform
         run('sudo apt-get install build-essential nginx')
+        run('sudo apt-get install uwsgi uwsgi-emperor uwsgi-plugin-python3')
         run('sudo -H pip3 install uwsgi')
+        run('sudo usermod -aG www-data woobak')
         # move uwsgi and nginx conf files from within the server to correct locations
         run('sudo mkdir -p /etc/uwsgi/sites')
-        run('sudo cp /home/{0}/config/{1} /etc/nginx/sites-available/{2}'.format(self.USER_ID,
-                                                                                 self.NGINX_CONF,
-                                                                                 self.NGINX_CONF))
+        run('sudo cp /home/{0}/{1}/server_config/uwsgi/{2} /etc/uwsgi/sites/{3}'.format(self.USER_ID,
+                                                                                        self.PROJECT_NAME,
+                                                                                        self.UWSGI_INI,
+                                                                                        self.UWSGI_INI))
+        run('sudo ln -s /etc/uwsgi/sites/{0} /etc/uwsgi-emperor/vassals'.format(self.UWSGI_INI))
+        run('sudo cp /home/{0}/{1}/server_config/uwsgi/uwsgi.service /etc/systemd/system/uwsgi.service'.format(self.USER_ID,
+                                                                                                               self.PROJECT_NAME))
+        run('sudo cp /home/{0}/{1}/server_config/nginx/{2} /etc/nginx/sites-available/{3}'.format(self.USER_ID,
+                                                                                                  self.PROJECT_NAME,
+                                                                                                  self.NGINX_CONF,
+                                                                                                  self.NGINX_CONF))
         with settings(warn_only=True):
-            run('sudo ln -s etc/nginx/sites-available/{} /etc/nginx/sites-enabled'.format(self.NGINX_CONF))
+            run('sudo ln -s etc/nginx/sites-available/{0} /etc/nginx/sites-enabled'.format(self.NGINX_CONF))
         run('sudo nginx -t') # check for any errors in nginx conf file
         run('sudo systemctl restart nginx') # restart nginx to apply changes in configuration files
-        run('sudo cp /home/{0}/config/{1} /etc/uwsgi/sites/{2}'.format(self.USER_ID,
-                                                                       self.UWSGI_INI,
-                                                                       self.UWSGI_INI))
-        run('sudo cp /home/{0}/config/{1} /etc/systemd/system/{2}'.format(self.USER_ID,
-                                                                                self.UWSGI_SERVICE,
-                                                                                self.UWSGI_SERVICE))
         run('sudo systemctl start uwsgi')
         # enable both nginx and uwsgi
         run('sudo systemctl enable nginx')
         run('sudo systemctl enable uwsgi')
         # open firewall for port 80: nginx access
         run('sudo ufw allow "Nginx Full"')
-        return True
-
-    def send_django_config_file(self):
-        # all sensitive data about our servers exist in the /config/django/config.py file
-        # send the data over to your Django server
-        put('./config/django/config.py', \
-            '/home/{0}/{1}/{2}/config.py'.format(self.USER_ID,
-                                                 self.PROJECT_NAME,
-                                                 self.USER_ID))
-        return True
-
-    def setup_redis(self):
-        run('sudo apt-get install redis-server')
-        # open port 6379 to outside ssh connections
-        run('sudo ufw allow 6379')
-        # switch redis.conf file with the one used in Autoserver
-        run('rm /etc/redis/redis.conf')
-        put('./config/redis/redis.conf', '/etc/redis/redis.conf')
-        run('sudo systemctl restart redis-server')
-        return True
-
-    def start_django_test_server_as_daemon(self):
-        # first your virtualenv on the server needs to install all python dependencies
-        # since accessing virtualenv with Fabric is difficult use 'open_shell'
-
-        # 1. workon {projectname}
-        # 2. pip install -r requirements.txt
-        # 3. fab migrate
-        if not exists('/home/{0}/venv/{1}/django-admin.py'.format(self.USER_ID, self.PROJECT_NAME)):
-            with cd('/home/{0}/{1}'.format(self.USER_ID, self.PROJECT_NAME)):
-                run('echo "install all Python dependencies and migrate"')
-                open_shell()
-        # intall Supervisor to daemonize uWSGI Django application
-        run('sudo apt-get install supervisor')
-        # move the Supervisor uwsgi.conf file to server
-        put('./config/supervisor/uwsgi.conf', '/etc/supervisor/conf.d/uwsgi.conf')
-        run('sudo supervisorctl reread')
-        run('sudo supervisorctl update')
-        run('sudo service supervisor start')
-        # open port 8080
-        run('sudo ufw allow 8080')
         return True
