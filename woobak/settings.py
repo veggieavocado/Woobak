@@ -28,7 +28,7 @@ except:
 if testing == 'False':
     INSTALLED_APPS.append('configs') # Travis CI 테스팅 때는 config없이 돌아갈 수 있도록 설정
 
-    from config.base import CONFIG, THIS_SYSTEM
+    from configs.base import CONFIG, THIS_SYSTEM
     if CONFIG['common']['DEBUG'] == 'True':
         DEBUG = True
     else:
