@@ -1,0 +1,121 @@
+/* This is a css for gradschool.html */
+
+/* default css settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+/* default css settings end here */
+
+/* ALL LAYOUT RELATED CSS HERE */
+.body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* Navbar CSS starts here */
+.navbar {
+  background-color: #93ffa9;
+}
+
+  .navbar > .navbar-action {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+    .navbar-action > .action-btn {
+      margin: 0 0.5rem;
+    }
+/* Navbar CSS ends here */
+
+/* content-manipulation CSS starts here */
+
+.content-manipulation {
+  display: flex;
+  width: 80%;
+  background-color:  white;
+  height: 5rem;
+  margin: auto;
+  align-items: center;
+}
+  .content-manipulation > .cm-filter {
+    width: 100%;
+    display: flex;
+    margin: 0 0 0 3rem;
+  }
+    .content-manipulation > .cm-filter > .btn {
+      margin: 0.5rem 0.5rem;
+      padding: 0.5rem 1.5rem;
+    }
+  .content-manipulation > .cm-sort {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+    .content-manipulation > .cm-sort > .btn {
+      margin: 0 2rem 0 0;
+      padding: 0.5rem 1.5rem;
+    }
+
+/* content-manipulation CSS starts here */
+
+/* content-1 CSS starts here */
+.content-1 {
+  display: flex;
+  flex-direction:row;
+  width: 80%;
+  /* background-color:gray; */
+  height: 70rem;
+  justify-content: space-around;
+  margin: auto;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+  .content-1 > .grad-list {
+    width: 30%;
+    height: 30rem;
+    background-color:  #729df9;
+  }
+
+    .content-1 > .grad-list > .grad-img {
+      display: flex;
+      margin: 1.5rem 1.5rem 0 1.5rem;
+      height: 60%;
+      width: 90%;
+      justify-content: center;
+      align-items: center;
+      background-color: #6a37f7;
+    }
+    .content-1 > .grad-list > .grad-degree {
+      display: flex;
+      margin: 0 1.5rem 0 1.5rem;
+      height: 15%;
+      width: 90%;
+      justify-content: center;
+      align-items: center;
+      background-color: #6cd4f7;
+    }
+    .content-1 > .grad-list > .grad-term {
+      display: flex;
+      margin: 0 1.5rem 0 1.5rem;
+      height: 15%;
+      width: 90%;
+      justify-content: center;
+      align-items: center;
+      background-color: #81f991;
+    }
+/* content-1 CSS  ends here */
+
+/* footer CSS starts here */
+
+.footer {
+  background-color: black;
+  height: 10rem;
+}
+
+/* footer CSS ends here */
