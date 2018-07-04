@@ -19,6 +19,7 @@ clean_known_hosts
 start_browser
 
 ###### INIT DEPLOY TASKS ######
+send_deploy_script
 init_server
 init_web
 
@@ -93,6 +94,14 @@ def send_deploy_script():
     env.password = CONFIG['initial-deploy-pw']['web']
     # env.password = CONFIG['common']['ROOT_PW']
     put('./scripts/deploy.sh', '~/deploy.sh')
+
+@task
+@hosts(CONFIG['ip-address']['web'])
+def send_configs():
+    env.user = 'root'
+    env.password = CONFIG['common']['ROOT_PW']
+    run('mkdir -p /home/woobak/woobak/configs')
+    put('./configs/*', '/home/woobak/woobak/configs/')
 
 @task
 @hosts(CONFIG['ip-address']['web'])
