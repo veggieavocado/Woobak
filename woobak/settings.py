@@ -13,8 +13,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'raven.contrib.django.raven_compat',
-
-    'autoserver',
 ]
 
 try:
@@ -44,6 +42,9 @@ if testing == 'False':
 
     if THIS_SYSTEM == 'web':
         ALLOWED_HOSTS.append(CONFIG['ip-address']['web'])
+
+    if THIS_SYSTEM == 'local':
+        INSTALLED_APPS.append('autoserver')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
