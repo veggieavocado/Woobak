@@ -17,10 +17,17 @@ restart_celery
 js_gobble_reinstall
 clean_known_hosts
 start_browser
+
+
+###### OPEN SHELL TASKS ######
+init_web_shell
 '''
 
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from fabric.api import *
-from fab_settings import *
+from config.base import CONFIG
 
 
 ###### LOCAL FAB TASKS ######
@@ -71,3 +78,12 @@ def server_reload():
     # local server reload
     local('sudo systemctl restart uwsgi')
     local('sudo systemctl restart nginx')
+
+
+###### OPEN SHELL TASKS ######
+@task
+@hosts(CONFIG['ip-address']['web'])
+def init_web_shell():
+    env.user = 'root'
+    env.password = CONFIG['initial-deploy-pw']['web']
+    open_shell()
