@@ -26,8 +26,10 @@ a:active {
   width: 100%;
   height: 5rem;
   margin-left: 2rem;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #2BDE73;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
   display: flex;
   align-items: center;
 }
@@ -53,8 +55,12 @@ a:active {
   margin-bottom: 1rem;
 }
 
-.hello {
-  margin-right: 0.3rem;
+.hello-sec {
+  width: 100%;
+}
+
+.thanks-sec {
+  width: 100%;
 }
 
 .about-divider {
@@ -81,6 +87,7 @@ a:active {
   margin-top: 2rem;
   display: flex;
   justify-content: center;
+  font-size: 1.1rem;
 }
 
 .dev-btn {
@@ -99,17 +106,19 @@ a:active {
 }
 
 .table-of-contents {
-  margin: 3rem 0 6rem 0;
+  margin: 3.5rem 0 6rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 1.3rem;
   font-weight: bolder;
 }
 
 #myProgress {
-  margin-top: 3rem;
+  margin-top: 3.5rem;
   width: 92%;
+  height: 20px;
   background-color: #e2e2e2;
   border-radius: 10px;
 }
@@ -123,15 +132,51 @@ a:active {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+
+#myBar:hover {
+  height: 21px;
+  box-shadow: 2px 2px 4px 3px #e0ffe6;
+}
+
+.blog-container {
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blog-content {
+  width: 80%;
+  height: 20rem;
+  margin-top: 0;
+  padding: 1.5rem;
+  border: solid 2px #dddddd;
+  border-radius: 10px;
+  box-shadow: 3px 3px 4px 2px #dddddd;
+}
+
+.blog-intro {
+  font-family: 'Jua', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-link {
+  text-decoration: none;
+  color: #cd59ff;
+}
+
+.blog-link:hover {
+  color: #a60de8;
 }
 
 .footer {
-  width: 100%;
+  margin-top: 3rem;
+  width: 98%;
   color: #969696;
   font-size: 0.8rem;
-  position: fixed;
-  bottom: 0;
-  right: 1rem;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -143,13 +188,25 @@ a:active {
     width: 100%;
   }
 
-  .about-hello {
+  .hello-sec {
     display: flex;
     flex-direction: row;
-    margin-bottom: 0;
+    justify-content: center;
+    align-items: center;
   }
 
   .hello {
+    margin-right: 0.3rem;
+  }
+
+  .thanks-sec {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .thanks {
     margin-right: 0.3rem;
   }
 
