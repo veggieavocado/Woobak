@@ -32,12 +32,18 @@ const _token = '1212888ff2d1140637a2e9f0db08c011ca4ad13345fb9bf06ae2018447e9ee53
 //   : 'mongodb://localhost:27017/soul';
 // mongoose.connect(mongoURL);
 
-app.listen(8080, () => {
+const server = app.listen(8080, () => {
   console.log('Soul server started on port 8080');
 });
 
+const stopServer = () => {
+  server.close(); // 위에서 시작한 새로운 서버를 닫아준다
+  // 테스트할 때 필요한 툴 (프로덕션 상에서는 상관없음)
+};
+
 app.get('/', (req, res) => {
-  res.send('DONE');
+  res.status(200);
+  res.send({ status: 'DONE' });
 });
 
 // TEST API
@@ -65,20 +71,22 @@ const trelloURL = 'http://api.trello.com';
 const boardID = 'akii79A7';
 
 // peepee가 작성하는 예시 API 하나
-app.get('/task-api/board', async (req, res) => {
+app.get('/task-api/board', (req, res) => {
   // get avocado board lists
   const boardURL = `${trelloURL}/1/boards/${boardID}/lists/`;
-  const boards = await axios.get(boardURL)
+  axios.get(boardURL)
+    .then((response) => {
+      const boardsData = response.data;
+      res.status(200);
+      // res.send(boardsData); // 데이터를 통으로 보내주거나
+      // 아래처럼 json구조 안에 data라는 키값에 데이터를 보내줄 수도 있음
+      res.json({ data: boardsData });
+    })
     .catch((error) => {
       // 에러 발생시 status는 501로 하고 에러 메세지를 result로 보내준다
       res.status(501); // 제대로 태스크 처리 못함: 501에러
       res.json({ result: 'FAILED TO GET AVOCADO BOARD' });
     });
-  const boardsData = boards.data;
-  res.status(200);
-  // res.send(boardsData); // 데이터를 통으로 보내주거나
-  // 아래처럼 json구조 안에 data라는 키값에 데이터를 보내줄 수도 있음
-  res.json({ data: boardsData });
 });
 
 app.get('/task-api/board/:id', async (req, res) => {
@@ -142,7 +150,7 @@ app.get('/task-api/card:Listid/', async (req, res) => {
 app.get('/task-api/card:CardId/', async (req, res) => {
   // get any board lists with id
   const CardId = req.params.CardId; // URL에서 :id 부분 빼오기
-  const CardURL = `${trelloURL}/1/cards/` + CardId;
+  const CardURL = `${trelloURL}/1/cards/${CardId}`;
   const Card = await axios.get(CardURL)
     .catch((error) => {
       res.status(501);
@@ -160,27 +168,31 @@ app.post('/api/test/lists:name:IdBoard', (req, res) => {
   const Name = req.params.name;
   const IdBoard = req.params.IdBoard;
   const ListURL = `${trelloURL}/1/lists`;
-  var options = { method : 'POST',
-    url : ListURL,
+  const options = {
+    method: 'POST',
+    url: ListURL,
     qs: {
       name: Name,
       idBoard: IdBoard,
       key: _key,
-      token: _token
-    }
+      token: _token,
+    },
   };
-  requests(options, function(error, response, body){
+  requests(options, (error, response, body) => {
     const testInst = new test();
     testInst.LogTime = Date.getTime();
     testInst.response = response;
     testInst.body = body;
 
-    testInst.save((error)=>{
+    testInst.save((error) => {
       console.log(error);
-      res.json({result : 0});
+      res.json({ result: 0 });
     });
-    res.json({result:1});
+    res.json({ result: 1 });
   });
-
-  
 });
+
+module.exports = {
+  app,
+  stopServer,
+};

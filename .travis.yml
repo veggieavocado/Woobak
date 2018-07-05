@@ -10,7 +10,7 @@ matrix:
         - DJANGO_VERSION=1.11
         - TRAVIS=True
       install:
-        - pip install -q Django=$DJANGO_VERSION
+        - pip install -q Django==$DJANGO_VERSION
         - pip install -q -r requirements.txt
       script:
         - python manage.py makemigrations
