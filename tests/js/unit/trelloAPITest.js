@@ -61,7 +61,7 @@ describe('GET API TEST', async() => {
       });
   });
   
-  it('Get list api', (done)=>{
+  it('Get lists api', (done)=>{
     chai.request(`${url}`)
     .get('/1/boards/'+BoardVeggieArvocadoID)
     .send({fields:'id, name', lists:'open', list_fields:'id, name, closed, pos'})
@@ -86,6 +86,7 @@ describe('GET API TEST', async() => {
     });
   });
 
+  // api made
   it('Get list api<list-id>', (done)=>{
     chai.request(`${url}`)
     .get('/1/lists/' + TestSpaceListVar )
@@ -98,6 +99,7 @@ describe('GET API TEST', async() => {
     });
   });
 
+  // api made
   it('Get card api', (done)=>{
     chai.request(`${url}`)
     .get('/1/lists/'+TestSpaceListVar+'/cards')
@@ -112,6 +114,7 @@ describe('GET API TEST', async() => {
     });
   });
 
+  // api made
   it('Get card api<card_id>', (done)=>{
     chai.request(`${url}`)
     .get('/1/cards/'+TestCardId)
@@ -137,12 +140,6 @@ describe('GET API TEST', async() => {
 PEEPEE: https://api.trello.com/1/boards/akii79A7/lists
 위 링크도 작동하는 것으로 보임
 ********** */
-describe('Get all lists from VeggieArvocado', async () => {
-
-  // list랑 card를 아예 타겟해서 정보 가져오거나 수정하는 것도 가능하더라고
-  // https://developers.trello.com/reference#lists
-  // https://developers.trello.com/reference#cards-1
-});
 
 describe("POST api test", async() => {
   const _key = 'b99f16d67481b93e65e19d84f64806ab';
