@@ -9,7 +9,7 @@
       <link rel="icon" href="./assets/img/avocado.ico" type="image/x-icon" />
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
       <link rel="stylesheet" href="{% static 'css/test.css' %}" type="text/css" media="all">
-      <link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic|Ubuntu" rel="stylesheet">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -26,10 +26,15 @@
       <div class="main">
         <div class="about">
           <div class="about-hello">
-            <h5 class="hello">안녕 난 아보카도야.</h5>
-            <h5>우리는 현재 열심히 서비스 출시를 위해 개발 중이란다.</h5>
+            <div class="hello-sec">
+              <h4 class="hello">안녕 난 아보카도야.</h4>
+              <h4>우리는 현재 열심히 서비스 출시를 위해 개발 중이란다.</h4>
+            </div>
+            <div class="thanks-sec">
+              <h5 class="thanks">조금만 기다리면 우리 서비스를 만나볼 수 있어~</h5>
+              <h5>관심가져줘서 고마워!</h5>
+            </div>
           </div>
-          <h6>조금만 기다리면 우리 서비스를 만나볼 수 있어~ 관심가져줘서 고마워!</h6>
           <div class="about-divider">
             <div class="divider"></div>
           </div>
@@ -48,8 +53,22 @@
         </div>
       </div>
 
-      <div class="footer">
-        <i class="fas fa-heart" style="margin-right: 0.2rem;"></i> 베지아보카도 2018: 할리 & 피피 & 윌리엄 & 로비 & 제이미
+      <div class="blog-container">
+        <div class="blog-content">
+          <div class="blog-intro">
+            아보카도들이 매일 연재중인 [스타트업 실전 개발]시리즈를 확인해봐!
+          </div>
+          <div class="blog-expl">
+            [스타트업 실전 개발]시리즈는 실제 개발에 도전해보고 싶은 개발자들을 위해 스타트업 베지아보카도의 아이템을 만들기 위해 사용된 웹사이트 구축 방법,
+            개발에 필요한 프로그램을 사용하는 법 등을 모두 튜토리얼식으로 오픈소스 공개한거야. 아이템이 완성되기 전에
+            베지아보카도의 튜토리얼도 관심가져줘! :))
+            [ <a class="blog-link" href="https://blog.naver.com/ppark9553/221310627166">네이버 블로그 가기</a> ]
+          </div>
+        </div>
+
+        <div class="footer">
+          <i class="fas fa-heart" style="margin-right: 0.2rem;"></i> 베지아보카도 2018: 할리 & 피피 & 윌리엄 & 로비 & 제이미
+        </div>
       </div>
 
     </body>
