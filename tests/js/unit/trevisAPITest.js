@@ -64,7 +64,7 @@ describe('GET API TEST', async() => {
           setTimeout(done,4000);
         });
       }).timeout(8000);
-      
+
       it('Get branches test', (done)=>{
         chai.request(`${url}`)
         .get('/repo/'+WoobakRepositoryId+'/branches')
@@ -133,7 +133,7 @@ describe('GET API TEST', async() => {
         .send({Authorization:(' token '+`${SecToken}`)})
         // .send({Travis-API-Version: 3})
         .end((err, res)=>{
-          console.log(res);
+          // console.log(res);
           // console.log("error: " + err)
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -157,18 +157,18 @@ describe('GET API TEST', async() => {
       //   });
       // }).timeout(8000);
 
-      it('Get jobs', (done)=>{
-        chai.request(`${url}`)
-        .get('/jobs')
-        .set('Travis-API-Version',3)
-        .send({Authorization:(' token '+`${SecToken}`)})
-        // .send({Travis-API-Version: 3})
-        .end((err, res)=>{
-          // console.log(res);
-          // console.log("error: " + err)
-          expect(err).to.be.null;
-          expect(res).to.have.status(200);
-          setTimeout(done,4000);
-        });
-      }).timeout(8000);
+      // it('Get jobs', (done)=>{
+      //   chai.request(`${url}`)
+      //   .get('/jobs')
+      //   .set('Travis-API-Version',3)
+      //   .send({Authorization:(' token '+`${SecToken}`)})
+      //   // .send({Travis-API-Version: 3})
+      //   .end((err, res)=>{
+      //     // console.log(res);
+      //     // console.log("error: " + err)
+      //     expect(err).to.be.null;
+      //     expect(res).to.have.status(200);
+      //     setTimeout(done,4000);
+      //   });
+      // }).timeout(8000);
 });
