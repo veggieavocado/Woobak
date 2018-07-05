@@ -1,0 +1,82 @@
+/* This is a css for calendar.html */
+
+/* default css settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+/* default css settings end here */
+
+/* ALL LAYOUT RELATED CSS HERE */
+.body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* Navbar CSS starts here */
+.navbar {
+  background-color: #93ffa9;
+}
+/* Navbar CSS ends here */
+
+/* Content-1 CSS starts here */
+.content-1 {
+  background-color: #ff8499;
+}
+ .content-1 > .content-menu {
+   margin: 2rem 0 1rem 2rem;
+ }
+/* Content-1 CSS ends here */
+
+/* Content-2 CSS starts here */
+.content-2 {
+  width: vw;
+  height: 50rem;
+  background-color: gray;
+  display: flex;
+  flex-direction: row;
+}
+  .content-2 > .tutor {
+    width:40%;
+    height: vh;
+    background: #b2abb1;
+    display: flex;
+    flex-direction: column;
+  }
+    .content-2 > .tutor > .tutor-info {
+      display: flex;
+      flex-direction: column;
+      height: 50%;
+      background: #729df9;
+    }
+      .content-2 > .tutor > .tutor-info > .tutor-info-menu {
+        width: 99%;
+        display: flex;
+        justify-content: flex-end;
+        margin: 0.5rem 0 0 0;
+      }
+      .content-2 > .tutor > .tutor-info > .tutor-info-menu > .btn {
+        margin: 0.5rem 0.5rem;
+      }
+
+
+    .content-2 > .tutor > .tutor-calendar {
+      height: 50%;
+      background: #74fc93;
+    }
+  .content-2 > .mycalendar{
+    width:60%;
+    background-color: #f970ee;
+  }
+/* Content-2 CSS ends here */
+
+
+/* footer CSS starts here */
+  .footer {
+    height: 15rem;
+    background-color: #bcbcbc;
+  }
+/* footer CSS ends here */
