@@ -14,6 +14,11 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
+const _key = 'b99f16d67481b93e65e19d84f64806ab';
+const _token = '1212888ff2d1140637a2e9f0db08c011ca4ad13345fb9bf06ae2018447e9ee53';
+
+
 // // connect to MongoDB
 // const db = mongoose.connection;
 // db.on('error', console.error);
@@ -88,4 +93,94 @@ app.get('/task-api/board/:id', async (req, res) => {
   const boardsData = boards.data;
   res.status(200);
   res.json({ data: boardsData });
+});
+
+// API which is getting lists of board.
+app.get('task-api/list', async (req, res) => {
+  const listURL = `${trelloURL}/1/boards/${boardID}/`;
+  const lists = await axios.get(listURL)
+    .catch((error) => {
+      res.status(501);
+      res.json(error);
+    });
+  const listsData = lists.data;
+  res.status(200);
+  res.json({ data: listsData });
+});
+
+app.get('/task-api/list:id', async (req, res) => {
+  // get any board lists with id
+  const id = req.params.id; // URL에서 :id 부분 빼오기
+  const listURL = `${trelloURL}/1/lists/${id}/`;
+  const list = await axios.get(listURL)
+    .catch((error) => {
+      res.status(501);
+      res.json({ result: `FAILED TO GET ${id} BOARD` });
+      res.json(error);
+    });
+  const listData = list.data;
+  res.status(200);
+  res.json({ data: listData });
+});
+
+
+app.get('/task-api/card:Listid/', async (req, res) => {
+  // get any board lists with id
+  const Listid = req.params.Listid; // URL에서 :id 부분 빼오기
+  const CardURL = `${trelloURL}/1/lists/${Listid}/cards`;
+  const Card = await axios.get(CardURL)
+    .catch((error) => {
+      res.status(501);
+      res.json({ result: `FAILED TO GET ${id} BOARD` });
+      res.json(error);
+    });
+  const CardData = Card.data;
+  res.status(200);
+  res.json({ data: CardData });
+});
+
+app.get('/task-api/card:CardId/', async (req, res) => {
+  // get any board lists with id
+  const CardId = req.params.CardId; // URL에서 :id 부분 빼오기
+  const CardURL = `${trelloURL}/1/cards/` + CardId;
+  const Card = await axios.get(CardURL)
+    .catch((error) => {
+      res.status(501);
+      res.json({ result: `FAILED TO GET ${id} BOARD` });
+      res.json(error);
+    });
+  const CardData = Card.data;
+  res.status(200);
+  res.json({ data: CardData });
+});
+
+app.post('/api/test/lists:name:IdBoard', (req, res) => {
+  // POST할 때 받은 데이터값을 몽고디비로 보내서 저장한다
+  // 저장에 성공하면 result가 1, 실패하면 0이다
+  const Name = req.params.name;
+  const IdBoard = req.params.IdBoard;
+  const ListURL = `${trelloURL}/1/lists`;
+  var options = { method : 'POST',
+    url : ListURL,
+    qs: {
+      name: Name,
+      idBoard: IdBoard,
+      key: _key,
+      token: _token
+    }
+  };
+  requests(options, function(error, response, body){
+    const testInst = new test();
+    testInst.LogTime = Date.getTime();
+    testInst.response = response;
+    testInst.body = body;
+
+    testInst.save((error)=>{
+      console.log(error);
+      res.json({result : 0});
+    });
+    res.json({result:1});
+  });
+
+  
 });
