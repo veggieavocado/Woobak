@@ -1,0 +1,77 @@
+/* This is a css for editdoc.html */
+
+/* default css settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+/* default css settings end here */
+
+/* ALL LAYOUT RELATED CSS HERE */
+.body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* Navbar CSS starts here */
+.navbar {
+  background-color: #93ffa9;
+}
+/* Navbar CSS ends here */
+/* Content-1 CSS starts here */
+.content-1 {
+  display: flex;
+  flex-direction: row;
+  width: vw;
+  height: 40rem;
+  background-color: #bcbcbc;
+}
+  .content-1 > .manipulation {
+    width: 45%;
+    background-color: #ff8499;
+    display: flex;
+    flex-direction: column;
+  }
+    .content-1 > .manipulation > .download {
+      display: flex;
+      justify-content: flex-end;
+      margin: 1rem 0.3rem 0 0;
+    }
+    .content-1 > .manipulation > .edit-factor {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      list-style: none;
+      margin: 5rem 0;
+    }
+      .content-1 > .manipulation >.edit-factor > li {
+        margin: 1rem 0;
+        width: 70%;
+        text-align: center;
+        border: 1px solid black;
+      }
+    .content-1 > .manipulation > .spellcheck{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 5rem 6rem 0 6rem;
+    }
+  .content-1 > .template-preview {
+    width:55%;
+    background-color: #729df9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+/* Content-1 CSS ends here */
+/* footer CSS starts here */
+.footer {
+  height: 5rem;
+  background-color: gray;
+}
+/* footer CSS ends here */

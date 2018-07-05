@@ -17,10 +17,23 @@ restart_celery
 js_gobble_reinstall
 clean_known_hosts
 start_browser
+
+###### INIT DEPLOY TASKS ######
+send_deploy_script
+init_server
+init_web
+
+###### OPEN SHELL TASKS ######
+root_web_shell
 '''
 
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from fabric.api import *
-from fab_settings import *
+from configs.base import CONFIG
+
+from autoserver.common import server_init, web_deploy
 
 
 ###### LOCAL FAB TASKS ######
@@ -71,3 +84,46 @@ def server_reload():
     # local server reload
     local('sudo systemctl restart uwsgi')
     local('sudo systemctl restart nginx')
+
+
+###### INIT DEPLOY TASKS ######
+@task
+@hosts(CONFIG['ip-address']['web'])
+def send_deploy_script():
+    env.user = 'root'
+    env.password = CONFIG['initial-deploy-pw']['web']
+    # env.password = CONFIG['common']['ROOT_PW']
+    put('./scripts/deploy.sh', '~/deploy.sh')
+
+@task
+@hosts(CONFIG['ip-address']['web'])
+def send_configs():
+    env.user = 'root'
+    env.password = CONFIG['common']['ROOT_PW']
+    run('mkdir -p /home/woobak/woobak/configs')
+    put('./configs/*', '/home/woobak/woobak/configs/')
+
+@task
+@hosts(CONFIG['ip-address']['web'])
+def init_server():
+    env.user = 'root'
+    # env.password = CONFIG['initial-deploy-pw']['web']
+    env.password = CONFIG['common']['ROOT_PW']
+    server_init()
+
+@task
+@hosts(CONFIG['ip-address']['web'])
+def init_web():
+    env.user = 'root'
+    # env.password = CONFIG['initial-deploy-pw']['web']
+    env.password = CONFIG['common']['ROOT_PW']
+    web_deploy()
+
+
+###### OPEN SHELL TASKS ######
+@task
+@hosts(CONFIG['ip-address']['web'])
+def root_web_shell():
+    env.user = 'root'
+    env.password = CONFIG['common']['ROOT_PW']
+    open_shell()
