@@ -31,7 +31,7 @@ matrix:
       install:
         - yarn
       script:
-        - yarn test:mocha
+        - yarn mocha:all
 
 notifications:
   email:

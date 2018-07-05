@@ -14,7 +14,7 @@ var VultrAPI = require( 'vultr-api-wrapper' );
 var Vultr = new VultrAPI( { api_key: vultrAPI } );
 
 
-describe.only("Show server list test", function(){
+describe("Show server list test", function(){
     this.timeout(5000);
     it('Show all servers..',function(done){
         Vultr.server_list( function(error, statuscode, result){
@@ -27,7 +27,7 @@ describe.only("Show server list test", function(){
     });
 });
 
-describe.only("Show OS Lists", function(){
+describe("Show OS Lists", function(){
     it('Show all server OS Lists ...', function(done){
         Vultr.os_list(function(error, status, result){
         //     console.log("I am here!");
@@ -40,7 +40,7 @@ describe.only("Show OS Lists", function(){
     });
 });
 
-describe.only("Show DCID Lists", function(){
+describe("Show DCID Lists", function(){
     it('Show all DCID Lists ...', function(done){
         Vultr.regions_list(function(error, status, result){
             // console.log("I am here!");
@@ -61,7 +61,7 @@ describe.only("Show DCID Lists", function(){
 
 
 
-describe.only("Show plan lists", function(){
+describe("Show plan lists", function(){
     it('check the plans.... ', function(done){
         Vultr.plans_list( function(error, statuscode, result){
             // console.log("I am here!");
@@ -76,7 +76,7 @@ describe.only("Show plan lists", function(){
 
 
 // API TEST COMPLETE
-// DANGER. 
+// DANGER.
 
 // describe.only("Delete Server", function(){
 //     it('Delete the test server.... ',function(done){
