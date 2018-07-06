@@ -1,0 +1,207 @@
+/* 변수 설정 */
+/* 색상은 대문자 사용 */
+:root {
+  --main-green: #2BDE73;
+  --btn-green: #2FC66C;
+  --main-red: #F95759;
+  --main-purple: #C986FC;
+  --main-brown: #C4B07B;
+  --black: #212121;
+  --pretty-black: #3F3F3F;
+  --dark-gray: #9C9C9C;
+  --gray: #BDBDBD;
+  --light-gray: #EFEFEF;
+  --very-light-gray: #F9F9F9;
+  --navbar-height: 3.5rem;
+  --logo-font: 'Ubuntu';
+  --font: 'Gothic A1';
+  --btn-radius: 5px;
+  --input-radius: 3px;
+}
+
+
+/* default css settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+/* default css settings end here */
+
+/* navbar CSS starts here */
+
+/* Navbar CSS starts here */
+.navbar {
+  background-color: white;
+  height: var(--navbar-height);
+  display: flex;
+}
+
+  .navbar > .navbar-logo {
+    width: 20%;
+    font-family: var(--logo-font), sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--main-green);
+  }
+
+  .navbar > .navbar-action {
+    width: 60%;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+  }
+
+    .navbar-action > .action-btn {
+      margin: 0 1rem;
+      cursor: pointer;
+    }
+
+    .navbar-action > .action-btn:hover {
+      font-weight: bold;
+    }
+
+  .navbar > .navbar-login {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+    .navbar-login > .login-btn {
+      margin-right: 1rem;
+      border: solid 1.5px var(--black);
+      border-radius: var(--btn-radius);
+      background-color: white;
+      color: var(--black);
+      padding: 0.3rem;
+      cursor: pointer;
+      -webkit-transition: all 0.1s ease-in-out 0s;
+      transition: all 0.1s ease-in-out 0s;
+    }
+
+    /* .navbar-login > .login-btn:hover {
+      padding: 0.4rem;
+    } */
+
+/* navbar CSS ends here */
+
+/* Avocado-btn CSS starts */
+.avocado-btn {
+  color: white;
+  font-weight: bold;
+  border: solid 1.5px var(--btn-green);
+  border-radius: var(--btn-radius);
+  background-color: var(--btn-green);
+  cursor: pointer;
+}
+
+.avocado-btn-flipped {
+  color: var(--btn-green);
+  font-weight: bold;
+  border: solid 1.5px var(--btn-green);
+  border-radius: var(--btn-radius);
+  background-color: white;
+  cursor: pointer;
+}
+/* .avocado-btn ends here */
+
+
+/* avocado-input */
+::placeholder {
+  color: var(--main-green);
+  opacity: 0.4;
+}
+
+.avocado-input {
+  background-color: white;
+  padding: 0.3rem;
+  border: solid 1px var(--main-green);
+  border-radius: var(--input-radius);
+}
+
+.avocado-input:focus {
+  outline: none !important;
+  border-color: var(--main-green);
+  box-shadow: 0 0 5px var(--main-green);
+}
+/* avocado-input */
+
+
+
+/* Footer CSS starts here */
+.footer {
+  width: 100%;
+  background-color: var(--light-gray);
+  color: var(--black);
+  display: flex;
+}
+
+  .footer > .footer-menu {
+    margin: 2rem 2.5rem;
+    width: 60%;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+    .footer-menu > .menu-btns {
+      width: 100%;
+      display: flex;
+    }
+
+      .menu-btns > .footer-btn {
+        margin: 0 2rem;
+        cursor: pointer;
+      }
+
+    .footer-menu > .menu-sns {
+      margin-top: 1.5rem;
+      width: 100%;
+      display: flex;
+    }
+
+      .menu-sns > .sns-btn {
+        margin-left: 2rem;
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .naver-btn {
+        background-image: url(../img/naver.jpg);
+        background-position: center;
+        background-size: contain;
+      }
+
+      .brunch-btn {
+        background-image: url(../img/brunch.png);
+        background-position: center;
+        background-size: contain;
+      }
+
+      .github-btn {
+        background-image: url(../img/github.png);
+        background-position: center;
+        background-size: contain;
+        background-color: white;
+      }
+
+  .footer > .comp-info {
+    margin: 2rem 2.5rem;
+    width: 40%;
+  }
+
+    .comp-info > .logo {
+      font-family: var(--logo-font), sans-serif;
+      font-weight: bold;
+      color: var(--main-green);
+      margin-bottom: 1rem;
+    }
+
+    .comp-info > .info {
+      font-size: 0.8rem;
+      margin-bottom: 2rem;
+    }
+/* Footer CSS ends here */

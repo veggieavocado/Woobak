@@ -9,60 +9,91 @@
 }
 /* default css settings end here */
 
-/* ALL LAYOUT RELATED CSS HERE */
-.body {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Nanum Gothic', sans-serif;
-}
-
-
-/* Navbar CSS starts here */
-.navbar {
-  background-color: #93ffa9;
-}
-
-  .navbar > .navbar-action {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-  }
-
-    .navbar-action > .action-btn {
-      margin: 0 0.5rem;
-    }
-/* Navbar CSS ends here */
-
 
 /* Content-1 CSS starts here */
 .content-1 {
-  height: 20rem;
-  background-color: #ff8499;
+  height: 30rem;
+  position: relative;
 }
-/* Content-1 CSS starts here */
+
+  .content-1 > .content-img {
+    height: inherit;
+    background-image: url(../img/avocado-bg.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .content-1 > .content-img:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(33, 33, 33, 0.5);
+  }
+
+  .content-1 > .content-txt {
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transform: translate3d(-50%, -50%, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+    .content-txt > .look-btn {
+      margin-top: 2rem;
+      width: 50%;
+      padding: 0.7rem;
+      color: white;
+      font-weight: bold;
+      border: solid 1.5px var(--btn-green);
+      border-radius: var(--btn-radius);
+      background-color: var(--btn-green);
+      cursor: pointer;
+    }
+/* Content-1 CSS ends here */
 
 
 /* Content-2 CSS starts here */
 .content-2 {
-  height: 5rem;
-  background-color: #7ca3ff;
+  height: 6rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-  .content-2 > .popular-act {
-    margin: 0 1rem;
+  .content-2 > .blank-space {
+    width: 20%;
   }
 
+  .content-2 > .content-container {
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+  }
 
+    .content-container > .popular-act {
+      height: 2rem;
+      margin: 0 1rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .content-container > .popular-act:hover {
+      border-bottom: solid 4px var(--gray);
+    }
+/* Content-1 CSS ends here */
+
+
+/* Content-3 CSS starts here */
 .content-3 {
-  height: 10rem;
-  background-color: #ff75fc;
+  height: 30rem;
 }
-
-
-.footer {
-  height: 10rem;
-  background-color: #a5a5a5;
-}
+/* Content-1 CSS ends here */
