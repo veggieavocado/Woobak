@@ -1,0 +1,25 @@
+/* 변수 설정 */
+/* 색상은 대문자 사용 */
+:root {
+  --main-green: #2BDE73;
+  --main-red: #F95759;
+  --main-purple: #C986FC;
+  --main-brown: #C4B07B;
+  --black: #212121;
+  --dark-gray: #9C9C9C;
+  --gray: #BDBDBD;
+  --light-gray: #EFEFEF;
+  --navbar-height: 3rem;
+  --font: 'Gothic A1';
+  --btn-radius: 5px;
+}
+
+
+/* default css settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+/* default css settings end here */
