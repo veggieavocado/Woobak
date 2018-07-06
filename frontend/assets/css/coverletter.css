@@ -9,31 +9,23 @@
 }
 /* default css settings end here */
 
-/* ALL LAYOUT RELATED CSS HERE */
-.body {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Nanum Gothic', sans-serif;
-}
-
-/* Navbar CSS starts here */
+/* Navbar starts here */
 .navbar {
-  background-color: #93ffa9;
+  border-bottom: solid 1.5px var(--light-gray);
+  box-shadow: 2px 2px 3px 2px var(--very-light-gray);
 }
-/* Navbar CSS ends here */
+/* Navbar ends here */
 
 /* Content-1 CSS starts here */
 .content-1 {
   display: flex;
   flex-direction: row;
   width: vw;
-  height: 50rem;
-  background-color: #bcbcbc;
+  height: 60rem;
 }
   .content-1 > .design-fonts {
-    width:30%;
+    width:35%;
     height: vh;
-    background-color: #ff8499;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,48 +33,45 @@
   }
     .content-1 > .design-fonts > .menu-change {
       display: flex;
-      height: 10%;
       justify-content: center;
+      align-items: center;
+      padding: 3rem 0 1rem 0;
+      border-radius: 3px;
       width: 100%;
-      background-color: #76f7e6;
+      border-bottom: solid 1.5px var(--gray);
     }
-      .content-1 > .design-fonts > .menu-change > .btn-primary {
-        margin: 1rem 0;
+      .content-1 > .design-fonts > .menu-change > .avocado-btn {
+        padding: 0.7rem 2rem;
+        border-radius: 5px 0 0 5px;
       }
-      .content-1 > .design-fonts > .menu-change > .btn-secondary {
-        margin: 1rem 0;
+      .content-1 > .design-fonts > .menu-change > .avocado-btn-flipped {
+        padding: 0.7rem 2rem;
+        border-radius: 0 5px 0 5px;
       }
 
 
-    /* .content-1 > .design-fonts > .coverleter-design {
+    .content-1 > .design-fonts > .coverleter-design {
       display: flex;
       height: 90%;
       justify-content: center;
       align-items: center;
       width: 100%;
-      background-color: #ffa3e9;
+
+    }
+
+    /* .content-1 > .design-fonts > .coverleter-fonts {
+      display: flex;
+      height: 90%;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
     } */
-    
-    .content-1 > .design-fonts > .coverleter-fonts {
-      display: flex;
-      height: 90%;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-    }
 
   .content-1 > .edit-doc {
-    width:70%;
+    width:65%;
     background-color: #729df9;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 /* Content-1 CSS ends here */
-
-/* footer CSS starts here */
-.footer {
-  height: 5rem;
-  background-color: gray;
-}
-/* footer CSS starts here */

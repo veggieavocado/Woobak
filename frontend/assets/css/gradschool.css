@@ -9,28 +9,13 @@
 }
 /* default css settings end here */
 
-/* ALL LAYOUT RELATED CSS HERE */
-.body {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Nanum Gothic', sans-serif;
-}
-
-/* Navbar CSS starts here */
+/* Navbar starts here */
 .navbar {
-  background-color: #93ffa9;
+  border-bottom: solid 1.5px var(--light-gray);
+  box-shadow: 2px 2px 3px 2px var(--very-light-gray);
 }
+/* Navbar ends here */
 
-  .navbar > .navbar-action {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-  }
-
-    .navbar-action > .action-btn {
-      margin: 0 0.5rem;
-    }
-/* Navbar CSS ends here */
 
 /* content-manipulation CSS starts here */
 
@@ -47,8 +32,8 @@
     display: flex;
     margin: 0 0 0 3rem;
   }
-    .content-manipulation > .cm-filter > .btn {
-      margin: 0.5rem 0.5rem;
+    .content-manipulation > .cm-filter > .avocado-btn-flipped {
+      margin: 5rem 0.3rem 1rem 0;
       padding: 0.5rem 1.5rem;
     }
   .content-manipulation > .cm-sort {
@@ -56,8 +41,8 @@
     display: flex;
     justify-content: flex-end;
   }
-    .content-manipulation > .cm-sort > .btn {
-      margin: 0 2rem 0 0;
+    .content-manipulation > .cm-sort > .avocado-btn {
+      margin: 5rem 1.5rem 1rem 0;
       padding: 0.5rem 1.5rem;
     }
 
@@ -110,12 +95,3 @@
       background-color: #81f991;
     }
 /* content-1 CSS  ends here */
-
-/* footer CSS starts here */
-
-.footer {
-  background-color: black;
-  height: 10rem;
-}
-
-/* footer CSS ends here */
