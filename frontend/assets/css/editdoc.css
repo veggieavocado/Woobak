@@ -9,36 +9,28 @@
 }
 /* default css settings end here */
 
-/* ALL LAYOUT RELATED CSS HERE */
-.body {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Nanum Gothic', sans-serif;
-}
-
-/* Navbar CSS starts here */
-.navbar {
-  background-color: #93ffa9;
-}
-/* Navbar CSS ends here */
 /* Content-1 CSS starts here */
 .content-1 {
   display: flex;
   flex-direction: row;
   width: vw;
-  height: 40rem;
+  height: 50rem;
   background-color: #bcbcbc;
 }
   .content-1 > .manipulation {
     width: 45%;
-    background-color: #ff8499;
+    background-color: var(--light-gray);
     display: flex;
     flex-direction: column;
   }
     .content-1 > .manipulation > .download {
       display: flex;
       justify-content: flex-end;
-      margin: 1rem 0.3rem 0 0;
+    }
+    .download > .avocado-btn {
+      padding: 0.7rem 2.5rem;
+      margin-top : 2rem;
+      margin-right: 2.5rem;
     }
     .content-1 > .manipulation > .edit-factor {
       display: flex;
@@ -47,20 +39,23 @@
       align-items: center;
       flex-direction: column;
       list-style: none;
-      margin: 5rem 0;
+      margin: 7rem 0 5rem 0;
     }
-      .content-1 > .manipulation >.edit-factor > li {
-        margin: 1rem 0;
+      .manipulation >.edit-factor > .avocado-btn-flipped {
         width: 70%;
         text-align: center;
-        border: 1px solid black;
+        margin-bottom: 0.8rem;
+        padding: 0.8rem 3rem;
       }
+
     .content-1 > .manipulation > .spellcheck{
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 5rem 6rem 0 6rem;
     }
+     .spellcheck > .avocado-btn {
+      padding: 0.7rem 4rem;
+     }
   .content-1 > .template-preview {
     width:55%;
     background-color: #729df9;
