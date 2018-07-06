@@ -11,50 +11,156 @@
 
 /* Navbar CSS starts here */
 .navbar {
-  background-color: #93ffa9;
+  background-color: white;
+  height: var(--navbar-height);
+  display: flex;
 }
 
+  .navbar > .navbar-logo {
+    width: 20%;
+    font-family: var(--logo-font), sans-serif;
+    font-size: 1.5rem;
+    color: var(--main-green);
+  }
+
   .navbar > .navbar-action {
+    width: 60%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-content: center;
   }
 
     .navbar-action > .action-btn {
-      margin: 0 0.5rem;
+      margin: 0 1rem;
+      cursor: pointer;
     }
+
+    .navbar-action > .action-btn:hover {
+      font-weight: bold;
+    }
+
+  .navbar > .navbar-login {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+    .navbar-login > .login-btn {
+      margin-right: 1rem;
+      border: solid 1.5px var(--black);
+      border-radius: var(--btn-radius);
+      background-color: white;
+      color: var(--black);
+      padding: 0.3rem;
+      cursor: pointer;
+      -webkit-transition: all 0.1s ease-in-out 0s;
+      transition: all 0.1s ease-in-out 0s;
+    }
+
+    /* .navbar-login > .login-btn:hover {
+      padding: 0.4rem;
+    } */
 /* Navbar CSS ends here */
 
 
 /* Content-1 CSS starts here */
 .content-1 {
-  height: 20rem;
-  background-color: #ff8499;
+  height: 30rem;
+  position: relative;
 }
-/* Content-1 CSS starts here */
+
+  .content-1 > .content-img {
+    height: inherit;
+    background-image: url(../img/avocado-bg.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .content-1 > .content-img:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(33, 33, 33, 0.5);
+  }
+
+  .content-1 > .content-txt {
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transform: translate3d(-50%, -50%, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+    .content-txt > .look-btn {
+      margin-top: 2rem;
+      width: 50%;
+      padding: 0.7rem;
+      color: white;
+      font-weight: bold;
+      border: solid 1.5px var(--btn-green);
+      border-radius: var(--btn-radius);
+      background-color: var(--btn-green);
+      cursor: pointer;
+    }
+/* Content-1 CSS ends here */
 
 
 /* Content-2 CSS starts here */
 .content-2 {
-  height: 5rem;
-  background-color: #7ca3ff;
+  height: 6rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-  .content-2 > .popular-act {
-    margin: 0 1rem;
+  .content-2 > .blank-space {
+    width: 20%;
   }
 
+  .content-2 > .content-container {
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+  }
 
+    .content-container > .popular-act {
+      height: 2rem;
+      margin: 0 1rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .content-container > .popular-act:hover {
+      border-bottom: solid 4px var(--gray);
+    }
+/* Content-1 CSS ends here */
+
+
+/* Content-3 CSS starts here */
 .content-3 {
-  height: 10rem;
-  background-color: #ff75fc;
+  height: 30rem;
 }
+/* Content-1 CSS ends here */
 
 
+/* Footer CSS starts here */
 .footer {
-  height: 10rem;
-  background-color: #a5a5a5;
+  height: 15rem;
+  background-color: var(--light-gray);
+  display: flex;
+  flex-direction: column;
 }
+
+  .footer > .footer-menu {
+    display: flex;
+  }
+/* Footer CSS ends here */
