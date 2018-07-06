@@ -9,18 +9,6 @@
 }
 /* default css settings end here */
 
-/* ALL LAYOUT RELATED CSS HERE */
-.body {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Nanum Gothic', sans-serif;
-}
-
-/* Navbar CSS starts here */
-.navbar {
-  background-color: #93ffa9;
-}
-
 /* Content-1 CSS starts here */
 .content-1 {
   height: 30rem;
@@ -30,10 +18,6 @@
   justify-content: center;
   align-items: center;
 }
-  .content-1 > .login-input{
-    margin: 0.5rem 0 0.5rem 0;
-    border: 1px solid black;
-  }
 /* Content-1 CSS ends here */
 
 /* footer CSS starts here */
