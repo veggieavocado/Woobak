@@ -2,6 +2,7 @@
 /* 색상은 대문자 사용 */
 :root {
   --main-green: #2BDE73;
+  --btn-green: #2FC66C;
   --main-red: #F95759;
   --main-purple: #C986FC;
   --main-brown: #C4B07B;
@@ -9,7 +10,8 @@
   --dark-gray: #9C9C9C;
   --gray: #BDBDBD;
   --light-gray: #EFEFEF;
-  --navbar-height: 3rem;
+  --navbar-height: 3.5rem;
+  --logo-font: 'Ubuntu';
   --font: 'Gothic A1';
   --btn-radius: 5px;
 }
