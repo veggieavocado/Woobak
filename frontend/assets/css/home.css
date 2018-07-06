@@ -154,13 +154,70 @@
 
 /* Footer CSS starts here */
 .footer {
-  height: 15rem;
+  width: 100%;
   background-color: var(--light-gray);
+  color: var(--black);
   display: flex;
-  flex-direction: column;
 }
 
   .footer > .footer-menu {
+    margin: 2rem 2.5rem;
+    width: 60%;
+    font-size: 1rem;
     display: flex;
+    flex-direction: column;
   }
+
+    .footer-menu > .menu-btns {
+      width: 100%;
+      display: flex;
+    }
+
+      .menu-btns > .footer-btn {
+        margin: 0 2rem;
+        cursor: pointer;
+      }
+
+    .footer-menu > .menu-sns {
+      margin-top: 1.5rem;
+      width: 100%;
+      display: flex;
+    }
+
+      .menu-sns > .sns-btn {
+        margin-left: 2rem;
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .naver-btn {
+        background-image: url(../img/naver.jpg);
+        background-position: center;
+        background-size: contain;
+      }
+
+      .brunch-btn {
+        background-image: url(../img/brunch.png);
+        background-position: center;
+        background-size: contain;
+      }
+
+      .github-btn {
+        background-image: url(../img/github.png);
+        background-position: center;
+        background-size: contain;
+        background-color: white;
+      }
+
+  .footer > .comp-info {
+    margin: 2rem 2.5rem;
+    width: 40%;
+  }
+
+    .comp-info > .info {
+      font-size: 0.8rem;
+      margin-bottom: 2rem;
+    }
 /* Footer CSS ends here */
