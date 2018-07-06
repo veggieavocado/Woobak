@@ -9,20 +9,51 @@
 }
 /* default css settings end here */
 
+/* Navbar starts here */
+.navbar {
+  border-bottom: solid 1.5px var(--light-gray);
+  box-shadow: 2px 2px 3px 2px var(--very-light-gray);
+}
+
 /* Content-1 CSS starts here */
 .content-1 {
+  width: 100%;
   height: 30rem;
-  background-color: #ff8499;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-/* Content-1 CSS ends here */
 
-/* footer CSS starts here */
-.footer {
-  height: 5rem;
-  background-color: #a5a5a5;
-}
-/* footers CSS ends here */
+  .content-1 > .login-input {
+    display: flex;
+    flex-direction: column;
+  }
+
+    .login-input > .login-section-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--pretty-black);
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .login-input > input {
+      margin-bottom: 1rem;
+      width: 20rem;
+    }
+
+    .login-input > .avocado-btn {
+      padding: 0.3rem;
+    }
+
+  .content-1 > .register-sec {
+    margin-top: 1rem;
+  }
+
+    .register-sec > a {
+      text-decoration: none;
+    }
+/* Content-1 CSS ends here */
