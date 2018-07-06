@@ -19,6 +19,7 @@
   .navbar > .navbar-logo {
     width: 20%;
     font-family: var(--logo-font), sans-serif;
+    font-weight: bold;
     font-size: 1.5rem;
     color: var(--main-green);
   }
@@ -215,6 +216,13 @@
     margin: 2rem 2.5rem;
     width: 40%;
   }
+
+    .comp-info > .logo {
+      font-family: var(--logo-font), sans-serif;
+      font-weight: bold;
+      color: var(--main-green);
+      margin-bottom: 1rem;
+    }
 
     .comp-info > .info {
       font-size: 0.8rem;
