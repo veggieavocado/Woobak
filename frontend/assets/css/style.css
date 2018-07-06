@@ -7,13 +7,16 @@
   --main-purple: #C986FC;
   --main-brown: #C4B07B;
   --black: #212121;
+  --pretty-black: #3F3F3F;
   --dark-gray: #9C9C9C;
   --gray: #BDBDBD;
   --light-gray: #EFEFEF;
+  --very-light-gray: #F9F9F9;
   --navbar-height: 3.5rem;
   --logo-font: 'Ubuntu';
   --font: 'Gothic A1';
   --btn-radius: 5px;
+  --input-radius: 3px;
 }
 
 
@@ -105,8 +108,22 @@
 
 
 /* avocado-input */
-.avocado-input {
+::placeholder {
+  color: var(--main-green);
+  opacity: 0.4;
+}
 
+.avocado-input {
+  background-color: white;
+  padding: 0.3rem;
+  border: solid 1px var(--main-green);
+  border-radius: var(--input-radius);
+}
+
+.avocado-input:focus {
+  outline: none !important;
+  border-color: var(--main-green);
+  box-shadow: 0 0 5px var(--main-green);
 }
 /* avocado-input */
 
