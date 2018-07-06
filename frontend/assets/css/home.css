@@ -9,14 +9,6 @@
 }
 /* default css settings end here */
 
-/* ALL LAYOUT RELATED CSS HERE */
-.body {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Nanum Gothic', sans-serif;
-}
-
-
 /* Navbar CSS starts here */
 .navbar {
   background-color: #93ffa9;
