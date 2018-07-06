@@ -9,6 +9,14 @@
 }
 /* default css settings end here */
 
+/* Navbar starts here */
+.navbar {
+  border-bottom: solid 1.5px var(--light-gray);
+  box-shadow: 2px 2px 3px 2px var(--very-light-gray);
+}
+/* Navbar ends here */
+
+
 /* content-manipulation CSS starts here */
 
 .content-manipulation {
