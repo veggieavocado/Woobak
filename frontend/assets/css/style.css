@@ -65,13 +65,27 @@ a:hover {
   }
 
     .navbar-action > .action-btn {
+      width: 7rem;
       margin: 0 1rem;
       cursor: pointer;
+      position: relative;
     }
 
     .navbar-action > .action-btn:hover {
       font-weight: bold;
     }
+
+      .action-btn.template > .template-dropdown {
+        right: 3rem;
+        position: absolute;
+        z-index: 10;
+        background-color: white;
+      }
+
+        .template-dropdown > li {
+          list-style: none;
+          padding: 1rem;
+        }
 
   .navbar > .navbar-login {
     width: 20%;
