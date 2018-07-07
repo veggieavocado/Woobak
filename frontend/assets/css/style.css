@@ -40,7 +40,7 @@ a:hover {
 }
 /* default css settings end here */
 
-/* navbar CSS starts here */
+/* navbar CSS ends here */
 
 /* Navbar CSS starts here */
 .navbar {
@@ -49,6 +49,7 @@ a:hover {
   display: flex;
 }
 
+/* Navbar-logo CSS starts here */
   .navbar > .navbar-logo {
     width: 20%;
     font-family: var(--logo-font), sans-serif;
@@ -56,6 +57,10 @@ a:hover {
     font-size: 1.5rem;
     color: var(--main-green);
   }
+
+  /* navbar-logo CSS ends here */
+
+  /* Navbar-action CSS starts here */
 
   .navbar > .navbar-action {
     width: 60%;
@@ -75,6 +80,10 @@ a:hover {
       font-weight: bold;
     }
 
+/* navbar-action CSS ends here */
+
+/* Navbar-dropdown CSS starts here */
+
       .action-btn.template > .template-dropdown {
         right: 3rem;
         position: absolute;
@@ -86,6 +95,8 @@ a:hover {
           list-style: none;
           padding: 1rem;
         }
+
+/* Navbar-dropdown CSS starts here */
 
   .navbar > .navbar-login {
     width: 20%;
