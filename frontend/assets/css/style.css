@@ -73,7 +73,7 @@ a:hover {
   }
 
     .navbar-action > .action-btn {
-      width: 10rem;
+      width: 7rem;
       margin: 0 1rem;
       cursor: pointer;
       position: relative;
@@ -101,6 +101,7 @@ a:hover {
         justify-content: center;
         background-color: white;
         border-radius: 3px;
+        font-size: 0.9rem;
       }
 
         .template-dropdown > li {
