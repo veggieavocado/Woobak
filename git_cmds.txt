@@ -1,0 +1,3 @@
+### Removing files/directories from Github repo
+
+git rm -r --cached node_modules
