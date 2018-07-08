@@ -13,7 +13,63 @@
 .navbar {
   border-bottom: solid 1.5px var(--light-gray);
   box-shadow: 2px 2px 3px 2px var(--very-light-gray);
+  height: 5rem;
 }
+
+  .navbar-login > .account-btn {
+    position: relative;
+    margin-right: 1.2rem;
+    margin-top: 0.5rem;
+    border-radius: var(--btn-radius);
+    background-color: white;
+    color: var(--black);
+    padding: 0.4rem;
+    cursor: pointer;
+    -webkit-transition: all 0.1s ease-in-out 0s;
+    transition: all 0.1s ease-in-out 0s;
+    font-size: 18px;
+  }
+
+    .account-btn > .account-img {
+      border-radius:50%;
+      height: 3rem;
+      width: 3em;
+      margin-right: 0.5rem;
+    }
+
+    .account-btn > .account-dropdown {
+      position: absolute;
+      margin-top: 0.6rem;
+      background-color: white;
+      /* border: 1px solid var(--pretty-black); */
+      border-radius: 2px;
+      border-top : 1px solid white;
+      width: 100%;
+      text-align: center;
+      /* box shadow only right and bottom */
+      -moz-box-shadow: 5px 5px 5px var(--gray);
+      -webkit-box-shadow: 10px 10px 5px var(--gray);
+      box-shadow: 5px 5px 5px var(--gray);
+    }
+
+    .account-dropdown > li {
+      width: 90%;
+      list-style: none;
+      margin-left: 0.4rem;
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--dark-gray);
+    }
+      .account-dropdown > li:hover {
+        font-weight: bold;
+      }
+
+    .account-dropdown > li:last-child {
+      width: 90%;
+      list-style: none;
+      margin-top: 0.6rem;
+      border-bottom: 1px solid white;
+    }
+
 /* Navbar ends here */
 
 /* Content-1 CSS starts here */
@@ -21,7 +77,8 @@
   display: flex;
   flex-direction: row;
   width: vw;
-  height: 60rem;
+  height: 90rem;
+
 }
   .content-1 > .design-fonts {
     width:35%;
@@ -30,6 +87,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-right: solid 1.5px var(--light-gray);
+    -webkit-box-shadow: 5px 0 1px -2px var(--very-light-gray);
+            box-shadow: 5px 0 1px -2px var(--very-light-gray);
   }
     .content-1 > .design-fonts > .menu-change {
       display: flex;
@@ -46,7 +106,7 @@
       }
       .content-1 > .design-fonts > .menu-change > .avocado-btn-flipped {
         padding: 0.7rem 2rem;
-        border-radius: 0 5px 0 5px;
+        border-radius: 0 5px 5px 0;
       }
 
 
@@ -67,11 +127,15 @@
       width: 100%;
     } */
 
-  .content-1 > .edit-doc {
-    width:65%;
-    background-color: #729df9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .content-1 > .template-preview {
+    width:65%;;
   }
+
 /* Content-1 CSS ends here */
+
+
+/* footer CSS starts here */
+.footer {
+  margin-top: 0.5rem;
+}
+/* footer CSS starts here */
