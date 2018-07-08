@@ -3,11 +3,8 @@ migrations/
 configs/
 *.pyc
 db.sqlite3
-node_modules/
+node_modules/s
 env/
 venv/
-<<<<<<< HEAD
 scripts/deploy.sh
-=======
 gitthub.py
->>>>>>> devopsWonseok
