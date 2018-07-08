@@ -3,7 +3,7 @@ migrations/
 configs/
 *.pyc
 db.sqlite3
-node_modules/s
+node_modules/
 env/
 venv/
 scripts/deploy.sh
