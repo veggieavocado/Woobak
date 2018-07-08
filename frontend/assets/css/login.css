@@ -41,5 +41,16 @@
       padding: 0.3rem;
     }
 
+  .content-1 > .register-sec {
+    margin-top: 1rem;
+  }
 
+    .register-sec > a {
+      margin-left: 0.5rem;
+      color: #3c35ff;
+    }
+
+    .register-sec > a:hover {
+      color: #221e99;
+    }
 /* Content-1 CSS ends here */

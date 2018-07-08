@@ -1,38 +1,3 @@
-/* This is a css for home.html */
-
-/* default css settings */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-size: 100%;
-}
-/* default css settings end here */
-
-/* ALL LAYOUT RELATED CSS HERE */
-.body {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Nanum Gothic', sans-serif;
-}
-
-
-/* Navbar CSS starts here */
-.navbar {
-  background-color: #93ffa9;
-}
-
-  .navbar > .navbar-action {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-  }
-
-    .navbar-action > .action-btn {
-      margin: 0 0.5rem;
-    }
-/* Navbar CSS ends here */
-
 /* Content-1 CSS starts here */
   .content-1 {
     margin-top: 3rem;
