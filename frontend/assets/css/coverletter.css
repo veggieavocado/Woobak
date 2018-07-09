@@ -13,7 +13,6 @@
 .navbar {
   border-bottom: solid 1.5px var(--light-gray);
   box-shadow: 2px 2px 3px 2px var(--very-light-gray);
-  height: 5rem;
 }
 
 /* Navbar ends here */
@@ -76,21 +75,21 @@
   .content-1 > .template-preview {
     width:65%;;
   }
+    .template-element.first {
+      text-align: center;
+    }
+
+    .template-element > li {
+      padding-left: 1.5em;
+      text-indent:-1.5em;
+    }
+
+    .template-element > .key-skill {
+      font-weight: bold;
+    }
 
 /* Content-1 CSS ends here */
 
-  .template-element.first {
-    text-align: center;
-  }
-
-  .template-element > li {
-    padding-left: 1.5em;
-    text-indent:-1.5em;
-  }
-
-  .template-element > .key-skill {
-    font-weight: bold;
-  }
 
 
 /* footer CSS starts here */
