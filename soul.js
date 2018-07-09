@@ -6,10 +6,10 @@ const app = express();
 
 const bodyParser = require('body-parser');
 
-// 몽고DB 사용 없이 외부 API 연결 작업을 한다
-// const mongoose = require('mongoose');
-//
-// const Test = require('./soul-src/models/test');
+// 아래 부분을 지우면 몽고DB 사용 없이 외부 API 연결 작업을 한다
+const mongoose = require('mongoose');
+
+const Test = require('./soul-src/models/test');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -19,18 +19,18 @@ const _key = 'b99f16d67481b93e65e19d84f64806ab';
 const _token = '1212888ff2d1140637a2e9f0db08c011ca4ad13345fb9bf06ae2018447e9ee53';
 
 
-// // connect to MongoDB
-// const db = mongoose.connection;
-// db.on('error', console.error);
-// db.once('open', () => {
-//   console.log('Connected to MongoDB server');
-// });
-//
-// // connect to localhost if not in Docker container
-// const mongoURL = process.env.ENVIRONMENT === 'docker'
-//   ? 'mongodb://mongo:27017/soul'
-//   : 'mongodb://localhost:27017/soul';
-// mongoose.connect(mongoURL);
+// connect to MongoDB
+const db = mongoose.connection;
+db.on('error', console.error);
+db.once('open', () => {
+  console.log('Connected to MongoDB server');
+});
+
+// connect to localhost if not in Docker container
+const mongoURL = process.env.ENVIRONMENT === 'docker'
+  ? 'mongodb://mongo:27017/soul' // ENVIRONMENT 환경변수가 도커면 도커 컨테이너로 연결
+  : 'mongodb://localhost:27017/soul'; // 그렇지 않다면 개발 환경 (로컬로 연결)
+mongoose.connect(mongoURL);
 
 const server = app.listen(8080, () => {
   console.log('Soul server started on port 8080');
