@@ -62,11 +62,12 @@ app.post('/api/test', (req, res) => {
 // 트렐로 API wrapper
 
 const trelloURL = 'http://api.trello.com';
-const boardID = 'akii79A7';
+const boardID = 'C9DijUpH'; // Sprint ID
 
 // peepee가 작성하는 예시 API 하나
 app.get('/task-api/board', async (req, res) => {
   // get avocado board lists
+  console.log('he is here');
   const boardURL = `${trelloURL}/1/boards/${boardID}/lists/`;
   const boards = await axios.get(boardURL)
     .catch((error) => {
@@ -83,6 +84,8 @@ app.get('/task-api/board', async (req, res) => {
 
 app.get('/task-api/board/:id', async (req, res) => {
   // get any board lists with id
+  console.log('okay he is here!');
+  console.log(req.params.id);
   const id = req.params.id; // URL에서 :id 부분 빼오기
   const boardURL = `${trelloURL}/1/boards/${id}/lists/`;
   const boards = await axios.get(boardURL)
@@ -160,8 +163,9 @@ app.post('/api/test/lists:name:IdBoard', (req, res) => {
   const Name = req.params.name;
   const IdBoard = req.params.IdBoard;
   const ListURL = `${trelloURL}/1/lists`;
-  var options = { method : 'POST',
-    url : ListURL,
+  var options = {
+    method: 'POST',
+    url: ListURL,
     qs: {
       name: Name,
       idBoard: IdBoard,
@@ -169,18 +173,159 @@ app.post('/api/test/lists:name:IdBoard', (req, res) => {
       token: _token
     }
   };
-  requests(options, function(error, response, body){
+  requests(options, function (error, response, body) {
     const testInst = new test();
     testInst.LogTime = Date.getTime();
     testInst.response = response;
     testInst.body = body;
 
-    testInst.save((error)=>{
+    testInst.save((error) => {
       console.log(error);
-      res.json({result : 0});
+      res.json({ result: 0 });
     });
-    res.json({result:1});
+    res.json({ result: 1 });
   });
-
-  
 });
+
+app.post('/api/test/lists:name:IdBoard', (req, res) => {
+  // POST할 때 받은 데이터값을 몽고디비로 보내서 저장한다
+  // 저장에 성공하면 result가 1, 실패하면 0이다
+  const Name = req.params.name;
+  const IdBoard = req.params.IdBoard;
+  const ListURL = `${trelloURL}/1/lists`;
+  var options = {
+    method: 'POST',
+    url: ListURL,
+    qs: {
+      name: Name,
+      idBoard: IdBoard,
+      key: _key,
+      token: _token
+    }
+  };
+  requests(options, function (error, response, body) {
+    const testInst = new test();
+    testInst.LogTime = Date.getTime();
+    testInst.response = response;
+    testInst.body = body;
+
+    testInst.save((error) => {
+      console.log(error);
+      res.json({ result: 0 });
+    });
+    res.json({ result: 1 });
+  });
+});
+
+function GetSprintIdNameByNumber(sprintnumber, Obj, callback) {
+  var Trello = require("node-trello");
+  var t = new Trello(_key, _token);
+  t.get("/1/boards/" + boardID + "/lists", function (err, data) {
+    if (err) throw err;
+    // console.log(data);
+    for (var i in data) {
+      // console.log(data[i].name);
+      console.log(data[i].name);
+      console.log(sprintnumber);
+      if (String(data[i].name).includes(sprintnumber)) {
+        console.log("here");
+        Obj.id = data[i].id;
+        Obj.name = data[i].name;
+        callback(200,Obj);
+        return 200, Obj;
+      }
+    }
+  });
+  callback(404);
+  return 404, 404, 404;
+}
+
+function GetSprintIdNameByTitle(sprinttitle, callback) {
+  var Trello = require("node-trello");
+  var t = new Trello(_key, _token);
+  t.get("/1/boards/" + boardID + "/lists", function (err, data) {
+    if (err) throw err;
+    // console.log(data);
+    for (var i in data) {
+      if (String(data[i].name) == sprinttitle) {
+        // console.log(data[i].id);=
+
+      }
+    }
+  });
+  return -1;
+}
+
+function PrintInformation(_id, _name, res) {
+  res.json({ id: _id, name: _name });
+}
+// !- Veggie Avocado API !- //
+// Just check these functions.
+// Ctrl+Arlt + M = stop     < for VS code >
+// Ctrl+Arlt + N = Start    < expension is needed >
+app.get('/soul-api/:spirntnum/task', async (req, res) => {
+  /*
+  **    localhost:8080/soul-api/1(or other number)/task
+  */
+  // Step 1. Get the value of Spirnt number.
+  const SprintNum = req.params.spirntnum; // URL에서 :id 부분 빼오기
+  var id, name = "";
+  var varObj = { id: "", name: "" };          // for Pass by reference
+  switch (SprintNum) {
+    // Step 2. Get all lists of 'Sprints'
+    case '1':
+      id, name = GetSprintIdNameByNumber('1st Sprint');
+      setTimeout(PrintInformation(id, name, res), 3000);
+      break;
+    case '2':
+      GetSprintIdNameByNumber("2nd Sprint", varObj, function (status, varObj) {
+        if (status != 404) {
+          PrintInformation(varObj.id, varObj.name, res);
+        }
+      });
+
+      // GetSprintIdNameByNumber('2nd Sprint', varObj).then(status => {
+      //   if (status == 200) {  res.json({ id: varObj.id, name: varObj.name })
+      //     console.log("Async done!");
+      //     PrintInformation(varObj.id, varObj.name, res);
+      //   }
+      // });
+      break;
+  }
+  //console.log(SprintNum);
+});
+
+
+// WHY?
+// WHY IT NEED??  #ISSUE 50818
+app.post('/soul-api/:spirntnum/:sprintname/task', (req, res) => {
+  // POST할 때 받은 데이터값을 몽고디비로 보내서 저장한다
+  // 저장에 성공하면 result가 1, 실패하면 0이다
+  const SprintNum = req.params.spirntnum; // URL에서 :id 부분 빼오기
+  const Sprintname = req.param.sprintname;
+  var id, name = "";
+  var varObj = { id: "", name: "" };          // for Pass by reference
+  var options = {
+    method: 'POST',
+    url: ListURL,
+    qs: {
+      name: Sprintname,
+      idBoard: IdBoard,
+      key: _key,
+      token: _token
+    }
+  };
+  requests(options, function (error, response, body) {
+    const testInst = new test();
+    testInst.LogTime = Date.getTime();
+    testInst.response = response;
+    testInst.body = body;
+
+    testInst.save((error) => {
+      console.log(error);
+      res.json({ result: 0 });
+    });
+    res.json({ result: 1 });
+  });
+});
+
