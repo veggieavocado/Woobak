@@ -22,23 +22,99 @@
       <div class="body">
 
         <div class="navbar">
-          <div class="navbar-logo">베지아보카도</div>
+          <div class="navbar-logo"><a href="./home.html">VeggieAvocado</a></div>
           <div class="navbar-action">
-            <div class="action-btn template">잡템플릿</div>
-            <div class="action-btn matching">잡매칭</div>
-            <div class="action-btn sop">SOP/컨설팅</div>
+            <div class="action-btn template">
+              <div class="action-btn-text">
+                잡템플릿
+              </div>
+              <!-- <ul class="template-dropdown">
+                <li class="list-first"><a href="./editdoc.html">이력서</a></li>
+                <li>커버레터</li>
+                <li class="list-last">모의면접</li>
+              </ul> -->
+            </div>
+            <div class="action-btn matching">
+              <div class="action-btn-text">
+                잡매칭
+              </div>
+              <!-- <ul class="template-dropdown">
+                <li class="list-first">회사/직무</li>
+                <li class="list-last">1:1 잡매칭</li>
+              </ul> -->
+            </div>
+            <div class="action-btn sop">
+              <div class="action-btn-text">
+                SOP/컨설팅
+              </div>
+              <!-- <ul class="template-dropdown">
+                <li class="list-first">대학원리스트</li>
+                <li>SOP첨삭</li>
+                <li class="list-last">합격자소서</li>
+              </ul> -->
+            </div>
           </div>
-          <div class="navbar-login">로그인</div>
+          <div class="navbar-login">
+            <button class="login-btn"><a href="./login.html">로그인/회원가입</a></button>
+          </div>
         </div>
 
         <div class="content-1">
-          <div class="create-content">create-Content</div>
+          <div class="create-content">
+            <h2>Heading</h2>
+            <!-- 레쥬메 작성 폼 시작 -->
+            <form class="create-form">
+              <!-- 첫 째 줄 부분 (이름, 성) -->
+             <div class="name-area">
+               <div class="name-input">
+                 First name(이름):<br>
+                 <input type="text" name="firstname" value="">
+               </div>
+               <div class="name-input">
+                 Last name(성):<br>
+                 <input type="text" name="lastname" value="">
+               </div>
+             </div>
+             <!-- 주소 줄 부분 -->
+             <div class="address-area">
+               Address(주소):<br>
+               <input type="text" name="address" value="">
+             </div>
+             <!-- 번호 줄 부분 -->
+             <div class="number-area">
+               <div class="number-input">
+                 Home Phone(이름):<br>
+                 <input type="text" name="homephone" value="">
+               </div>
+               <div class="number-input">
+                 Cell Phone(성):<br>
+                 <input type="text" name="cellphone" value="">
+               </div>
+             </div>
+             <!-- 이메일 부분 -->
+             <div class="email-area">
+               Email Address(이메일 주소):<br>
+               <input type="text" name="email" value="">
+             </div>
+            </form>
+          </div>
           <div class="template-preview">template-preview</div>
+          </div>
+          <div class="content-2">
+            <div class="button-sec">
+              <div class="button-sec-one">
+                <div class="sec-one-wrapper">
+                  <button type="button" name="button">이전</button>
+                </div>
+              </div>
+              <div class="button-sec-two">
+                <div class="sec-two-wrapper">
+                  <button type="button" name="button">다음 : work history</button>
+                </div>
+              </div>
+          </div>
         </div>
 
-        <div class="footer">
-
-        </div>
 
       </div>
 

@@ -96,27 +96,29 @@
 /* Content-3 CSS starts here */
 .content-3 {
   height: 34rem;
+  width: 70%;
   display: flex;
   justify-content: center;
+  margin: auto;
 }
 
   .content-3 > .veggie {
     height: 30rem;
+    width: 100%;
     display: flex;
+    justify-content: space-between;
   }
 
     .content-3 > .veggie > .veggie-main {
       height: inherit;
-      width: 100%;
-      margin: 0 1rem;
+      width: 49%;
       display: flex;
       flex-direction: column;
     }
 
-
     .veggie-main > .veggie-main-txt {
       height: 17%;
-      width:100%;
+      width: 100%;
       font-size: 150%;
       display: flex;
       align-items: flex-end;
@@ -126,15 +128,16 @@
 
     .veggie-main-imgbox {
       margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .veggie-main-imgbox > .veggie-main-imgbox-img-1 {
       height: 17rem;
-      width: 33rem;
+      width: 100%;
       background-image: url(../img/coffee-cup.jpg);
       background-position: center;
       background-size: cover;
@@ -143,7 +146,7 @@
 
     .veggie-main-imgbox > .veggie-main-imgbox-img-2 {
       height: 17rem;
-      width: 33rem;
+      width: 100%;
       background-image: url(../img/event-img.jpg);
       background-position: center;
       background-size: cover;
@@ -151,7 +154,7 @@
     }
 
     .veggie-main-imgbox > .veggie-main-imgbox-text {
-      width: 33rem;
+      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -159,6 +162,7 @@
       border-right: solid 1px var(--gray);
       border-bottom:solid 1px var(--gray);
     }
+
     .veggie-main-imgbox-text > .veggie-main-imgbox-txt-1 {
       margin-top: 10px;
       font-weight: bold;
@@ -170,29 +174,46 @@
       margin-left: 10px;
     }
 
+    .content-4-wrapper {
+      width: 100%;
+      background-color: #F6F7F7;
+    }
+  .content-4 {
+    width: 70%;
+    margin: auto;
+  }
+
+    .content-4 > .recommend-txt {
+      height: 4rem;
+      display: flex;
+      align-items: flex-end;
+      font-weight: bold;
+    }
+
     .content-4 > .recommend-box {
       height: 25rem;
       width: 100%;
-      background-color: var(--main-purple);
+      /* background-color: var(--main-purple); */
       display: flex;
+      justify-content: space-between;
     }
 
     .recommend-imgbox {
       height: 22rem;
-      width:20%;
-      background-color: var(--main-green);
-    }
-
-    .recommend-imgbox-img {
-      height: inherit;
-      width: auto;
-      background-position: center;
-      background-size: cover;
+      width: 24%;
       border: solid 1px var(--gray);
     }
 
+    .recommend-imgbox-img {
+      height: 80%;
+      width: auto;
+      background-position: center;
+      background-size: cover;
+      border-bottom: solid 1px var(--gray);
+    }
+
     .recommend-imgbox-img.first {
-      background-image: url(../img/harvard._1png);
+      background-image: url(../img/harvard_1.png);
     }
 
     .recommend-imgbox-img.second {
@@ -206,5 +227,52 @@
       background-image: url(../img/yale.jpg);
     }
 
+.content-5-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
 
+.content-5 {
+  height: 20rem;
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+  .content-5 > .partner-text {
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items:flex-end;
+    font-weight: bold;
+  }
+
+  .partner-box-wrapper {
+    height: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+
+  .partner-box-wrapper > .partner-box {
+    height: 10rem;
+    width: 39%;
+  }
+
+  .partner-img.first {
+    background-image: url(../img/next.JPG);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .partner-img.second {
+    background-image: url(../img/kyunghee.jpg);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
 /* Content-3 CSS ends here */
