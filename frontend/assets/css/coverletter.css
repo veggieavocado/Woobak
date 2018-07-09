@@ -16,60 +16,6 @@
   height: 5rem;
 }
 
-  .navbar-login > .account-btn {
-    position: relative;
-    margin-right: 1.2rem;
-    margin-top: 0.5rem;
-    border-radius: var(--btn-radius);
-    background-color: white;
-    color: var(--black);
-    padding: 0.4rem;
-    cursor: pointer;
-    -webkit-transition: all 0.1s ease-in-out 0s;
-    transition: all 0.1s ease-in-out 0s;
-    font-size: 18px;
-  }
-
-    .account-btn > .account-img {
-      border-radius:50%;
-      height: 3rem;
-      width: 3em;
-      margin-right: 0.5rem;
-    }
-
-    .account-btn > .account-dropdown {
-      position: absolute;
-      margin-top: 0.6rem;
-      background-color: white;
-      /* border: 1px solid var(--pretty-black); */
-      border-radius: 2px;
-      border-top : 1px solid white;
-      width: 100%;
-      text-align: center;
-      /* box shadow only right and bottom */
-      -moz-box-shadow: 5px 5px 5px var(--gray);
-      -webkit-box-shadow: 10px 10px 5px var(--gray);
-      box-shadow: 5px 5px 5px var(--gray);
-    }
-
-    .account-dropdown > li {
-      width: 90%;
-      list-style: none;
-      margin-left: 0.4rem;
-      padding: 0.3rem 0;
-      border-bottom: 1px solid var(--dark-gray);
-    }
-      .account-dropdown > li:hover {
-        font-weight: bold;
-      }
-
-    .account-dropdown > li:last-child {
-      width: 90%;
-      list-style: none;
-      margin-top: 0.6rem;
-      border-bottom: 1px solid white;
-    }
-
 /* Navbar ends here */
 
 /* Content-1 CSS starts here */
@@ -132,6 +78,19 @@
   }
 
 /* Content-1 CSS ends here */
+
+  .template-element.first {
+    text-align: center;
+  }
+
+  .template-element > li {
+    padding-left: 1.5em;
+    text-indent:-1.5em;
+  }
+
+  .template-element > .key-skill {
+    font-weight: bold;
+  }
 
 
 /* footer CSS starts here */
