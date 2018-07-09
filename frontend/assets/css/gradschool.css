@@ -32,7 +32,7 @@
     display: flex;
     margin: 0 0 0 3rem;
   }
-    .content-manipulation > .cm-filter > .avocado-btn-flipped {
+    .cm-filter > .avocado-btn-flipped {
       margin: 5rem 0.3rem 1rem 0;
       padding: 0.5rem 1.5rem;
     }
@@ -41,7 +41,7 @@
     display: flex;
     justify-content: flex-end;
   }
-    .content-manipulation > .cm-sort > .avocado-btn {
+    .cm-sort > .avocado-btn {
       margin: 5rem 1.5rem 1rem 0;
       padding: 0.5rem 1.5rem;
     }
@@ -62,36 +62,53 @@
 }
 
   .content-1 > .grad-list {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
     width: 30%;
     height: 30rem;
-    background-color:  #729df9;
+    border-radius: 10px;
+    border: 1px solid var(--light-gray);
+    /* box shadow only right and bottom */
+    -moz-box-shadow: 5px 5px 5px var(--light-gray);
+    -webkit-box-shadow: 10px 10px 5px var(--light-gray));
+    box-shadow: 5px 5px 5px var(--light-gray);
+    /* background-color:  #729df9; */
+
   }
 
-    .content-1 > .grad-list > .grad-img {
+    .grad-list > .grad-img {
       display: flex;
       margin: 1.5rem 1.5rem 0 1.5rem;
       height: 60%;
       width: 90%;
       justify-content: center;
       align-items: center;
-      background-color: #6a37f7;
+      /* background-color: #6a37f7; */
     }
-    .content-1 > .grad-list > .grad-degree {
+
+    .grad-img > img {
+      width: auto;
+      height: inherit;
+    }
+
+    .grad-list > .grad-info {
       display: flex;
-      margin: 0 1.5rem 0 1.5rem;
+      flex-direction: column;
+      margin: 0rem 1.5rem 0 1.5rem;
       height: 15%;
+      width: 90%;
+      align-items: flex-start;
+      /* background-color: #6cd4f7; */
+    }
+
+    .grad-list > .avocado-btn {
+      display: flex;
+      margin: 0.3rem 1.5rem 0 1.5rem;
+      height: 10%;
       width: 90%;
       justify-content: center;
       align-items: center;
-      background-color: #6cd4f7;
-    }
-    .content-1 > .grad-list > .grad-term {
-      display: flex;
-      margin: 0 1.5rem 0 1.5rem;
-      height: 15%;
-      width: 90%;
-      justify-content: center;
-      align-items: center;
-      background-color: #81f991;
     }
 /* content-1 CSS  ends here */

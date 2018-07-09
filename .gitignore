@@ -1,3 +1,4 @@
+.DS_Store
 __pycache__/
 migrations/
 configs/
@@ -6,8 +7,5 @@ db.sqlite3
 node_modules/
 env/
 venv/
-<<<<<<< HEAD
 scripts/deploy.sh
-=======
 gitthub.py
->>>>>>> devopsWonseok

@@ -29,7 +29,8 @@
     display: flex;
     flex-direction: column;
     border-right: solid 1.5px var(--light-gray);
-    box-shadow: 2px 2px 3px 2px var(--very-light-gray);
+    -webkit-box-shadow: 5px 0 1px -2px var(--very-light-gray);
+            box-shadow: 5px 0 1px -2px var(--very-light-gray);
     z-index: 1;
   }
 
@@ -72,30 +73,9 @@
       cursor: pointer;
      }
 
-  .content-1 > .template-preview {
-    width:65%;
-    /* background-color: var(--very-light-gray); */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-    .template-preview > .template-border {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 95%;
-      height: 95%;
-      border: 1px solid var(--pretty-black);
-      box-shadow: 2px 2px 3px 2px var(--gray);
-    }
-      .template-border > .template-element {
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-        padding: 1rem 0 0 0.5rem;
-        border-top: solid 0.7px var(--dark-gray);
-        font-size: 20px;
-      }
+   .content-1 > .template-preview {
+     width:65%;;
+   }
 
       .template-element.first {
         margin-top : 4rem;
@@ -116,3 +96,9 @@
       }
 
 /* Content-1 CSS ends here */
+
+/* footer CSS starts here */
+.footer {
+  margin-top: 0.5rem;
+}
+/* footer CSS starts here */

@@ -13,7 +13,9 @@
 .navbar {
   border-bottom: solid 1.5px var(--light-gray);
   box-shadow: 2px 2px 3px 2px var(--very-light-gray);
+  height: 5rem;
 }
+
 /* Navbar ends here */
 
 /* Content-1 CSS starts here */
@@ -21,7 +23,8 @@
   display: flex;
   flex-direction: row;
   width: vw;
-  height: 60rem;
+  height: 90rem;
+
 }
   .content-1 > .design-fonts {
     width:35%;
@@ -30,6 +33,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-right: solid 1.5px var(--light-gray);
+    -webkit-box-shadow: 5px 0 1px -2px var(--very-light-gray);
+            box-shadow: 5px 0 1px -2px var(--very-light-gray);
   }
     .content-1 > .design-fonts > .menu-change {
       display: flex;
@@ -46,7 +52,7 @@
       }
       .content-1 > .design-fonts > .menu-change > .avocado-btn-flipped {
         padding: 0.7rem 2rem;
-        border-radius: 0 5px 0 5px;
+        border-radius: 0 5px 5px 0;
       }
 
 
@@ -67,11 +73,28 @@
       width: 100%;
     } */
 
-  .content-1 > .edit-doc {
-    width:65%;
-    background-color: #729df9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .content-1 > .template-preview {
+    width:65%;;
   }
+
 /* Content-1 CSS ends here */
+
+  .template-element.first {
+    text-align: center;
+  }
+
+  .template-element > li {
+    padding-left: 1.5em;
+    text-indent:-1.5em;
+  }
+
+  .template-element > .key-skill {
+    font-weight: bold;
+  }
+
+
+/* footer CSS starts here */
+.footer {
+  margin-top: 0.5rem;
+}
+/* footer CSS starts here */
