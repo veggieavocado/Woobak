@@ -1,9 +1,6 @@
 ### Removing files/directories from Github repo
 
 git rm -r --cached node_modules
-<<<<<<< HEAD
-=======
-
 
 ### 깃허브 히스토리에서 어떤 파일/폴더를 없애는 방법 (모든 커밋에서 삭제해줌)
 
@@ -15,4 +12,3 @@ git add .gitignore
 git commit -m 'Removing node_modules from git history'
 git gc
 git push origin master --force
->>>>>>> ed6c45f34e2f3311086cd58f97f670ac90e8f9f1
