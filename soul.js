@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 
 const _key = 'b99f16d67481b93e65e19d84f64806ab';
 const _token = '1212888ff2d1140637a2e9f0db08c011ca4ad13345fb9bf06ae2018447e9ee53';
+const _task_list_id = '5b40453d2599fe37cce59503';
 
 
 // // connect to MongoDB
@@ -329,3 +330,43 @@ app.post('/soul-api/:spirntnum/:sprintname/task', (req, res) => {
   });
 });
 
+// update  5b40453d2599fe37cce59503
+// checked at JUL 10
+app.put('/soul-api/:spirntnum/task/:listid/:title/', (req, res) => {
+  // POST할 때 받은 데이터값을 몽고디비로 보내서 저장한다
+  // 저장에 성공하면 result가 1, 실패하면 0이다
+  const SprintNum = req.params.spirntnum; // URL에서 :id 부분 빼오기
+  var list_id = req.params.listid;
+  var title = req.params.title;
+  console.log("asdf",list_id,title);
+  const ListURL = 'https://api.trello.com/1/lists/'+list_id;
+  var request = require('request');
+  var options = {
+    method: 'PUT',
+    url: ListURL,
+    qs: {
+      // id : list_id,
+      name: title,
+      key: _key,
+      token: _token
+    }
+  };
+  request(options, function (error, response, body) {
+    // const testInst = new test();
+    // testInst.LogTime = Date.getTime();
+    // testInst.response = response;
+    // testInst.body = body;
+    if(error) {
+      console.log(error);
+    }
+    else{
+      console.log(response);
+      res.json({ result: response });
+    }
+    testInst.save((error) => {
+      console.log(error);
+      res.json({ err: error});
+    });
+    res.json({ result: 'Success' });
+  });
+});
