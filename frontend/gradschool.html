@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./assets/css/style.css" type="text/css" media="all">
     <link rel="stylesheet" href="./assets/css/gradschool.css" type="text/css" media="all">
     <link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic|Gothic+A1|Ubuntu" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -19,14 +20,55 @@
     <div class="body">
 
       <div class="navbar">
+
         <div class="navbar-logo">VeggieAvocado</div>
         <div class="navbar-action">
-          <div class="action-btn template">잡템플릿</div>
-          <div class="action-btn matching">잡매칭</div>
-          <div class="action-btn sop">SOP/컨설팅</div>
+          <div class="action-btn template">
+            <div class="action-btn-text">
+              잡템플릿
+            </div>
+            <!-- <ul class="template-dropdown">
+              <li class="list-first"><a href="./editdoc.html">이력서</a></li>
+              <li>커버레터</li>
+              <li class="list-last">모의면접</li>
+            </ul> -->
+          </div>
+          <div class="action-btn matching">
+            <div class="action-btn-text">
+              잡매칭
+            </div>
+            <!-- <ul class="template-dropdown">
+              <li class="list-first">회사/직무</li>
+              <li class="list-last">1:1 잡매칭</li>
+            </ul> -->
+          </div>
+          <div class="action-btn sop">
+            <div class="action-btn-text">
+              SOP/컨설팅
+            </div>
+            <!-- <ul class="template-dropdown">
+              <li class="list-first">대학원리스트</li>
+              <li>SOP첨삭</li>
+              <li class="list-last">합격자소서</li>
+            </ul> -->
+          </div>
         </div>
-        <div class="navbar-login">Account</div>
+
+        <div class="navbar-login">
+          <div class="account-btn">
+            <!-- <img src="http://mblogthumb2.phinf.naver.net/20150427_261/ninevincent_1430122791768m7oO1_JPEG/kakao_1.jpg?type=w2" class="account-img"> -->
+            Philp Park
+            <ul class="account-dropdown">
+              <li class="list-first">내 문서관리</li>
+              <li>최근작성문서 3</li>
+              <li>최근작성문서 2</li>
+              <li class="list-last">최근작성문서 1</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
+
       <div class="content-manipulation">
         <div class="cm-filter">
           <button type="button" name="cm-degree" class="avocado-btn-flipped">구분</button>
@@ -34,41 +76,95 @@
           <button type="button" name="cm-major" class="avocado-btn-flipped">전공</button>
         </div>
         <div class="cm-sort">
+          <input class="avocado-input" type="text" name="search" placeholder="search">
           <button type="button" name="cm-sort" class="avocado-btn">정렬</button>
         </div>
       </div>
       <div class="content-1">
 
-        <div class="grad-list">
-          <div class="grad-img">대학원로고</div>
-          <div class="grad-degree">전형구분</div>
-          <div class="grad-term">전형기간</div>
+        <div class="grad-content-1">
+
+          <div class="grad-list">
+            <div class="grad-img"><img src="./assets/img/brown.png"></div>
+            <div class="grad-info">
+              <p>전형구분: 석/박사</p>
+              <p>전형기간: 2018. 6.12 ~ 6.18</p>
+            </div>
+            <div class="avocado-btn">합격자소서 보기</div>
+          </div>
+
+          <div class="grad-list">
+            <div class="grad-img"><img src="./assets/img/Columbia.png"></div>
+            <div class="grad-info">
+              <p>전형구분: 석/박사</p>
+              <p>전형기간: 2018. 6.12 ~ 6.18</p>
+            </div>
+            <div class="avocado-btn">합격자소서 보기</div>
+          </div>
+
+          <div class="grad-list">
+            <div class="grad-img"><img src="./assets/img/Cornell.png"></div>
+            <div class="grad-info">
+              <p>전형구분: 석/박사</p>
+              <p>전형기간: 2018. 6.12 ~ 6.18</p>
+            </div>
+            <div class="avocado-btn">합격자소서 보기</div>
+          </div>
+
         </div>
-        <div class="grad-list">
-          <div class="grad-img">대학원로고</div>
-          <div class="grad-degree">전형구분</div>
-          <div class="grad-term">전형기간</div>
+
+        <div class="grad-content-2">
+
+          <div class="grad-list">
+            <div class="grad-img"><img src="./assets/img/Harvard.png"></div>
+            <div class="grad-info">
+              <p>전형구분: 석/박사</p>
+              <p>전형기간: 2018. 6.12 ~ 6.18</p>
+            </div>
+            <div class="avocado-btn">합격자소서 보기</div>
+          </div>
+
+          <div class="grad-list">
+            <div class="grad-img"><img src="./assets/img/Princeton.png"></div>
+            <div class="grad-info">
+              <p>전형구분: 석/박사</p>
+              <p>전형기간: 2018. 6.12 ~ 6.18</p>
+            </div>
+            <div class="avocado-btn">합격자소서 보기</div>
+          </div>
+
+          <div class="grad-list">
+            <div class="grad-img"><img src="./assets/img/Yale.png"></div>
+            <div class="grad-info">
+              <p>전형구분: 석/박사</p>
+              <p>전형기간: 2018. 6.12 ~ 6.18</p>
+            </div>
+            <div class="avocado-btn">합격자소서 보기</div>
+          </div>
+
         </div>
-        <div class="grad-list">
-          <div class="grad-img">대학원로고</div>
-          <div class="grad-degree">전형구분</div>
-          <div class="grad-term">전형기간</div>
+
+        <div class="pagination">
+
+          <div class="page-prev">
+            <div class="page-btn">
+              <a href="#"><i class="fas fa-angle-double-left"></i></a>
+            </div>
+            <div class="page-btn">
+              <a href="#"><i class="fas fa-angle-left"></i>&nbsp;이전</a>
+            </div>
+          </div>
+          <div class="page-next">
+            <div class="page-btn">
+              <a href="#">다음&nbsp;<i class="fas fa-angle-right"></i></a>
+            </div>
+            <div class="page-btn">
+              <a href="#"><i class="fas fa-angle-double-right"></i></a>
+            </div>
+          </div>
+
         </div>
-        <div class="grad-list">
-          <div class="grad-img">대학원로고</div>
-          <div class="grad-degree">전형구분</div>
-          <div class="grad-term">전형기간</div>
-        </div>
-        <div class="grad-list">
-          <div class="grad-img">대학원로고</div>
-          <div class="grad-degree">전형구분</div>
-          <div class="grad-term">전형기간</div>
-        </div>
-        <div class="grad-list">
-          <div class="grad-img">대학원로고</div>
-          <div class="grad-degree">전형구분</div>
-          <div class="grad-term">전형기간</div>
-        </div>
+
       </div>
       <div class="footer">
         <div class="footer-menu">
@@ -93,6 +189,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </body>
 </html>

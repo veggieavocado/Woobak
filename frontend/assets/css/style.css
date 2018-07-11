@@ -12,7 +12,7 @@
   --gray: #BDBDBD;
   --light-gray: #EFEFEF;
   --very-light-gray: #F9F9F9;
-  --navbar-height: 3.5rem;
+  --navbar-height: 5rem;
   --logo-font: 'Ubuntu';
   --font: 'Gothic A1';
   --btn-radius: 5px;
@@ -124,64 +124,7 @@ a:hover {
 
 /* Navbar-dropdown CSS ends here */
 
-/* Navbar-account-dropdown CSS starts here */
-
-.navbar-login > .account-btn {
-  position: relative;
-  margin-right: 1.2rem;
-  margin-top: 0.5rem;
-  border-radius: var(--btn-radius);
-  background-color: white;
-  color: var(--black);
-  padding: 0.4rem;
-  cursor: pointer;
-  -webkit-transition: all 0.1s ease-in-out 0s;
-  transition: all 0.1s ease-in-out 0s;
-  font-size: 18px;
-}
-
-  .account-btn > .account-img {
-    border-radius:50%;
-    height: 3rem;
-    width: 3em;
-    margin-right: 0.5rem;
-  }
-
-  .account-btn > .account-dropdown {
-    position: absolute;
-    margin-top: 0.6rem;
-    background-color: white;
-    /* border: 1px solid var(--pretty-black); */
-    border-radius: 2px;
-    border-top : 1px solid white;
-    width: 100%;
-    text-align: center;
-    /* box shadow only right and bottom */
-    -moz-box-shadow: 5px 5px 5px var(--gray);
-    -webkit-box-shadow: 10px 10px 5px var(--gray);
-    box-shadow: 5px 5px 5px var(--gray);
-  }
-
-  .account-dropdown > li {
-    width: 90%;
-    list-style: none;
-    margin-left: 0.4rem;
-    margin: 0.3rem 0;
-    border-bottom: 1px solid var(--dark-gray);
-  }
-    .account-dropdown > li:hover {
-      font-weight: bold;
-    }
-
-  .account-dropdown > li:last-child {
-    width: 90%;
-    list-style: none;
-    margin-left: 0.4rem;
-    padding: 0 0 0.3rem 0;
-    border-bottom: 1px solid white;
-  }
-
-/* Navbar-account-dropdown CSS ends here */
+/* Navbar-login CSS starts here */
 
   .navbar > .navbar-login {
     width: 20%;
@@ -204,6 +147,64 @@ a:hover {
     /* .navbar-login > .login-btn:hover {
       padding: 0.4rem;
     } */
+
+/* Navbar-login CSS ends here */
+
+/* Navbar-account-dropdown CSS starts here */
+
+  .navbar-login > .account-btn {
+    /* border: 1px solid black; */
+    position: relative;
+    margin-right: 1.2rem;
+    margin-top: 0.5rem;
+    border-radius: var(--btn-radius);
+    justify-content: center;
+    align-content: content;
+    background-color: white;
+    color: var(--black);
+    padding: 0.4rem 3rem;
+    cursor: pointer;
+    -webkit-transition: all 0.1s ease-in-out 0s;
+    transition: all 0.1s ease-in-out 0s;
+    font-size: 18px;
+  }
+
+
+    .account-btn > .account-dropdown {
+      width: 100%;
+      position: absolute;
+      right: 0rem;
+      margin-top: 1.2rem;
+      background-color: white;
+      border: 1px solid var(--light-gray);
+      border-radius: 0 0 2px 2px;
+      border-top : 1px solid white;
+      text-align: center;
+      /* box shadow only right and bottom */
+      -moz-box-shadow: 5px 5px 5px var(--gray);
+      -webkit-box-shadow: 10px 10px 5px var(--gray);
+      box-shadow: 5px 5px 5px var(--gray);
+    }
+
+    .account-dropdown > li {
+      margin: auto;
+      width: 90%;
+      list-style: none;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--dark-gray);
+    }
+      .account-dropdown > li:hover {
+        font-weight: bold;
+      }
+
+    .account-dropdown > li:last-child {
+      list-style: none;
+      border-bottom: 1px solid white;
+    }
+
+/* Navbar-account-dropdown CSS ends here */
+
+
 
 /* navbar CSS ends here */
 

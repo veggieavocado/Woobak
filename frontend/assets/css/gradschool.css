@@ -21,7 +21,7 @@
 
 .content-manipulation {
   display: flex;
-  width: 80%;
+  width: 75%;
   background-color:  white;
   height: 5rem;
   margin: auto;
@@ -30,9 +30,9 @@
   .content-manipulation > .cm-filter {
     width: 100%;
     display: flex;
-    margin: 0 0 0 3rem;
+    margin: 0 0 0 1.7rem;
   }
-    .content-manipulation > .cm-filter > .avocado-btn-flipped {
+    .cm-filter > .avocado-btn-flipped {
       margin: 5rem 0.3rem 1rem 0;
       padding: 0.5rem 1.5rem;
     }
@@ -40,8 +40,27 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    /* background-color : gray; */
   }
-    .content-manipulation > .cm-sort > .avocado-btn {
+    .cm-sort > .avocado-input {
+      border: solid 1px var(--pretty-black);
+      margin: 5rem 1.5rem 1rem 0;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .cm-sort > .avocado-input:focus {
+      outline: none !important;
+      border-color: var(--pretty-black);
+      box-shadow: 0 0 0 var(--pretty-black);
+    }
+
+    ::placeholder {
+      color: var(--pretty-black);
+      opacity: 1;
+    }
+
+
+    .cm-sort > .avocado-btn {
       margin: 5rem 1.5rem 1rem 0;
       padding: 0.5rem 1.5rem;
     }
@@ -51,47 +70,96 @@
 /* content-1 CSS starts here */
 .content-1 {
   display: flex;
-  flex-direction:row;
-  width: 80%;
+  flex-direction:column;
+  width: 75%;
   /* background-color:gray; */
-  height: 70rem;
-  justify-content: space-around;
+  height: 80rem;
   margin: auto;
   align-items: center;
-  flex-wrap: wrap;
 }
 
-  .content-1 > .grad-list {
-    width: 30%;
-    height: 30rem;
-    background-color:  #729df9;
+  .content-1 > .grad-content-1,
+  .content-1 > .grad-content-2 {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-top: 3rem;
   }
 
-    .content-1 > .grad-list > .grad-img {
+  .grad-content-1 > .grad-list,
+  .grad-content-2 > .grad-list  {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 30rem;
+    border-radius: 10px;
+    border: 1px solid var(--light-gray);
+    /* box shadow only right and bottom */
+    -moz-box-shadow: 5px 5px 5px var(--light-gray);
+    -webkit-box-shadow: 10px 10px 5px var(--light-gray));
+    box-shadow: 5px 5px 5px var(--light-gray);
+    /* background-color:  #729df9; */
+  }
+
+   .grad-list > .grad-img {
       display: flex;
       margin: 1.5rem 1.5rem 0 1.5rem;
       height: 60%;
       width: 90%;
       justify-content: center;
       align-items: center;
-      background-color: #6a37f7;
+      /* background-color: #6a37f7; */
     }
-    .content-1 > .grad-list > .grad-degree {
+
+    .grad-img > img {
+      width: auto;
+      height: inherit;
+    }
+
+    .grad-list > .grad-info {
       display: flex;
-      margin: 0 1.5rem 0 1.5rem;
+      flex-direction: column;
+      margin: 0rem 1.5rem 0 1.5rem;
       height: 15%;
+      width: 90%;
+      align-items: flex-start;
+      /* background-color: #6cd4f7; */
+    }
+
+    .grad-list > .avocado-btn {
+      display: flex;
+      margin: 0.3rem 1.5rem 0 1.5rem;
+      height: 10%;
       width: 90%;
       justify-content: center;
       align-items: center;
-      background-color: #6cd4f7;
+      background-color: var(--light-gray);
+      border-color: var(--light-gray);
+      color: var(--pretty-black);
     }
-    .content-1 > .grad-list > .grad-term {
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.7rem;
+    color: var(--dark-gray);
+    width: 80%;
+    height: 5rem;
+    margin-top:1rem;
+  }
+
+    .pagination > .page-prev,
+    .pagination > .page-next {
       display: flex;
-      margin: 0 1.5rem 0 1.5rem;
-      height: 15%;
-      width: 90%;
-      justify-content: center;
-      align-items: center;
-      background-color: #81f991;
     }
+
+      .page-btn {
+        margin: 0 1rem;
+      }
 /* content-1 CSS  ends here */

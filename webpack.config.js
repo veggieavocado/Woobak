@@ -7,6 +7,7 @@ module.exports = {
 
   entry: {
     exampleTest: ['babel-polyfill', `${__dirname}/js-src/exampleTest.js`], // 모카로 테스팅 하는 방법 예시
+    mhTest: ['babel-polyfill', `${__dirname}/js-src/mhTest.js`],
   },
 
   output: {
