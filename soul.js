@@ -18,15 +18,18 @@ app.use(bodyParser.json());
 const _key = 'b99f16d67481b93e65e19d84f64806ab';
 const _token = '1212888ff2d1140637a2e9f0db08c011ca4ad13345fb9bf06ae2018447e9ee53';
 const _task_list_id = '5b40453d2599fe37cce59503';
+// MongoDB
+var mongoose = require('mongoose');
+mongoose.connect("mongodb://localhost:27017/woobak");
+var db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error"));
+db.once("open", function(callback){
+  console.log("Connection succeeded.");
+});
+var Schema = mongoose.Schema;
 
 
-// // connect to MongoDB
-// const db = mongoose.connection;
-// db.on('error', console.error);
-// db.once('open', () => {
-//   console.log('Connected to MongoDB server');
-// });
-//
+
 // // connect to localhost if not in Docker container
 // const mongoURL = process.env.ENVIRONMENT === 'docker'
 //   ? 'mongodb://mongo:27017/soul'
@@ -502,4 +505,41 @@ app.get('/soul-api/server/:serverid/reboot', async (req, res) => {
       res.status(200);
     }
   })
+});
+
+// Example 
+//const userId = '865736';
+//const githubId = '40468899';
+const WoobakRepositoryId = '19800635';
+const SecToken = 'RzRu44CjFJc7AFySpg2rvQ';
+const ExampleRequestId = '120074706';
+const BuildExampleId = '398958549';
+const TravisURL = 'https://api.travis-ci.org';
+
+app.get('/travis-api/branch', async (req, res) => {
+  // get avocado board lists
+  console.log('here');
+  const URL = `${TravisURL}`+'/repo/'+WoobakRepositoryId+'/branches';
+  var options = {
+    method: 'GET',
+    url: URL,
+    qs: {
+      Tavis-API-Version: Name,
+      idBoard: IdBoard,
+      key: _key,
+      token: _token
+    }
+  };
+  requests(options, function (error, response, body) {
+    const testInst = new test();
+    testInst.LogTime = Date.getTime();
+    testInst.response = response;
+    testInst.body = body;
+
+    testInst.save((error) => {
+      console.log(error);
+      res.json({ result: 0 });
+    });
+    res.json({ result: 1 });
+  });
 });
