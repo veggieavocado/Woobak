@@ -1,0 +1,154 @@
+/* default css settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.table {
+  margin-top: 3rem;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-content {
+  width: 100%;
+  border: solid 1px #BDBDBD;
+  border-radius: 5px;
+  -moz-box-shadow: 5px 5px 5px #F9F9F9;
+  -webkit-box-shadow: 10px 10px 5px #F9F9F9;
+  box-shadow: 5px 5px 5px #F9F9F9;
+  font-family: 'Gothic A1', sans-serif;
+}
+
+.table-col-10 {
+  width: 10%;
+}
+
+.table-col-20 {
+  width: 20%;
+}
+
+.table-col-25 {
+  width: 25%;
+}
+
+.table-col-30 {
+  width: 30%;
+}
+
+.table-col-33 {
+  width: 33.33%;
+}
+
+.table-col-40 {
+  width: 40%;
+}
+
+.table-col-50 {
+  width: 50%;
+}
+
+.table-col-60 {
+  width: 60%;
+}
+
+.table-col-70 {
+  width: 70%;
+}
+
+.table-col-80 {
+  width: 80%;
+}
+
+.table-col-90 {
+  width: 90%;
+}
+
+.table-col-100 {
+  width: 100%;
+}
+
+.table-header > .table-col {
+  margin-left: 0.5rem;
+  text-align: left;
+}
+
+.table-data-row > .table-col {
+  margin-left: 0.5rem;
+  text-align: left;
+}
+
+.table-btn {
+  border: solid 1px #BDBDBD;
+  border-radius: 3px;
+  background-color: white;
+  cursor: pointer;
+  padding: 0.2rem;
+  margin: 0 0.2rem;
+}
+
+  .table-content > .table-header {
+    height: 3rem;
+    background-color: #F9F9F9;
+    border-bottom: solid 1px #BDBDBD;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    align-items: center;
+  }
+
+    .table-data > .table-data-row {
+      height: 3rem;
+      border-bottom: solid 1px #BDBDBD;
+      border-radius: 5px 5px 0 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .table-data > .table-data-row:last-child {
+      border-bottom: solid 0 #BDBDBD;
+    }
+
+
+
+.table > .paginator {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+  .paginator > .paginator-btns {
+    display: flex;
+    border: solid 1px #9C9C9C;
+    border-radius: 3px;
+  }
+
+    .arrow-btn,
+    .page-btn {
+      padding: 0.4rem 0.6rem;
+      border-right: solid 1px #9C9C9C;
+      cursor: pointer;
+    }
+
+    .arrow-btn:last-child,
+    .page-btn:last-child {
+      border-right: solid 0 #9C9C9C;
+    }
+
+    .page-btn.active {
+      background-color: #EFEFEF;
+      font-weight: bold;
+    }
