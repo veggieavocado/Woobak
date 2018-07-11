@@ -1,0 +1,133 @@
+/* 변수 설정 */
+/* 색상은 대문자 사용 */
+:root {
+  --main-green: #2BDE73;
+  --btn-green: #2FC66C;
+  --main-red: #F95759;
+  --main-purple: #C986FC;
+  --main-brown: #C4B07B;
+  --black: #212121;
+  --pretty-black: #3F3F3F;
+  --dark-gray: #9C9C9C;
+  --gray: #BDBDBD;
+  --light-gray: #EFEFEF;
+  --very-light-gray: #F9F9F9;
+  --navbar-height: 5rem;
+  --logo-font: 'Ubuntu';
+  --font: 'Gothic A1';
+  --btn-radius: 5px;
+  --input-radius: 3px;
+}
+
+
+/* default css settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+body {
+  font-family: var(--font);
+}
+
+/* admin-header CSS starts here */
+.admin-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 15rem;
+}
+  .admin-header > .logo-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+    width: 10rem;
+  }
+
+  .admin-header > .admin-title {
+    font-weight: bold;
+    margin-top : 2rem;
+  }
+
+  .logo-img > .avocado-img {
+    height: 9rem;
+    width: 9rem;
+    border: solid 1px var(--gray);
+    border-radius: 50%;
+    box-shadow: 3px 3px 7px 4px var(--light-gray);
+  }
+
+/* admin-header CSS ends here */
+
+/* progress-check CSS starts here */
+.admin-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem;
+  /* height: 100rem; */
+  /* background-color: var(--dark-gray); */
+}
+
+  .admin-content > .admin-title {
+    display: flex;
+    height: 2rem;
+    width: 100%;
+    font-size: 20px;
+    /* background-color: var(--light-gray); */
+    border-bottom: solid 1px var(--light-gray);
+    box-shadow: 0 4px 2px -2px var(--light-gray);
+  }
+
+  .admin-content > .alert.alert-success {
+    width: 95%;
+    height: 20%;
+    margin-top: 2rem;
+    padding-top: 2rem;
+  }
+
+  .admin-template {
+    margin: 3rem 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40rem;
+    background-color: var(--dark-gray);
+  }
+
+  .admin-template > .admin-side-bar {
+    width: 15%;
+    height: 100%;
+    margin: 0 1rem;
+    background-color: var(--main-purple);
+  }
+
+  .admin-template > .admin-table {
+    display: flex;
+    justify-content: center;
+    width: 65%;
+    height: 100%;
+    margin: 0 0.5rem;
+    background-color: var(--main-red);
+  }
+
+  .table {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+
+
+
+
+/* progress-check CSS starts here */
