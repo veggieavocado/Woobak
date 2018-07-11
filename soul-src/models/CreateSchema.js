@@ -54,49 +54,7 @@ var PositionSchema = new Schema({
     position: String           // PM . . .
 });
 
-
-MongoClient.connect(url, function (err, db) {
-    if (err) throw err;
-    console.log("Database created!");
-    // module.exports = mongoose.model('position', PositionSchema);
-    // module.exports = mongoose.model('developer', DeveloperSchema);
-    // module.exports = mongoose.model('test', TestSchema);
-    // module.exports = mongoose.model('task', TaskSchema);
-
-    var dbo = db.db("woobak");
-    dbo.createCollection("developers", function(err, res){
-        if( err ){
-            console.log("error occur!");
-            throw err;
-        }
-    });
-    dbo.createCollection("task", function(err, res){
-        if( err ){
-            console.log("error occur!");
-            throw err;
-        }
-    });
-    dbo.createCollection("test", function(err, res){
-        if( err ){
-            console.log("error occur!");
-            throw err;
-        }
-    });
-    dbo.createCollection("position", function(err, res){
-        if( err ){
-            console.log("error occur!");
-            throw err;
-        }
-        db.close();
-    });
-})
-
-// const Schema = mongoose.Schema;
-
-// const testSchema = new Schema({
-//   date: { type: Date, default: Date.now },
-//   author: String,
-//   content: String,
-// });
-
-// module.exports = mongoose.model('test', testSchema);
+mongoose.exports = mongoose.model('Developer', DeveloperSchema);
+mongoose.exports = mongoose.model('Position', PositionSchema);
+mongoose.exports = mongoose.model('Test',TestSchema);
+mongoose.exports = mongoose.model('Task', TaskSchema);

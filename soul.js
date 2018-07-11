@@ -407,9 +407,11 @@ app.get('/soul-api/server', async (req, res) => {
   Vultr.server_list( function(err, status, result){
     if( err ){
       res.json({Error:"Not found"});
+      res.status(404);
     }
     else{
       res.json(result);
+      res.status(200);
     }
   })
 });
@@ -419,7 +421,9 @@ app.get('/soul-api/server/:serverid', async (req, res) => {
   // get avocado board lists
   var server_id = req.params.serverid;
   var Response = {LABEL:"", IP:"", STATUS:""};
+  var flag=false;
   console.log(server_id);
+  res.status(404);
   Vultr.server_list( function(err, status, result){
     for(i in result){
       console.log('i',i,'result',result[i].SUBID);
@@ -428,6 +432,8 @@ app.get('/soul-api/server/:serverid', async (req, res) => {
         Response.LABEL  = result[i].label;
         Response.IP     = result[i].main_ip;
         Response.STATUS = result[i].status;
+        flag = true;
+        res.status(200);
         break;
       }
     }
@@ -443,10 +449,12 @@ app.get('/soul-api/server/:serverid/reinstall', async (req, res) => {
   Vultr.server_reinstall({ SUBID : server_id}, function(err, status, result){
     if(err){
       console.log(err);
+      res.status(404);
       res.json(err);
     }
     else{
       console.log('success');
+      res.status(200);
       res.json(result);
     }
   })
@@ -460,12 +468,14 @@ app.get('/soul-api/server/:serverid/stop', async (req, res) => {
     if(err){
       console.log(err);
       res.json(err);
+      res.status(404);
     }
     else{
       console.log('success');
       res.json(result);
+      res.status(200);
     }
-  })
+  });
 });
 
 app.get('/soul-api/server/:serverid/start', async (req, res) => {
@@ -492,10 +502,12 @@ app.get('/soul-api/server/:serverid/reboot', async (req, res) => {
     if(err){
       console.log(err);
       res.json(err);
+      res.status(404);
     }
     else{
       console.log('success');
       res.json(result);
+      res.status(200);
     }
   })
 });
