@@ -1,5 +1,4 @@
 // reference: https://velopert.com/594
-<<<<<<< HEAD
 var mongoose = require('mongoose');
 
 var mongodb = 'mongodb://127.0.0.1/test';
@@ -27,7 +26,6 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // });
 
 // module.exports = mongoose.model('test', testSchema);
-=======
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
@@ -39,4 +37,3 @@ const testSchema = new Schema({
 });
 
 module.exports = mongoose.model('test', testSchema);
->>>>>>> ed6c45f34e2f3311086cd58f97f670ac90e8f9f1
