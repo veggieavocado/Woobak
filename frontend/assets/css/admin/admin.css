@@ -36,10 +36,35 @@ body {
 .admin-header {
   display: flex;
   flex-direction: column;
+  position: relative;
   justify-content: center;
   align-items: center;
   height: 15rem;
 }
+
+  .admin-header > .devops-btn {
+    display: flex;
+    position: absolute;
+    right: 8rem;
+    top: 2rem;
+  }
+  .devops-btn > .dev-btn {
+    width: 4rem;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid var(--pretty-black);
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+  }
+  .devops-btn > .ops-btn {
+    width: 4rem;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid var(--pretty-black);
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+
   .admin-header > .logo-img {
     display: flex;
     justify-content: center;
@@ -48,8 +73,9 @@ body {
     width: 10rem;
   }
 
-  .admin-header > .admin-title {
+  .admin-header > .admin-header-title {
     font-weight: bold;
+    font-size: 25px;
     margin-top : 2rem;
   }
 
@@ -63,7 +89,7 @@ body {
 
 /* admin-header CSS ends here */
 
-/* progress-check CSS starts here */
+/* admin-content CSS starts here */
 .admin-content {
   display: flex;
   flex-direction: column;
@@ -72,8 +98,6 @@ body {
   width: 90%;
   margin: auto;
   margin-top: 2rem;
-  /* height: 100rem; */
-  /* background-color: var(--dark-gray); */
 }
 
   .admin-content > .admin-title {
@@ -81,7 +105,6 @@ body {
     height: 2rem;
     width: 100%;
     font-size: 20px;
-    /* background-color: var(--light-gray); */
     border-bottom: solid 1px var(--light-gray);
     box-shadow: 0 4px 2px -2px var(--light-gray);
   }
@@ -98,15 +121,12 @@ body {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 40rem;
-    background-color: var(--dark-gray);
   }
 
   .admin-template > .admin-side-bar {
     width: 15%;
     height: 100%;
-    margin: 0 1rem;
-    background-color: var(--main-purple);
+    margin: 0 0.5rem;
   }
 
   .admin-template > .admin-table {
@@ -115,19 +135,77 @@ body {
     width: 65%;
     height: 100%;
     margin: 0 0.5rem;
-    background-color: var(--main-red);
   }
 
   .table {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
   }
 
+.template-stats {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin: 0 0.5rem;
 
+}
 
+.template-stats > .number_template,
+ .template-stats > .in_progress,
+  .template-stats > .done_progress {
+  display: flex;
+  margin: 1rem 0;
+}
 
+.number_template > .stats,
+ .in_progress > .stats,
+  .done_progress > .stats {
+    margin : 0 3rem 0 1rem;
+    font-size: 20px;
+    font-weight: bold;
+  }
+/* admin-content CSS ends here */
 
-/* progress-check CSS starts here */
+/* .waiting-for-approval CSS starts here */
+.waiting-for-approval{
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10rem;
+}
+
+.waiting-for-approval > .wfa-title-div {
+  width: 100%;
+  margin-bottom: 3rem;
+  text-align: center;
+  border-bottom: solid 1px var(--light-gray);
+  box-shadow: 0 4px 2px -2px var(--light-gray);/
+}
+
+.wfa-title-div > .wfa-title {
+  width: 90%;
+  margin: auto;
+  position: relative;
+  font-size: 20px;
+}
+
+.wfa-title > .approval-all {
+  position: absolute;
+  width: 7rem;
+  height: 2rem;
+  font-weight: bold;
+  border: 1px solid var(--pretty-black);
+  border-radius: 5px;
+  top: 2.5rem;
+  right: 0;
+  cursor: pointer;
+}
+
+.waiting-for-approval > .wfa-table {
+  width: 90%;
+  margin: auto;
+}
+
+/* .waiting-for-approval CSS ends here */

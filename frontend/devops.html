@@ -7,7 +7,9 @@
       <title>VeggieAvocado devops</title>
       <link rel="icon" href="./assets/img/avocado.ico" type="image/x-icon" />
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-      <link rel="stylesheet" href="./assets/css/admin.css" type="text/css" media="all">
+      <link rel="stylesheet" href="./assets/css/table.css" type="text/css" media="all">
+      <link rel="stylesheet" href="./assets/css/admin/admin.css" type="text/css" media="all">
+      <link rel="stylesheet" href="./assets/css/admin/devops.css" type="text/css" media="all">
       <link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic|Gothic+A1|Ubuntu" rel="stylesheet">
 
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -16,6 +18,173 @@
     </head>
 
     <body>
+      <div class="admin-header">
+        <div class="devops-btn">
+          <div class="dev-btn">Dev</div>
+          <div class="ops-btn">Ops</div>
+        </div>
+        <div class="admin-header-title">
+          VeggieAvocado &nbsp; DevOps 페이지
+        </div>
+      </div>
+
+      <div class="admin-content">
+
+          <div class="admin-title">
+            1. Task/Team
+            <div class="tasks-btn">
+              <div class="enroll-btn">
+                등록
+              </div>
+            </div>
+          </div>
+          <div class="table">
+            <div class="table-content">
+              <div class="table-header">
+                <div class="table-col table-col-30">개발자</div>
+                <div class="table-col table-col-30">부서</div>
+                <div class="table-col table-col-40">태스크 관리</div>
+              </div>
+              <div class="table-data">
+                <div class="table-data-row">
+                  <div class="table-col table-col-30">피피</div>
+                  <div class="table-col table-col-30">데브옵스</div>
+                  <div class="table-col table-col-40">
+                    <button class="table-btn" type="button" name="button">태스크 확인</button>
+                    <button class="table-btn" type="button" name="button">태스크 부여</button>
+                  </div>
+                </div>
+                <div class="table-data-row">
+                  <div class="table-col table-col-30">할리</div>
+                  <div class="table-col table-col-30">데브옵스</div>
+                  <div class="table-col table-col-40">
+                    <button class="table-btn" type="button" name="button">태스크 확인</button>
+                    <button class="table-btn" type="button" name="button">태스크 부여</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="paginator">
+            <div class="paginator-btns">
+              <div class="arrow-btn"><i class="fas fa-angle-double-left"></i></div>
+              <div class="arrow-btn"><i class="fas fa-angle-left"></i></div>
+              <div class="page-btn">1</div>
+              <div class="page-btn">2</div>
+              <div class="active page-btn">3</div>
+              <div class="page-btn">4</div>
+              <div class="page-btn">5</div>
+              <div class="arrow-btn"><i class="fas fa-angle-right"></i></div>
+              <div class="arrow-btn"><i class="fas fa-angle-double-right"></i></div>
+            </div>
+          </div>
+
+          <div class="admin-title">
+            2. server
+            <div class="tasks-btn">
+              <div class="enroll-btn">
+                등록
+              </div>
+            </div>
+          </div>
+          <div class="table">
+            <div class="table-content">
+              <div class="table-header">
+                <div class="table-col table-col-30">Label</div>
+                <div class="table-col table-col-30">IP&nbsp;Address</div>
+                <div class="table-col table-col-30">Status</div>
+                <div class="table-col table-col-40">Action</div>
+              </div>
+              <div class="table-data">
+                <div class="table-data-row">
+                  <div class="table-col table-col-30">VaggieAvocado</div>
+                  <div class="table-col table-col-30">45.32.9.85</div>
+                  <div class="table-col table-col-30">정상</div>
+                  <div class="table-col table-col-40">
+                    <button class="table-btn" type="button" name="button">Stop</button>
+                    <button class="table-btn" type="button" name="button">Restart</button>
+                    <button class="table-btn" type="button" name="button">Reboot</button>
+                  </div>
+                </div>
+                <div class="table-data-row">
+                  <div class="table-col table-col-30">Arbiter</div>
+                  <div class="table-col table-col-30">45.32.247.21</div>
+                  <div class="table-col table-col-30">Stop/Error</div>
+                  <div class="table-col table-col-40">
+                    <button class="table-btn" type="button" name="button">Stop</button>
+                    <button class="table-btn" type="button" name="button">Restart</button>
+                    <button class="table-btn" type="button" name="button">Reboot</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="paginator">
+            <div class="paginator-btns">
+              <div class="arrow-btn"><i class="fas fa-angle-double-left"></i></div>
+              <div class="arrow-btn"><i class="fas fa-angle-left"></i></div>
+              <div class="page-btn">1</div>
+              <div class="page-btn">2</div>
+              <div class="active page-btn">3</div>
+              <div class="page-btn">4</div>
+              <div class="page-btn">5</div>
+              <div class="arrow-btn"><i class="fas fa-angle-right"></i></div>
+              <div class="arrow-btn"><i class="fas fa-angle-double-right"></i></div>
+            </div>
+          </div>
+
+
+          <div class="admin-title">
+            3. Version/Deploys
+            <div class="tasks-btn">
+              <div class="enroll-btn">
+                등록
+              </div>
+            </div>
+          </div>
+          <div class="table">
+            <div class="table-content">
+              <div class="table-header">
+                <div class="table-col table-col-30">Branch</div>
+                <div class="table-col table-col-30">Commit&nbsp;msg</div>
+                <div class="table-col table-col-30">Test&nbsp;Status</div>
+                <div class="table-col table-col-40">Action</div>
+              </div>
+              <div class="table-data">
+                <div class="table-data-row">
+                  <div class="table-col table-col-30">frontend</div>
+                  <div class="table-col table-col-30">관리페이지 완성</div>
+                  <div class="table-col table-col-30">정상</div>
+                  <div class="table-col table-col-40">
+                    <button class="table-btn" type="button" name="button">Deploys</button>
+                  </div>
+                </div>
+                <div class="table-data-row">
+                  <div class="table-col table-col-30">Test</div>
+                  <div class="table-col table-col-30">API&nbsp;테스트작성</div>
+                  <div class="table-col table-col-30">정상</div>
+                  <div class="table-col table-col-40">
+                    <button class="table-btn" type="button" name="button">Deploys</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="paginator">
+            <div class="paginator-btns">
+              <div class="arrow-btn"><i class="fas fa-angle-double-left"></i></div>
+              <div class="arrow-btn"><i class="fas fa-angle-left"></i></div>
+              <div class="page-btn">1</div>
+              <div class="page-btn">2</div>
+              <div class="active page-btn">3</div>
+              <div class="page-btn">4</div>
+              <div class="page-btn">5</div>
+              <div class="arrow-btn"><i class="fas fa-angle-right"></i></div>
+              <div class="arrow-btn"><i class="fas fa-angle-double-right"></i></div>
+            </div>
+          </div>
+
+        </div>
 
     </body>
 

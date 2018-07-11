@@ -1,0 +1,55 @@
+/* admin-header CSS starts here */
+.admin-header-header {
+  height: 10rem;
+}
+
+.admin-content > .admin-title {
+  position: relative;
+  height: 2.5rem;
+}
+
+.admin-title > .tasks-btn {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+  .tasks-btn > .enroll-btn {
+    width: 6rem;
+    height: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-right: 1rem;
+    border: 1px solid var(--pretty-black);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+.table {
+  margin: 2rem 0;
+}
+
+.paginator {
+  margin-bottom: 6rem;
+}
+/* admin-header CSS ends here */
+.view-btn {
+  width: 9rem;
+  height: 2rem;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid var(--pretty-black);
+  border-radius: 5px 0 0 5px;
+  cursor: pointer;
+}
+
+.set-btn {
+  width: 9rem;
+  height: 2rem;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid var(--pretty-black);
+  border-radius: 0 5px 5px 0 ;
+  cursor: pointer;
+}
