@@ -19,6 +19,7 @@
     "mocha:vul": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha tests/js/unit/vultrAPITest.js",
     "mocha:trevis": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha tests/js/unit/trevisAPITest.js",
     "mocha:soul": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha tests/js/unit/LocalAPITest.js",
+    "mocha:mhtest": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha tests/js/unit/testTest.js",
     "js:coverage": "open coverage/lcov-report/index.html",
     "dev": "webpack --mode development",
     "prod": "webpack --mode production",
