@@ -1,0 +1,91 @@
+/* This is a css for home.html */
+
+/* default css settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+/* default css settings end here */
+
+/* ALL LAYOUT RELATED CSS HERE */
+.body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+
+/* Navbar CSS starts here */
+.navbar {
+  height: 10%;
+  background-color: #93ffa9;
+}
+
+  .navbar > .navbar-action {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+    .navbar-action > .action-btn {
+      margin: 0 0.5rem;
+    }
+/* Navbar CSS ends here */
+
+
+/* Content-1 CSS starts here */
+.content-1 {
+  height: 45rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.content-1 > .heading {
+  height: 5rem;
+  width: 100%;
+  background-color: red;
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+}
+ .content-1 > .heading > .tutor-select {
+   background-color: blue;
+   margin-left: 20rem;
+ }
+
+/* Content-1 CSS ends here */
+
+/* Content-2 CSS stars here */
+  .createcontent {
+    margin-top: 3rem;
+    width: 60%;
+    height: 30rem;
+    background-color: blue;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .createcontent > .tutor-btn {
+    width:33.3%;
+    height:50%;
+    display:flex;
+    background-color: red;
+    border-right: solid black 2px;
+    border-bottom: solid black 2px;
+    justify-content: center;
+    align-items: center;
+  }
+   .createcontent > .tutor-btn >.tutor-img {
+     width:50%;
+   }
+
+/* Content-2 CSS ends here */
+
+.footer {
+  height: 5rem;
+  background-color: #a5a5a5;
+}
