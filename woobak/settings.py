@@ -21,7 +21,7 @@ try:
     # TRAVIS 환경변수를 들고와서 testing 변수에 넣어주기
     # 환경변수가 없어서 에러가 발생하면 testing을 'False'로 세팅
     testing = os.environ['TRAVIS']
-    print(testing)
+    DEBUG = True
 except:
     testing = 'False'
 
@@ -68,6 +68,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'templates.context_processors.ga_tracking_id',
+                'templates.context_processors.use_ga',
             ],
         },
     },
@@ -111,3 +114,10 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+GA_TRACKING_ID = 'UA-122243187-1'
+if DEBUG == True: # 로컬/개발용은 트래킹 안 하기
+    # 하지만 현재는 모두 개발 중이므로, 구글 애널리틱스 적용시키기
+    USE_GA = True
+else:
+    USE_GA = False
