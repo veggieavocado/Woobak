@@ -23,7 +23,7 @@ var mongoose = require('mongoose');
 mongoose.connect("mongodb://localhost:27017/woobak");
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error"));
-db.once("open", function(callback){
+db.once("open", function (callback) {
   console.log("Connection succeeded.");
 });
 var Schema = mongoose.Schema;
@@ -273,7 +273,7 @@ function PrintInformation(Obj, res, callback) {
 
   res.end(JSON.stringify(Obj));
 }
- // !- Veggie Avocado API !- //
+// !- Veggie Avocado API !- //
 // !-     Trello  API    !- //
 // Just check these functions.
 // Ctrl+Arlt + M = stop     < for VS code >
@@ -299,8 +299,8 @@ app.get('/soul-api/:spirntnum/task', async (req, res) => {
     case '3':
       str = "3rd Sprint";
       break;
-    default :
-      str = SprintNum+"th Sprint";
+    default:
+      str = SprintNum + "th Sprint";
       break;
   }
   async.series([GetSprintIdNameByNumber.bind(null, str, varObj)], function (err, status) {
@@ -389,22 +389,22 @@ app.put('/soul-api/:spirntnum/task/:listid/:title/', (req, res) => {
 });
 
 
- // !- Veggie Avocado API !- //
+// !- Veggie Avocado API !- //
 // !-     Vultr API      !- //
 const url = 'https://api.vultr.com/v1/server';
 const vultrAPI = 'NVB3TJSPCNHBCUKS5LML4R6LJ6T7J6OZIEBQ';
-var VultrAPI = require( 'vultr-api-wrapper' );
-var Vultr = new VultrAPI( { api_key: vultrAPI } );            // reference is in /unittest/vultrAPITest.js
+var VultrAPI = require('vultr-api-wrapper');
+var Vultr = new VultrAPI({ api_key: vultrAPI });            // reference is in /unittest/vultrAPITest.js
 
 
 app.get('/soul-api/server', async (req, res) => {
   // get avocado board lists
-  Vultr.server_list( function(err, status, result){
-    if( err ){
-      res.json({Error:"Not found"});
+  Vultr.server_list(function (err, status, result) {
+    if (err) {
+      res.json({ Error: "Not found" });
       res.status(404);
     }
-    else{
+    else {
       res.json(result);
       res.status(200);
     }
@@ -415,17 +415,17 @@ app.get('/soul-api/server', async (req, res) => {
 app.get('/soul-api/server/:serverid', async (req, res) => {
   // get avocado board lists
   var server_id = req.params.serverid;
-  var Response = {LABEL:"", IP:"", STATUS:""};
-  var flag=false;
+  var Response = { LABEL: "", IP: "", STATUS: "" };
+  var flag = false;
   console.log(server_id);
   res.status(404);
-  Vultr.server_list( function(err, status, result){
-    for(i in result){
-      console.log('i',i,'result',result[i].SUBID);
-      if( result[i].SUBID == server_id ){
+  Vultr.server_list(function (err, status, result) {
+    for (i in result) {
+      console.log('i', i, 'result', result[i].SUBID);
+      if (result[i].SUBID == server_id) {
         console.log('found!');
-        Response.LABEL  = result[i].label;
-        Response.IP     = result[i].main_ip;
+        Response.LABEL = result[i].label;
+        Response.IP = result[i].main_ip;
         Response.STATUS = result[i].status;
         flag = true;
         res.status(200);
@@ -441,13 +441,13 @@ app.get('/soul-api/server/:serverid/reinstall', async (req, res) => {
   // get avocado board lists
   var server_id = req.params.serverid;
   console.log(server_id);
-  Vultr.server_reinstall({ SUBID : server_id}, function(err, status, result){
-    if(err){
+  Vultr.server_reinstall({ SUBID: server_id }, function (err, status, result) {
+    if (err) {
       console.log(err);
       res.status(404);
       res.json(err);
     }
-    else{
+    else {
       console.log('success');
       res.status(200);
       res.json(result);
@@ -459,13 +459,13 @@ app.get('/soul-api/server/:serverid/stop', async (req, res) => {
   // get avocado board lists
   var server_id = req.params.serverid;
   console.log(server_id);
-  Vultr.server_halt({ SUBID : server_id}, function(err, status, result){
-    if(err){
+  Vultr.server_halt({ SUBID: server_id }, function (err, status, result) {
+    if (err) {
       console.log(err);
       res.json(err);
       res.status(404);
     }
-    else{
+    else {
       console.log('success');
       res.json(result);
       res.status(200);
@@ -477,12 +477,12 @@ app.get('/soul-api/server/:serverid/start', async (req, res) => {
   // get avocado board lists
   var server_id = req.params.serverid;
   console.log(server_id);
-  Vultr.server_start({ SUBID : server_id}, function(err, status, result){
-    if(err){
+  Vultr.server_start({ SUBID: server_id }, function (err, status, result) {
+    if (err) {
       console.log(err);
       res.json(err);
     }
-    else{
+    else {
       console.log('success');
       res.json(result);
     }
@@ -493,13 +493,13 @@ app.get('/soul-api/server/:serverid/reboot', async (req, res) => {
   // get avocado board lists
   var server_id = req.params.serverid;
   console.log(server_id);
-  Vultr.server_reboot({ SUBID : server_id}, function(err, status, result){
-    if(err){
+  Vultr.server_reboot({ SUBID: server_id }, function (err, status, result) {
+    if (err) {
       console.log(err);
       res.json(err);
       res.status(404);
     }
-    else{
+    else {
       console.log('success');
       res.json(result);
       res.status(200);
@@ -515,31 +515,40 @@ const SecToken = 'RzRu44CjFJc7AFySpg2rvQ';
 const ExampleRequestId = '120074706';
 const BuildExampleId = '398958549';
 const TravisURL = 'https://api.travis-ci.org';
+const GithubToken = '624c5ab9590891d7fb0237857f1ebcb3d34f2363';
 
+var Travis = require('travis-ci');
+var travis = new Travis({
+  version: '3.0.0'
+});
+travis.authenticate({
+  github_token: GithubToken
+}, function (err) {
+  if (err) {
+    console.log(err);
+    console.log('Travis authentificate fail!');
+  }
+});
+travis.auth.github.post({
+  github_token:GithubToken
+}, function(err, res){
+  if(err){
+    console.log(err);
+  }
+  else {
+    console.log(res);
+  }
+})
 app.get('/travis-api/branch', async (req, res) => {
   // get avocado board lists
-  console.log('here');
-  const URL = `${TravisURL}`+'/repo/'+WoobakRepositoryId+'/branches';
-  var options = {
-    method: 'GET',
-    url: URL,
-    qs: {
-      Tavis-API-Version: Name,
-      idBoard: IdBoard,
-      key: _key,
-      token: _token
+  travis.branches.get(function(err, response){
+    if( err ) {
+      res.status(404);
+      console.log(err);
     }
-  };
-  requests(options, function (error, response, body) {
-    const testInst = new test();
-    testInst.LogTime = Date.getTime();
-    testInst.response = response;
-    testInst.body = body;
-
-    testInst.save((error) => {
-      console.log(error);
-      res.json({ result: 0 });
-    });
-    res.json({ result: 1 });
+    else{
+      res.json(response)
+      res.status(200);
+    }
   });
 });
