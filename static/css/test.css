@@ -99,6 +99,7 @@ a:active {
   border-radius: 5px;
   padding: 1rem;
   box-shadow: 5px 5px #9b9b9b;
+  text-decoration: none;
 }
 
 .dev-btn:hover {
