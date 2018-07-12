@@ -278,12 +278,12 @@ function PrintInformation(Obj, res, callback) {
 // Just check these functions.
 // Ctrl+Arlt + M = stop     < for VS code >
 // Ctrl+Arlt + N = Start    < expension is needed >
-app.get('/soul-api/:spirntnum/task', async (req, res) => {
+app.get('/soul-api/:sprintnum/task', async (req, res) => {
   /*
   **    localhost:8080/soul-api/1(or other number)/task
   */
-  // Step 1. Get the value of Spirnt number.
-  const SprintNum = req.params.spirntnum; // URL에서 :id 부분 빼오기
+  // Step 1. Get the value of sprint number.
+  const SprintNum = req.params.sprintnum; // URL에서 :id 부분 빼오기
   var id, name = "";
   var varObj = [{ id: "", name: "" }];          // for Pass by reference
   var str = "1st Sprint";
@@ -316,10 +316,10 @@ app.get('/soul-api/:spirntnum/task', async (req, res) => {
 });
 // WHY?
 // WHY IT NEED??  #ISSUE 50818
-app.post('/soul-api/:spirntnum/:sprintname/task', (req, res) => {
+app.post('/soul-api/:sprintnum/:sprintname/task', (req, res) => {
   // POST할 때 받은 데이터값을 몽고디비로 보내서 저장한다
   // 저장에 성공하면 result가 1, 실패하면 0이다
-  const SprintNum = req.params.spirntnum; // URL에서 :id 부분 빼오기
+  const SprintNum = req.params.sprintnum; // URL에서 :id 부분 빼오기
   const Sprintname = req.param.sprintname;
   var id, name = "";
   var varObj = { id: "", name: "" };          // for Pass by reference
@@ -349,10 +349,10 @@ app.post('/soul-api/:spirntnum/:sprintname/task', (req, res) => {
 
 // update  5b40453d2599fe37cce59503
 // Succeed at JUL 10
-app.put('/soul-api/:spirntnum/task/:listid/:title/', (req, res) => {
+app.put('/soul-api/:sprintnum/task/:listid/:title/', (req, res) => {
   // POST할 때 받은 데이터값을 몽고디비로 보내서 저장한다
   // 저장에 성공하면 result가 1, 실패하면 0이다
-  const SprintNum = req.params.spirntnum; // URL에서 :id 부분 빼오기
+  const SprintNum = req.params.sprintnum; // URL에서 :id 부분 빼오기
   var list_id = req.params.listid;
   var title = req.params.title;
   console.log("asdf", list_id, title);
@@ -473,6 +473,9 @@ app.get('/soul-api/server/:serverid/stop', async (req, res) => {
   });
 });
 
+
+
+
 app.get('/soul-api/server/:serverid/start', async (req, res) => {
   // get avocado board lists
   var server_id = req.params.serverid;
@@ -514,41 +517,64 @@ const WoobakRepositoryId = '19800635';
 const SecToken = 'RzRu44CjFJc7AFySpg2rvQ';
 const ExampleRequestId = '120074706';
 const BuildExampleId = '398958549';
-const TravisURL = 'https://api.travis-ci.org';
-const GithubToken = '624c5ab9590891d7fb0237857f1ebcb3d34f2363';
-
+const TravisURL = 'https://api.travis-ci.com';
+const GithubToken = 'debaeb438ae05ceda7be1e83a2e459bacf9c803d';
+const TravisToken = 'lyzYPD5fTlD0QZR488vYJw';
 var Travis = require('travis-ci');
 var travis = new Travis({
-  version: '3.0.0'
+  version: '2.0.0'
 });
 travis.authenticate({
   github_token: GithubToken
-}, function (err) {
+}, function (err, res) {
+  //we've authenticated!
   if (err) {
     console.log(err);
-    console.log('Travis authentificate fail!');
+    return;
   }
+  travis.authenticate({
+    access_token: res.access_token
+  }, function (err) {
+    if (err) console.log(err);
+    else {
+      console.log(res);
+    }
+  });
 });
 travis.auth.github.post({
-  github_token:GithubToken
-}, function(err, res){
-  if(err){
-    console.log(err);
-  }
-  else {
-    console.log(res);
-  }
-})
-app.get('/travis-api/branch', async (req, res) => {
-  // get avocado board lists
-  travis.branches.get(function(err, response){
-    if( err ) {
-      res.status(404);
-      console.log(err);
+  github_token: GithubToken
+}, function (err, res) {
+  console.log(res);
+});
+
+// app.get('/travis-api/branch', async (req, res) => {
+//   // get avocado board lists
+//   travis.repos('woobak').branches.get(function(err, resp){
+//     console.log(resp);
+//   });
+// });
+
+app.get('/travis-api/branch', (req, res) => {
+  // POST할 때 받은 데이터값을 몽고디비로 보내서 저장한다
+  // 저장에 성공하면 result가 1, 실패하면 0이다
+  const ListURL = `${TravisURL}/user`;
+  var options = {
+    method: 'GET',
+    url: ListURL,
+    qs: {
+      Travis_API_Version: 3,
+      User_Agent: "API Explorer",
+      Authorization: "token SQdo_Q96NNPlRyoFK8pQzA",
     }
-    else{
-      res.json(response)
-      res.status(200);
+  };
+  var requests = require('request');
+  requests(options, function (error, response, body) {
+    if (error) {
+      conosole.log(err);
+    }
+    else {
+      console.log(response);
+      res.json(response);
     }
   });
 });
