@@ -15,7 +15,7 @@ matrix:
       script:
         - python manage.py makemigrations
         - python manage.py migrate
-        - python -m pytest -n 3 --cov-config .coveragerc --cov=.
+        - python -m pytest -n 3 --cov-config .coveragerc --cov=. -v
 
     - language: node_js
       node_js:

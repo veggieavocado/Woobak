@@ -7,6 +7,7 @@ class TestView(View):
         return render(request, 'test.html', {})
 
 
+# 베타 버전 웹사이트 공개
 class BetaHomeView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'home.html', {})
@@ -20,3 +21,14 @@ class BetaLoginView(View):
 class BetaRegisterView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'register.html', {})
+
+
+# 관리자 페이지 뷰
+class AdminView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'admin.html', {})
+
+
+class DevopsView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'devops.html', {})

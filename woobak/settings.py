@@ -13,8 +13,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'raven.contrib.django.raven_compat',
-
-    'mhtest',
+    'rest_framework',
+    
+    'accounts',
 ]
 
 try:
@@ -121,3 +122,15 @@ if DEBUG == True: # 로컬/개발용은 트래킹 안 하기
     USE_GA = True
 else:
     USE_GA = False
+
+# djangorestframework-jwt
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
