@@ -99,6 +99,7 @@ a:active {
   border-radius: 5px;
   padding: 1rem;
   box-shadow: 5px 5px #9b9b9b;
+  text-decoration: none;
 }
 
 .dev-btn:hover {
@@ -124,7 +125,7 @@ a:active {
 }
 
 #myBar {
-  width: 24%;
+  width: 41%;
   height: 20px;
   background-color: #2BDE73;
   border-radius: 10px;
@@ -149,7 +150,6 @@ a:active {
 
 .blog-content {
   width: 80%;
-  height: 20rem;
   margin-top: 0;
   padding: 1.5rem;
   border: solid 2px #dddddd;

@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="kr">
+
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+      <title>VeggieAvocado devops</title>
+      <link rel="icon" href="{% static 'img/avocado.ico' %}" type="image/x-icon" />
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+      <link rel="stylesheet" href="{% static 'css/table.css' %}" type="text/css" media="all">
+      <link rel="stylesheet" href="{% static 'css/admin.css' %}" type="text/css" media="all">
+      <link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic|Gothic+A1|Ubuntu" rel="stylesheet">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+      <div class="admin-header">
+        <div class="devops-btn">
+          <div class="dev-btn"><a href="{% url 'manager' %}">Dev</a></div>
+          <div class="ops-btn"><a href="{% url 'devops' %}">Ops</a></div>
+        </div>
+        <div class="logo-img">
+          <img src="{% static 'img/avocado-manager.png' %}" class="avocado-img">
+        </div>
+        <div class="admin-header-title">
+          VeggieAvocado 관리자 페이지
+        </div>
+      </div>
+      <div class="admin-content">
+
+          <div class="admin-title">1. 템플릿</div>
+          <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">템플릿 입력하기</h4>
+            <br>
+            <p>템플릿의 카테고리 (이메일, 프레젠테이션 등)을 입력하신 후 그 템플릿의 주제와 내용만 저장하여 주세요.</p>
+          </div>
+
+          <div class="admin-template">
+            <div class="admin-side-bar">
+              <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  템플릿 입력
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  영어문장 수정
+                  <span class="badge badge-primary badge-pill">2</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  템플릿 번역
+                  <span class="badge badge-primary badge-pill">1</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="admin-table">
+              <div class="table">
+                <div class="table-content">
+                  <div class="table-header">
+                    <div class="table-col table-col-30">개발자</div>
+                    <div class="table-col table-col-30">부서</div>
+                    <div class="table-col table-col-40">태스크 관리</div>
+                  </div>
+                  <div class="table-data">
+                    <div class="table-data-row">
+                      <div class="table-col table-col-30">피피</div>
+                      <div class="table-col table-col-30">데브옵스</div>
+                      <div class="table-col table-col-40">
+                        <button class="table-btn" type="button" name="button">태스크 확인</button>
+                        <button class="table-btn" type="button" name="button">태스크 부여</button>
+                      </div>
+                    </div>
+                    <div class="table-data-row">
+                      <div class="table-col table-col-30">할리</div>
+                      <div class="table-col table-col-30">데브옵스</div>
+                      <div class="table-col table-col-40">
+                        <button class="table-btn" type="button" name="button">태스크 확인</button>
+                        <button class="table-btn" type="button" name="button">태스크 부여</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="paginator">
+                  <div class="paginator-btns">
+                    <div class="arrow-btn"><i class="fas fa-angle-double-left"></i></div>
+                    <div class="arrow-btn"><i class="fas fa-angle-left"></i></div>
+                    <div class="page-btn">1</div>
+                    <div class="page-btn">2</div>
+                    <div class="active page-btn">3</div>
+                    <div class="page-btn">4</div>
+                    <div class="page-btn">5</div>
+                    <div class="arrow-btn"><i class="fas fa-angle-right"></i></div>
+                    <div class="arrow-btn"><i class="fas fa-angle-double-right"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="template-stats">
+              <div class="number_template">
+                <div class="stats">996</div>
+                <div class="stats_txt">template</div>
+              </div>
+              <div class="in_progress">
+                <div class="stats">996</div>
+                <div class="stats_txt">in progress</div>
+              </div>
+              <div class="done_progress">
+                <div class="stats">0</div>
+                <div class="stats_txt">Done</div>
+              </div>
+            </div>
+
+          </div>
+
+      </div>
+
+      <div class="waiting-for-approval">
+        <div class="wfa-title-div">
+          <div class="wfa-title">
+            <i class="fas fa-tag"></i> 승인대기
+            <div class="approval-all">
+              모두 승인
+            </div>
+          </div>
+
+        </div>
+
+        <div class="wfa-table">
+          <div class="table">
+            <div class="table-content">
+              <div class="table-header">
+                <div class="table-col table-col-30">개발자</div>
+                <div class="table-col table-col-30">부서</div>
+                <div class="table-col table-col-40">태스크 관리</div>
+              </div>
+              <div class="table-data">
+                <div class="table-data-row">
+                  <div class="table-col table-col-30">피피</div>
+                  <div class="table-col table-col-30">데브옵스</div>
+                  <div class="table-col table-col-40">
+                    <button class="table-btn" type="button" name="button">승인</button>
+                  </div>
+                </div>
+                <div class="table-data-row">
+                  <div class="table-col table-col-30">할리</div>
+                  <div class="table-col table-col-30">데브옵스</div>
+                  <div class="table-col table-col-40">
+                    <button class="table-btn" type="button" name="button">승인</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="paginator">
+              <div class="paginator-btns">
+                <div class="arrow-btn"><i class="fas fa-angle-double-left"></i></div>
+                <div class="arrow-btn"><i class="fas fa-angle-left"></i></div>
+                <div class="page-btn">1</div>
+                <div class="page-btn">2</div>
+                <div class="active page-btn">3</div>
+                <div class="page-btn">4</div>
+                <div class="page-btn">5</div>
+                <div class="arrow-btn"><i class="fas fa-angle-right"></i></div>
+                <div class="arrow-btn"><i class="fas fa-angle-double-right"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </body>
+
+</html>
