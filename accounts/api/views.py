@@ -57,7 +57,6 @@ class ProfileAPIView(generics.ListCreateAPIView):
     queryset = Profile.objects.get_queryset().order_by('user') # shows profiles in alphabetical order
     serializer_class = ProfileSerializer
     pagination_class = UserResultPagination
-    permission_classes = (permissions.IsAuthenticated,)
     # shouldn't have permissions, User will automatically create profile on registration
     # since the user is not created yet, you should drop permissions
 
@@ -69,4 +68,3 @@ class ProfileAPIView(generics.ListCreateAPIView):
 class ProfileDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    permission_classes = (permissions.IsAuthenticated, IsOwnerOrAdmin,)

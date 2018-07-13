@@ -1,0 +1,6 @@
+[
+  "tests/django/test_profile.py::UserTestCase::test_user_is_created",
+  "tests/django/test_profile_api.py::UserAPITestCase::test_jwt_token",
+  "tests/py/test_travis.py::test_travis_worked",
+  "tests/py/test_travis.py::test_travis_with_mh"
+]

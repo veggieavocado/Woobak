@@ -32,21 +32,26 @@ class UserAPITestCase(TestCase):
             'email': self.email,
             'password': self.password
         }
+
         response = self.client.post(
             '/api/accounts/user/',
             self.user,
             format='json'
         )
+        self.assertEqual(User.objects.all().count(), 1, msg='user data not created properly')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(User.objects.first().username, self.user['username'])
         self.assertEqual(User.objects.first().email, self.user['email'])
 
     def test_jwt_token(self):
         print('Strating JWT token test')
+        # 테스트영 user-data 생성
         userdata =  {
             'username': 'lee',
             'password': '123123123'
         }
+
+        # 토큰 발행
         response = self.client.post(
             '/api/accounts/api-token-auth/',
             userdata,
@@ -54,37 +59,69 @@ class UserAPITestCase(TestCase):
         )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        decoded_payload = utils.jwt_decode_handler(response.data['token'])
 
         token = response.data['token']
 
+        # Get Test
         response = self.client.get(
             '/api/accounts/profile/',
             format='json',
-            HTTP_AUTHORIZATION='JWT {0}'.format(token)
+            HTTP_AUTHORIZATION='JWT ' + token
         )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+        # Get Test without token
         response = self.client.get(
             '/api/accounts/profile/',
             format='json'
         )
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
-        # user = Profile.objects.all()
-        # response = self.client.put(reverse('profile-detail',
-        #                                     args=[self.user.username]), data,
-        #                                     HTTP_AUTHORIZATION='JWT {0}'.format(token) )
-        #
-        # username = User.objects.first().username
-        # print(username)
-        # self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
-        # print(response.json())
-        # # self.assertEqual()
-        #
-        # data = {'username': 'leemh'}
-        # print()
-        # response = self.client.put(reverse('profile-detail',
-        #                                     args=[self.user.id]), data)
-        # self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        user_orm = User.objects.get(username='lee')
+        profile = Profile.objects.get(user=user_orm).user.username
+
+        profile = {
+            'user': profile,
+            'name': 'Hoom',
+            'phone' : '01020003000',
+            'address': 'Seoul',
+        }
+        # put Test
+        response = self.client.put(
+            '/api/accounts/profile/lee/',
+            profile,
+            HTTP_AUTHORIZATION='JWT ' + token,
+            format='json',
+        )
+
+        data = response.json()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(data['name'], 'Hoom')
+        self.assertEqual(data['address'], 'Seoul')
+
+        # Put Test without token
+        response = self.client.put(
+            '/api/accounts/profile/lee/',
+            profile,
+            format='json'
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+        # delete Test
+        response = self.client.delete(
+            '/api/accounts/user/lee/',
+            HTTP_AUTHORIZATION='JWT ' + token,
+            format='json',
+        )
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+        # deleteTest without token
+        response = self.client.delete(
+            '/api/accounts/profile/lee/',
+            format='json'
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(User.objects.all().count(), 0, msg='user data not delete properly')
