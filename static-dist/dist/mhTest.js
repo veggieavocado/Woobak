@@ -81,29 +81,31 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./js-src/exampleTest.js":
-/*!*******************************!*\
-  !*** ./js-src/exampleTest.js ***!
-  \*******************************/
+/***/ "./js-src/mhTest.js":
+/*!**************************!*\
+  !*** ./js-src/mhTest.js ***!
+  \**************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var testFunc = function testFunc() {
-  return 'testing string';
-};
+var helloWord = 'hi hi';
+var helloMH = 'mh';
 
-// export하여 다른 스크립트에서 엑세스 가능하도록 한다
-module.exports = {
-  testFunc: testFunc
-};
+console.log(helloWord + ' ' + helloMH);
+
+document.addEventListener('click', function (e) {
+  if (e.target.id === 'hello-txt') {
+    e.target.innerText = 'bye';
+  }
+});
 
 /***/ }),
 
@@ -10711,18 +10713,18 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 0:
-/*!****************************************************!*\
-  !*** multi babel-polyfill ./js-src/exampleTest.js ***!
-  \****************************************************/
+/***/ 1:
+/*!***********************************************!*\
+  !*** multi babel-polyfill ./js-src/mhTest.js ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */"./node_modules/babel-polyfill/lib/index.js");
-module.exports = __webpack_require__(/*! /Users/abc/Desktop/veggieavocado/js-src/exampleTest.js */"./js-src/exampleTest.js");
+module.exports = __webpack_require__(/*! /Users/abc/Desktop/veggieavocado/js-src/mhTest.js */"./js-src/mhTest.js");
 
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=exampleTest.map
+//# sourceMappingURL=mhTest.map
