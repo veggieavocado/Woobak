@@ -1,11 +1,9 @@
 // start soul server on Soul Server in a Docker container
 const express = require('express');
 const axios = require('axios');
-
 const app = express();
-
 const bodyParser = require('body-parser');
-
+const config = require('./.config/github.js');
 // 몽고DB 사용 없이 외부 API 연결 작업을 한다
 // const mongoose = require('mongoose');
 //
@@ -15,19 +13,30 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-const _key = 'b99f16d67481b93e65e19d84f64806ab';
-const _token = '1212888ff2d1140637a2e9f0db08c011ca4ad13345fb9bf06ae2018447e9ee53';
-const _task_list_id = '5b40453d2599fe37cce59503';
+const _key = config._key;
+const _token = config._token;
+const mongooseAddress = config.mongooseAddress;
+console.log(mongooseAddress)
 // MongoDB
 var mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/woobak");
+mongoose.connect(mongooseAddress);
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error"));
 db.once("open", function (callback) {
   console.log("Connection succeeded.");
 });
 var Schema = mongoose.Schema;
-
+var TestSchema = new Schema({
+  date: {
+    type: String,
+    unique: true
+  },
+  ModuleName: {
+    type: String
+  },
+  success: Boolean
+});
+var IsSucces = mongoose.model("IsSuccess", TestSchema);
 
 
 // // connect to localhost if not in Docker container
@@ -44,46 +53,64 @@ app.get('/', (req, res) => {
   res.send('DONE');
 });
 
-// TEST API
+function getDate() {
+  var date = new Date();
+  var hour = date.getHours();
+  hour = (hour < 10 ? "0" : "") + hour;
+  var min = date.getMinutes();
+  min = (min < 10 ? "0" : "") + min;
+  var sec = date.getSeconds();
+  sec = (sec < 10 ? "0" : "") + sec;
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  month = (month < 10 ? "0" : "") + month;
+  var day = date.getDate();
+  day = (day < 10 ? "0" : "") + day;
+
+  return year + ":" + month + ":" + day + ":" + hour + ":" + min + ":" + sec;
+}
 app.post('/api/test', (req, res) => {
   // POST할 때 받은 데이터값을 몽고디비로 보내서 저장한다
   // 저장에 성공하면 result가 1, 실패하면 0이다
-  const testInst = new Test();
-  testInst.author = req.body.author; // author와 content를 post data로 받음
-  testInst.content = req.body.content;
-
-  testInst.save((error) => {
+  // --- PP
+  // I updated that if this function succeeded to send data to mongo,
+  // then save <now time> to DB.
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: '/api/test'
+  })
+  isSucces.save((error) => {
     if (error) {
       console.log(error);
       res.json({ result: 0 });
     }
-
+    console.log('check the DB');
     res.json({ result: 1 });
   });
 });
 
-
-// 트렐로 API wrapper
-
-const trelloURL = 'http://api.trello.com';
-const boardID = 'C9DijUpH'; // Sprint ID
-
-// peepee가 작성하는 예시 API 하나
+const trelloURL = config.trelloURL;
+const boardID = config.boardID; // Sprint ID
 app.get('/task-api/board', async (req, res) => {
-  // get avocado board lists
-  console.log('he is here');
+  console.log(boardID, trelloURL);
   const boardURL = `${trelloURL}/1/boards/${boardID}/lists/`;
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: '/task-api/board'
+  });
   const boards = await axios.get(boardURL)
     .catch((error) => {
-      // 에러 발생시 status는 501로 하고 에러 메세지를 result로 보내준다
+      isSucces.success = false;
+      isSucces.save();
       res.status(501); // 제대로 태스크 처리 못함: 501에러
       res.json({ result: 'FAILED TO GET AVOCADO BOARD' });
     });
   const boardsData = boards.data;
   res.status(200);
-  // res.send(boardsData); // 데이터를 통으로 보내주거나
-  // 아래처럼 json구조 안에 data라는 키값에 데이터를 보내줄 수도 있음
   res.json({ data: boardsData });
+  isSucces.save();
 });
 
 app.get('/task-api/board/:id', async (req, res) => {
@@ -92,24 +119,40 @@ app.get('/task-api/board/:id', async (req, res) => {
   console.log(req.params.id);
   const id = req.params.id; // URL에서 :id 부분 빼오기
   const boardURL = `${trelloURL}/1/boards/${id}/lists/`;
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: '/task-api/board/:id'
+  });
   const boards = await axios.get(boardURL)
     .catch((error) => {
       res.status(501);
       res.json({ result: `FAILED TO GET ${id} BOARD` });
+      isSucces.success = false;
+      isSucces.save();
     });
   const boardsData = boards.data;
   res.status(200);
   res.json({ data: boardsData });
+  isSucces.save();
 });
 
 // API which is getting lists of board.
-app.get('task-api/list', async (req, res) => {
+app.get('/task-api/list', async (req, res) => {
   const listURL = `${trelloURL}/1/boards/${boardID}/`;
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: '/task-api/list'
+  });
   const lists = await axios.get(listURL)
     .catch((error) => {
+      isSucces.success = false;
+      isSucces.save();
       res.status(501);
       res.json(error);
     });
+  isSucces.save();
   const listsData = lists.data;
   res.status(200);
   res.json({ data: listsData });
@@ -119,12 +162,20 @@ app.get('/task-api/list:id', async (req, res) => {
   // get any board lists with id
   const id = req.params.id; // URL에서 :id 부분 빼오기
   const listURL = `${trelloURL}/1/lists/${id}/`;
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: '/task-api/list:id'
+  });
   const list = await axios.get(listURL)
     .catch((error) => {
+      isSucces.success = false;
+      isSucces.save();
       res.status(501);
       res.json({ result: `FAILED TO GET ${id} BOARD` });
       res.json(error);
     });
+  isSucces.save();
   const listData = list.data;
   res.status(200);
   res.json({ data: listData });
@@ -135,30 +186,45 @@ app.get('/task-api/card:Listid/', async (req, res) => {
   // get any board lists with id
   const Listid = req.params.Listid; // URL에서 :id 부분 빼오기
   const CardURL = `${trelloURL}/1/lists/${Listid}/cards`;
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: '/task-api/card:Listid/'
+  });
   const Card = await axios.get(CardURL)
     .catch((error) => {
       res.status(501);
       res.json({ result: `FAILED TO GET ${id} BOARD` });
       res.json(error);
+      isSucces.success = false;
+      isSucces.save();
     });
   const CardData = Card.data;
   res.status(200);
   res.json({ data: CardData });
+  isSucces.save();
 });
 
 app.get('/task-api/card:CardId/', async (req, res) => {
   // get any board lists with id
   const CardId = req.params.CardId; // URL에서 :id 부분 빼오기
   const CardURL = `${trelloURL}/1/cards/` + CardId;
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: '/task-api/list'
+  });
   const Card = await axios.get(CardURL)
     .catch((error) => {
       res.status(501);
       res.json({ result: `FAILED TO GET ${id} BOARD` });
       res.json(error);
+      isSucces.success = false;
     });
   const CardData = Card.data;
   res.status(200);
   res.json({ data: CardData });
+  isSucces.save();
 });
 
 app.post('/api/test/lists:name:IdBoard', (req, res) => {
@@ -167,6 +233,11 @@ app.post('/api/test/lists:name:IdBoard', (req, res) => {
   const Name = req.params.name;
   const IdBoard = req.params.IdBoard;
   const ListURL = `${trelloURL}/1/lists`;
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: '/task-api/list'
+  });
   var options = {
     method: 'POST',
     url: ListURL,
@@ -186,8 +257,11 @@ app.post('/api/test/lists:name:IdBoard', (req, res) => {
     testInst.save((error) => {
       console.log(error);
       res.json({ result: 0 });
+      isSucces.success = false;
+      isSucces.save();
     });
     res.json({ result: 1 });
+    isSucces.save();
   });
 });
 
@@ -197,6 +271,11 @@ app.post('/api/test/lists:name:IdBoard', (req, res) => {
   const Name = req.params.name;
   const IdBoard = req.params.IdBoard;
   const ListURL = `${trelloURL}/1/lists`;
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: '/task-api/list'
+  });
   var options = {
     method: 'POST',
     url: ListURL,
@@ -216,13 +295,17 @@ app.post('/api/test/lists:name:IdBoard', (req, res) => {
     testInst.save((error) => {
       console.log(error);
       res.json({ result: 0 });
+      isSucces.success = false;
+      isSucces.save();
     });
     res.json({ result: 1 });
+    isSucces.save();
   });
 });
 
 function GetSprintIdNameByNumber(sprintnumber, Obj, callback) {
   var Trello = require("node-trello");
+  console.log("key : ", _key);
   var t = new Trello(_key, _token);
   var Flag = false;
   t.get("/1/boards/" + boardID + "/lists", function (err, data) {
@@ -288,6 +371,11 @@ app.get('/soul-api/:sprintnum/task', async (req, res) => {
   var varObj = [{ id: "", name: "" }];          // for Pass by reference
   var str = "1st Sprint";
   async = require('async');
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: '/soul-api/:sprintnum/task'
+  });
   switch (SprintNum) {
     // Step 2. Get all lists of 'Sprints'
     case '1':
@@ -308,9 +396,12 @@ app.get('/soul-api/:sprintnum/task', async (req, res) => {
     if (status == 200) {
       this.varObj = varObj;
       PrintInformation(this.varObj, res);
+      isSucces.save();
     }
     else if (status == 404) {
       res.json({ Err: "not found" });
+      isSucces.success = false;
+      isSucces.save();
     }
   });
 });
@@ -323,6 +414,11 @@ app.post('/soul-api/:sprintnum/:sprintname/task', (req, res) => {
   const Sprintname = req.param.sprintname;
   var id, name = "";
   var varObj = { id: "", name: "" };          // for Pass by reference
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: '/soul-api/:sprintnum/:sprintname/task'
+  });
   var options = {
     method: 'POST',
     url: ListURL,
@@ -342,7 +438,10 @@ app.post('/soul-api/:sprintnum/:sprintname/task', (req, res) => {
     testInst.save((error) => {
       console.log(error);
       res.json({ result: 0 });
+      isSucces.success=false;
+      isSucces.save();
     });
+    isSucces.save();
     res.json({ result: 1 });
   });
 });
@@ -358,6 +457,11 @@ app.put('/soul-api/:sprintnum/task/:listid/:title/', (req, res) => {
   console.log("asdf", list_id, title);
   const ListURL = 'https://api.trello.com/1/lists/' + list_id;
   var request = require('request');
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: '/soul-api/:sprintnum/task/:listid/:title/'
+  });
   var options = {
     method: 'PUT',
     url: ListURL,
@@ -383,8 +487,11 @@ app.put('/soul-api/:sprintnum/task/:listid/:title/', (req, res) => {
     testInst.save((error) => {
       console.log(error);
       res.json({ err: error });
+      isSucces.success=false;
+      isSucces.save();
     });
     res.json({ result: 'Success' });
+    isSucces.save();
   });
 });
 
@@ -399,14 +506,22 @@ var Vultr = new VultrAPI({ api_key: vultrAPI });            // reference is in /
 
 app.get('/soul-api/server', async (req, res) => {
   // get avocado board lists
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: '/soul-api/server'
+  });
   Vultr.server_list(function (err, status, result) {
     if (err) {
       res.json({ Error: "Not found" });
       res.status(404);
+      isSucces.success=false;
+      isSucces.save();
     }
     else {
       res.json(result);
       res.status(200);
+      isSucces.save();
     }
   })
 });
@@ -419,6 +534,11 @@ app.get('/soul-api/server/:serverid', async (req, res) => {
   var flag = false;
   console.log(server_id);
   res.status(404);
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: false,
+    ModuleName: '/soul-api/server/:serverid'
+  });
   Vultr.server_list(function (err, status, result) {
     for (i in result) {
       console.log('i', i, 'result', result[i].SUBID);
@@ -428,10 +548,13 @@ app.get('/soul-api/server/:serverid', async (req, res) => {
         Response.IP = result[i].main_ip;
         Response.STATUS = result[i].status;
         flag = true;
+        isSucces.success=true;
+        isSucces.save();
         res.status(200);
         break;
       }
     }
+    isSucces.save();
     res.json(Response);
   })
 });
@@ -441,16 +564,24 @@ app.get('/soul-api/server/:serverid/reinstall', async (req, res) => {
   // get avocado board lists
   var server_id = req.params.serverid;
   console.log(server_id);
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: '/soul-api/server/:serverid/reinstall'
+  });
   Vultr.server_reinstall({ SUBID: server_id }, function (err, status, result) {
     if (err) {
       console.log(err);
       res.status(404);
       res.json(err);
+      isSucces.success = false;
+      isSucces.save();
     }
     else {
       console.log('success');
       res.status(200);
       res.json(result);
+      isSucces.save();
     }
   })
 });
@@ -459,16 +590,24 @@ app.get('/soul-api/server/:serverid/stop', async (req, res) => {
   // get avocado board lists
   var server_id = req.params.serverid;
   console.log(server_id);
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: 'soul-api/server/:serverid/stop'
+  });
   Vultr.server_halt({ SUBID: server_id }, function (err, status, result) {
     if (err) {
       console.log(err);
       res.json(err);
       res.status(404);
+      isSucces.success = false;
+      isSucces.save();
     }
     else {
       console.log('success');
       res.json(result);
       res.status(200);
+      isSucces.save();
     }
   });
 });
@@ -480,14 +619,22 @@ app.get('/soul-api/server/:serverid/start', async (req, res) => {
   // get avocado board lists
   var server_id = req.params.serverid;
   console.log(server_id);
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: '/soul-api/server/:serverid/start'
+  });
   Vultr.server_start({ SUBID: server_id }, function (err, status, result) {
     if (err) {
       console.log(err);
       res.json(err);
+      isSucces.success = false;
+      isSucces.save();
     }
     else {
       console.log('success');
       res.json(result);
+      isSucces.save();
     }
   })
 });
@@ -496,85 +643,90 @@ app.get('/soul-api/server/:serverid/reboot', async (req, res) => {
   // get avocado board lists
   var server_id = req.params.serverid;
   console.log(server_id);
+  var isSucces = new IsSucces({
+    date: getDate(),
+    success: true,
+    ModuleName: '/task-api/list'
+  });
   Vultr.server_reboot({ SUBID: server_id }, function (err, status, result) {
     if (err) {
       console.log(err);
       res.json(err);
       res.status(404);
+      isSucces.success = false;
+      isSucces.save();
     }
     else {
       console.log('success');
       res.json(result);
       res.status(200);
+      isSucces.save();
     }
   })
 });
 
-// Example 
-//const userId = '865736';
-//const githubId = '40468899';
-const WoobakRepositoryId = '19800635';
-const SecToken = 'RzRu44CjFJc7AFySpg2rvQ';
-const ExampleRequestId = '120074706';
-const BuildExampleId = '398958549';
-const TravisURL = 'https://api.travis-ci.com';
-const GithubToken = 'debaeb438ae05ceda7be1e83a2e459bacf9c803d';
-const TravisToken = 'lyzYPD5fTlD0QZR488vYJw';
-var Travis = require('travis-ci');
-var travis = new Travis({
-  version: '2.0.0'
-});
-travis.authenticate({
-  github_token: GithubToken
-}, function (err, res) {
-  //we've authenticated!
-  if (err) {
-    console.log(err);
-    return;
-  }
-  travis.authenticate({
-    access_token: res.access_token
-  }, function (err) {
-    if (err) console.log(err);
-    else {
-      console.log(res);
-    }
-  });
-});
-travis.auth.github.post({
-  github_token: GithubToken
-}, function (err, res) {
-  console.log(res);
-});
-
-// app.get('/travis-api/branch', async (req, res) => {
-//   // get avocado board lists
-//   travis.repos('woobak').branches.get(function(err, resp){
-//     console.log(resp);
+const WoobakRepositoryId = config.WoobakRepositoryId;
+const SecToken = config.SecToken;
+const ExampleRequestId = config.ExampleRequestId;
+const BuildExampleId = config.BuildExampleId;
+const TravisURL = config.TravisURL;
+const GithubToken = config.GithubToken;
+const TravisToken = config.TravisToken;
+// var Travis = require('travis-ci');
+// var travis = new Travis({
+//   version: '2.0.0'
+// });
+// travis.authenticate({
+//   github_token: GithubToken
+// }, function (err, res) {
+//   //we've authenticated!
+//   if (err) {
+//     console.log(err);
+//     return;
+//   }
+//   travis.authenticate({
+//     access_token: res.access_token
+//   }, function (err) {
+//     if (err) console.log(err);
+//     else {
+//       console.log(res);
+//     }
 //   });
 // });
+// travis.auth.github.post({
+//   github_token: GithubToken
+// }, function (err, res) {
+//   console.log(res);
+// });
 
-app.get('/travis-api/branch', (req, res) => {
-  // POST할 때 받은 데이터값을 몽고디비로 보내서 저장한다
-  // 저장에 성공하면 result가 1, 실패하면 0이다
-  const ListURL = `${TravisURL}/user`;
-  var options = {
-    method: 'GET',
-    url: ListURL,
-    qs: {
-      Travis_API_Version: 3,
-      User_Agent: "API Explorer",
-      Authorization: "token SQdo_Q96NNPlRyoFK8pQzA",
-    }
-  };
-  var requests = require('request');
-  requests(options, function (error, response, body) {
-    if (error) {
-      conosole.log(err);
-    }
-    else {
-      console.log(response);
-      res.json(response);
-    }
-  });
-});
+// // app.get('/travis-api/branch', async (req, res) => {
+// //   // get avocado board lists
+// //   travis.repos('woobak').branches.get(function(err, resp){
+// //     console.log(resp);
+// //   });
+// // });
+
+// app.get('/travis-api/branch', (req, res) => {
+//   // POST할 때 받은 데이터값을 몽고디비로 보내서 저장한다
+//   // 저장에 성공하면 result가 1, 실패하면 0이다
+//   const ListURL = `${TravisURL}/user`;
+//   var options = {
+//     method: 'GET',
+//     url: ListURL,
+//     qs: {
+//       Travis_API_Version: 3,
+//       User_Agent: "API Explorer",
+//       Authorization: "token SQdo_Q96NNPlRyoFK8pQzA",
+//     }
+//   };
+//   var requests = require('request');
+//   requests(options, function (error, response, body) {
+//     if (error) {
+//       conosole.log(err);
+//     }
+//     else {
+//       console.log(response);
+//       res.json(response);
+//     }
+//   });
+// });
