@@ -1,1 +1,3 @@
-{}
+{
+  "tests/profile_tests.py::test_equal_num": true
+}
