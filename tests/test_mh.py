@@ -8,6 +8,7 @@ import pytest
 
 from mhtest.models import Mhtest
 
+# dependence injection 
 @pytest.fixture
 @pytest.mark.django_db
 def save_mhtest_data():
