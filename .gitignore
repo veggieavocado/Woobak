@@ -8,4 +8,4 @@ env/
 venv/
 scripts/deploy.sh
 gitthub.py
-.config/github.py
+.config/github.js
