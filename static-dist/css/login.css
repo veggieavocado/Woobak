@@ -1,0 +1,56 @@
+/* This is a css for login.html */
+
+/* Navbar starts here */
+.navbar {
+  border-bottom: solid 1.5px var(--light-gray);
+  box-shadow: 2px 2px 3px 2px var(--very-light-gray);
+}
+/* Navbar ends here */
+
+/* Content-1 CSS starts here */
+.content-1 {
+  width: 100%;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+  .content-1 > .login-input {
+    display: flex;
+    flex-direction: column;
+  }
+
+    .login-input > .login-section-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--pretty-black);
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .login-input > input {
+      margin-bottom: 1rem;
+      width: 20rem;
+    }
+
+    .login-input > .avocado-btn {
+      padding: 0.3rem;
+    }
+
+  .content-1 > .register-sec {
+    margin-top: 1rem;
+  }
+
+    .register-sec > a {
+      margin-left: 0.5rem;
+      color: #3c35ff;
+    }
+
+    .register-sec > a:hover {
+      color: #221e99;
+    }
+/* Content-1 CSS ends here */
