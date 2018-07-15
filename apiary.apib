@@ -7,57 +7,39 @@ HOST: https://veggieavocado.com/api/
 개발에 도움이 필요하신 분, 베지아보카도의 API를 사용하시고 싶은 분들께
 이 문서가 도움이 되었으면 합니다.
 
-## Questions Collection [/questions]
+## 1. 유저 API: /accounts/user/ [/accounts/user/]
 
-### List All Questions [GET]
+### 모든 유저 목록 받아오기 (GET) [GET]
+
+베지아보카도의 모든 유저 정보를 볼 수 있다.
 
 + Response 200 (application/json)
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+        {
+          "count": 0,
+          "next": null,
+          "previous": null,
+          "results": []
+        }
 
-### Create a New Question [POST]
+### 유저 생성 (POST) [POST]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+베지아보카도 유저를 생성할 수 있다. 유저 생성과 동시에 프로필(Profile) 모델에도
+자동으로 데이터가 등록된다.
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "username": "apiarytest",
+            "email": "apiarytest@apiary.io",
+            "password": "apiarytest123"
         }
 
 + Response 201 (application/json)
 
     + Headers
 
-            Location: /questions/2
+            Location: /accounts/user/apiarytest/
 
     + Body
 
@@ -80,8 +62,3 @@ form of choices.
                     }
                 ]
             }
-            
-            
-## Choices Collection [/choices]
-
-### List All Questions [GET]
