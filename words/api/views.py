@@ -1,19 +1,19 @@
 from rest_framework import generics
 from rest_framework.filters import SearchFilter, OrderingFilter
 
-from sentences.models import Sentence
-from sentences.api.serializers import SentenceSerializer
+from words.models import Word
+from words.api.serializers import WordSerializer
 from utils.paginations import StandardResultPagination
 
 ### Template data###
-class SentenceAPIView(generics.ListCreateAPIView):
-    queryset = Sentence.objects.all()
-    serializer_class = SentenceSerializer
+class WordAPIView(generics.ListCreateAPIView):
+    queryset = Word.objects.all()
+    serializer_class = WordSerializer
     pagination_class = StandardResultPagination
     filter_backends = [SearchFilter, OrderingFilter]
 
     def get_queryset(self, *args, **kwargs):
-        queryset = Sentence.objects.all().order_by('id')
+        queryset = Word.objects.all().order_by('id')
         owner_by = self.request.GET.get('owner')
         userid_by = self.request.GET.get('userid')
         source_by = self.request.GET.get('source')
@@ -35,6 +35,6 @@ class SentenceAPIView(generics.ListCreateAPIView):
 
         return queryset
 
-class SentenceDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Sentence.objects.all()
-    serializer_class = SentenceSerializer
+class WordDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Word.objects.all()
+    serializer_class = WordSerializer

@@ -17,6 +17,10 @@ urlpatterns = [
     url(r'^$', TestView.as_view(), name='test'),
 
     url(r'^api/accounts/', include('accounts.api.urls', namespace='accounts')),
+    url(r'^api/sentence/', include('sentences.api.urls', namespace='sentences')),
+    url(r'^api/state/', include('states.api.urls', namespace='states')),
+    url(r'^api/text/', include('texts.api.urls', namespace='texts')),
+    url(r'^api/word/', include('words.api.urls', namespace='words')),
 
     # beta version links
     url(r'^beta/$', BetaHomeView.as_view(), name='beta-home'),

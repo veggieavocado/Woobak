@@ -6,7 +6,7 @@ from texts.api.serializers import TextSerializer
 from utils.paginations import StandardResultPagination
 
 ### Template data###
-class TextAPIView(generics.ListAPIView):
+class TextAPIView(generics.ListCreateAPIView):
     queryset = Text.objects.all()
     serializer_class = TextSerializer
     pagination_class = StandardResultPagination
@@ -20,7 +20,6 @@ class TextAPIView(generics.ListAPIView):
         source_by = self.request.GET.get('source')
         cartegory_by = self.request.GET.get('cartegory')
         title_by = self.request.GET.get('title')
-        template_by = self.request.GET.get('template')
 
         if owner_by:
             queryset = queryset.filter(owner=owner_by)
@@ -34,7 +33,10 @@ class TextAPIView(generics.ListAPIView):
             queryset = queryset.filter(source=category_by)
         if title_by:
             queryset = queryset.filter(title=title_by)
-        if template_by:
-            queryset = queryset.filter(template__contains=template_by)
 
         return queryset
+
+
+class TextDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Text.objects.all()
+    serializer_class = TextSerializer

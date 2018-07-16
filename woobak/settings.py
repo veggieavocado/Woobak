@@ -17,6 +17,9 @@ INSTALLED_APPS = [
 
     'accounts',
     'texts',
+    'sentences',
+    'words',
+    'states',
 ]
 
 try:

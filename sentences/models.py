@@ -11,4 +11,4 @@ class Sentence(models.Model):
     translated = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return "{}".format(self.user.username)
+        return "{}".format(self.owner)

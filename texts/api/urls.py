@@ -1,9 +1,11 @@
 from django.conf.urls import url
 
-from Texts.api.views import (
+from texts.api.views import (
     TextAPIView,
+    TextDetailsAPIView,
 )
 
 urlpatterns = [
-    url(r'^/api/text/$', TextAPIView.as_view(), name='texts'),
-    ]
+    url(r'^$', TextAPIView.as_view(), name='texts'),
+    url(r'^(?P<pk>[\w.@+-]+)/$', TextDetailsAPIView.as_view(), name='text-details'),
+]
