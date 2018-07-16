@@ -8,9 +8,14 @@ from rest_framework.test import APIClient
 from rest_framework_jwt import utils, views
 from rest_framework_jwt.compat import get_user_model
 from rest_framework_jwt.settings import api_settings, DEFAULTS
+
+import json
+from django.utils.encoding import smart_text
+
 from accounts.models import (
     Profile
     )
+
 
 User = get_user_model()
 
@@ -30,7 +35,13 @@ class UserAPITestCase(TestCase):
         self.user = {
             'username': self.username,
             'email': self.email,
-            'password': self.password
+            'password': self.password,
+        }
+
+        # 테스트영 user-data 생성
+        self.userdata =  {
+            'username': self.username,
+            'password': self.password,
         }
 
         response = self.client.post(
@@ -45,20 +56,26 @@ class UserAPITestCase(TestCase):
 
     def test_jwt_token(self):
         print('Strating JWT token test')
-        # 테스트영 user-data 생성
-        userdata =  {
-            'username': 'lee',
-            'password': '123123123'
-        }
+
 
         # 토큰 발행
+        # response = self.client.post(
+        #     '/api/accounts/api-token-auth/',
+        #     userdata,
+        #     format='json'
+        # )
         response = self.client.post(
             '/api/accounts/api-token-auth/',
-            userdata,
-            format='json'
+            json.dumps(self.userdata),
+            content_type='application/json'
         )
 
+        response_content = json.loads(smart_text(response.content))
+
+        decoded_payload = utils.jwt_decode_handler(response_content['token'])
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(decoded_payload['username'], self.username)
 
         token = response.data['token']
 
