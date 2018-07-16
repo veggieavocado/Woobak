@@ -1,4 +1,1 @@
-{
-  "tests/django/test_profile_api.py::TestCase": true,
-  "tests/django/test_profile_api.py::UserAPITestCase": true
-}
+{}
