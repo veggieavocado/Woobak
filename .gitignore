@@ -11,3 +11,4 @@ scripts/deploy.sh
 gitthub.py
 .pytest_cache/
 data/
+.config/github.js
