@@ -18,7 +18,7 @@ class TextAPIView(generics.ListCreateAPIView):
         userid_by = self.request.GET.get('userid')
         type_by = self.request.GET.get('type')
         source_by = self.request.GET.get('source')
-        cartegory_by = self.request.GET.get('cartegory')
+        category_by = self.request.GET.get('category')
         title_by = self.request.GET.get('title')
 
         if owner_by:
@@ -29,8 +29,8 @@ class TextAPIView(generics.ListCreateAPIView):
             queryset = queryset.filter(owner=owner_by).filter(userid=userid_by)
         if type_by:
             queryset = queryset.filter(type=type_by)
-        if source_by:
-            queryset = queryset.filter(source=category_by)
+        if category_by:
+            queryset = queryset.filter(category=category_by)
         if title_by:
             queryset = queryset.filter(title=title_by)
 

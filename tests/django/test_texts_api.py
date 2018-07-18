@@ -50,7 +50,7 @@ class TextAPITestCase(TestCase):
                         'userid':1000,
                         'type':'e-mail',
                         'source':'book',
-                        'cartegory':'business',
+                        'category':'business',
                         'title':'스티브잡스 연설',
                         'template':example ,
                         'translated':example,
