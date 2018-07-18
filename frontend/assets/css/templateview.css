@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 755px;
+  width: auto;
+}
+
+.container-wrapper {
+  display: flex;
+
+  height: 100%;
+}
+
+/* 이거 어떻게 나눠야하는건지 모르겠음 height왜안생겨*/
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+
+  width: 10%;
+}
+
+  .item img {
+    display: block;
+    width: 25px;
+    height: 25px;
+
+    margin : 15px 0 0 20px;
+  }
+
+.template-container {
+  background-color: blue;
+
+  width: 40%;
+  }
+
+  .template-page {
+    display: flex;
+    flex-direction: column;
+
+    height: auto;
+    width: auto;
+    margin-left: 3%;
+  }
+
+    .title {
+      margin-top: 15%;
+
+      height: 25%;
+      width: 100%;
+    }
+
+    .contents {
+      margin-top: 3%;
+    }
+
+.assist-container {
+  background-color: green;
+
+  width: 40%;
+}
+
+  .assist-name {
+    margin-top: 15%;
+    margin-left: 10%;
+  }
+
+  .assist-list {
+
+  }
+
+.option-container {
+  background-color: purple;
+
+  width:10%;
+}

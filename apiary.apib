@@ -1,0 +1,64 @@
+FORMAT: 1A
+HOST: https://veggieavocado.com/api/
+
+# 베지아보카도 (VeggieAvocado)
+
+베지아보카도에서 사용되는 모든 API 엔드포인트를 정의내린 문서 저장소입니다.
+개발에 도움이 필요하신 분, 베지아보카도의 API를 사용하시고 싶은 분들께
+이 문서가 도움이 되었으면 합니다.
+
+## 1. 유저 API: /accounts/user/ [/accounts/user/]
+
+### 모든 유저 목록 받아오기 (GET) [GET]
+
+베지아보카도의 모든 유저 정보를 볼 수 있다.
+
++ Response 200 (application/json)
+
+        {
+          "count": 0,
+          "next": null,
+          "previous": null,
+          "results": []
+        }
+
+### 유저 생성 (POST) [POST]
+
+베지아보카도 유저를 생성할 수 있다. 유저 생성과 동시에 프로필(Profile) 모델에도
+자동으로 데이터가 등록된다.
+
++ Request (application/json)
+
+        {
+            "username": "apiarytest",
+            "email": "apiarytest@apiary.io",
+            "password": "apiarytest123"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /accounts/user/apiarytest/
+
+    + Body
+
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 0
+                    }, {
+                        "choice": "Python",
+                        "votes": 0
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 0
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 0
+                    }
+                ]
+            }

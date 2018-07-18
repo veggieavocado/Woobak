@@ -2,6 +2,7 @@
 
 git rm -r --cached node_modules
 
+
 ### 깃허브 히스토리에서 어떤 파일/폴더를 없애는 방법 (모든 커밋에서 삭제해줌)
 
 git filter-branch --tree-filter 'rm -rf node_modules' --prune-empty HEAD
@@ -12,3 +13,9 @@ git add .gitignore
 git commit -m 'Removing node_modules from git history'
 git gc
 git push origin master --force
+
+
+### 깃허브에서 브렌치 제거한 후 로컬 브렌치도 제거
+
+git push origin --delete <branch-name>
+git branch -D <branch-name>
