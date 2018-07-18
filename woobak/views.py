@@ -32,3 +32,9 @@ class AdminView(View):
 class DevopsView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'devops.html', {})
+
+
+# 피피티 페이지 뷰
+class PptTemplateView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'templateview.html', {})

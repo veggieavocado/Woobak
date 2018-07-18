@@ -9,6 +9,7 @@ from .views import (
     BetaRegisterView,
     AdminView,
     DevopsView,
+    PptTemplateView,
 )
 
 urlpatterns = [
@@ -30,4 +31,7 @@ urlpatterns = [
     # 관리자 페이지
     url(r'^manager/$', AdminView.as_view(), name='manager'),
     url(r'^manager/devops/$', DevopsView.as_view(), name='devops'),
+
+    # 피피티 페이지
+    url(r'^ppt/$', PptTemplateView.as_view(), name='ppt'),
 ]

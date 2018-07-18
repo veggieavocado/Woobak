@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/templateview.css' %}"/>
+    <title>templateview</title>
+      <script src="{% static 'dist/templateView.js' %}"></script>
+  </head>
+  <body>
+  <div class="container-wrapper">
+    <div class="menu-container">
+      <div class="menu-icon">
+        <div class="item"><img src="{% static 'img/back.png' %}"/></div>
+        <div class="item"><img src="{% static 'img/download.png' %}"/></div>
+        <div class="item"><img src="{% static 'img/plus.png' %}"/></div>
+      </div>
+    </div>
+
+    <div class="template-container">
+      <div class="template-page">
+        <div class="title">
+          <p><h2>제목을 입력하세요</h2></p>
+        </div>
+        <div class="contents">
+          <p>내용을 입력하세요</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="assist-container">
+      <div class="assist-name"><h2>Sentence</h2></div>
+      <ul class="assist-list">
+        <li>abcd</li>
+        <li>efg</li>
+        <li>hijk</li>
+        <li>lmnop</li>
+        <li>qrs</li>
+        <li>stu</li>
+      </ul>
+    </div>
+
+    <div class="option-container">
+
+    </div>
+
+</div>
+
+  </body>
+</html>
