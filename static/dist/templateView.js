@@ -81,31 +81,23 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./js-src/mhTest.js":
-/*!**************************!*\
-  !*** ./js-src/mhTest.js ***!
-  \**************************/
+/***/ "./js-src/templateView.js":
+/*!********************************!*\
+  !*** ./js-src/templateView.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var helloWord = 'hi hi';
-var helloMH = 'mh';
-
-var sayHello = function sayHello() {
-  return helloWord + helloMH;
-};
-
-module.exports = {
-  sayHello: sayHello
-};
+var hello = 'hi';
+console.log(hello);
 
 /***/ }),
 
@@ -10713,18 +10705,18 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 1:
-/*!***********************************************!*\
-  !*** multi babel-polyfill ./js-src/mhTest.js ***!
-  \***********************************************/
+/***/ 2:
+/*!*****************************************************!*\
+  !*** multi babel-polyfill ./js-src/templateView.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */"./node_modules/babel-polyfill/lib/index.js");
-module.exports = __webpack_require__(/*! /Users/abc/Desktop/veggieavocado/js-src/mhTest.js */"./js-src/mhTest.js");
+module.exports = __webpack_require__(/*! /Users/abc/Desktop/veggieavocado/js-src/templateView.js */"./js-src/templateView.js");
 
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=mhTest.map
+//# sourceMappingURL=templateView.map
