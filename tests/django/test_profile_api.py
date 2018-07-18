@@ -12,11 +12,7 @@ from rest_framework_jwt.settings import api_settings, DEFAULTS
 import json, os
 from django.utils.encoding import smart_text
 
-from accounts.models import (
-    Profile
-    )
-
-
+from accounts.models import Profile
 User = get_user_model()
 
 
@@ -66,12 +62,12 @@ class UserAPITestCase(TestCase):
                 content_type='application/json'
             )
 
+            token = response.data['token']
             response_content = json.loads(smart_text(response.content))
             decoded_payload = utils.jwt_decode_handler(response_content['token'])
             self.assertEqual(response.status_code, status.HTTP_200_OK)
             self.assertEqual(decoded_payload['username'], self.username)
 
-            token = response.data['token']
 
             # Get Test
             response = self.client.get(

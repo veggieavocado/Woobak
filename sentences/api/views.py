@@ -1,5 +1,7 @@
-from rest_framework import generics
+from rest_framework import generics, permissions
 from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from sentences.models import Sentence
 from sentences.api.serializers import SentenceSerializer
@@ -9,6 +11,7 @@ from utils.paginations import StandardResultPagination
 class SentenceAPIView(generics.ListCreateAPIView):
     queryset = Sentence.objects.all()
     serializer_class = SentenceSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     pagination_class = StandardResultPagination
     filter_backends = [SearchFilter, OrderingFilter]
 
@@ -38,3 +41,4 @@ class SentenceAPIView(generics.ListCreateAPIView):
 class SentenceDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Sentence.objects.all()
     serializer_class = SentenceSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)

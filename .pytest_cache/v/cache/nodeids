@@ -1,6 +1,13 @@
 [
   "tests/django/test_profile.py::UserTestCase::test_user_is_created",
   "tests/django/test_profile_api.py::UserAPITestCase::test_jwt_token",
+  "tests/django/test_sentences.py::SentenceTestCase::test_user_is_created",
+  "tests/django/test_sentences_api.py::SentenceAPITestCase::test_get_sentence",
+  "tests/django/test_sentences_api.py::SentenceAPITestCase::test_post_sentence",
+  "tests/django/test_sentences_api.py::SentenceAPITestCase::test_setup",
+  "tests/django/test_states.py::StateTestCase::test_user_is_created",
+  "tests/django/test_texts.py::TextTestCase::test_text_is_created",
+  "tests/django/test_words.py::SentenceTestCase::test_user_is_created",
   "tests/py/test_travis.py::test_travis_worked",
   "tests/py/test_travis.py::test_travis_with_mh"
 ]
