@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
 
+from accounts.permissions import IsOwnerOrAdmin
+
 from accounts.api.serializers import (
     UserSerializer,
     UserLoginSerializer,
@@ -55,7 +57,6 @@ class ProfileAPIView(generics.ListCreateAPIView):
     queryset = Profile.objects.get_queryset().order_by('user') # shows profiles in alphabetical order
     serializer_class = ProfileSerializer
     pagination_class = UserResultPagination
-    # permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     # shouldn't have permissions, User will automatically create profile on registration
     # since the user is not created yet, you should drop permissions
 
@@ -67,4 +68,3 @@ class ProfileAPIView(generics.ListCreateAPIView):
 class ProfileDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
