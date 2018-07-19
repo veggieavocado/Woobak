@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/templateview.css"/>
     <title>templateview</title>
   </head>
@@ -18,28 +19,41 @@
     <div class="template-container">
       <div class="template-page">
         <div class="title">
-          <p><h2>제목을 입력하세요</h2></p>
+          <form>
+            <input type="text" name="title" placeholder="제목을 입력하세요"><br>
+          </form>
         </div>
         <div class="contents">
-          <p>내용을 입력하세요</p>
+          <div contenteditable="true" placeholder="내용을 입력하세요"></div>
+          <!-- http://naminsik.com/blog/3165 -->
         </div>
       </div>
     </div>
 
+
     <div class="assist-container">
-      <div class="assist-name"><h2>Sentence</h2></div>
-      <ul class="assist-list">
-        <li>abcd</li>
-        <li>efg</li>
-        <li>hijk</li>
-        <li>lmnop</li>
-        <li>qrs</li>
-        <li>stu</li>
-      </ul>
-    </div>
+      <div class="assist-container-wrapper">
+        <div class="assist-name"><h1>Tag Name</h1></div>
+        <div class="assist-description">
+          원하는 표현으로 바꿔보세요
+        </div>
+        <ul class="assist-list">
+          <li><a href='#'>Good morning/afternoon/evening.</a></li>
+          <li>Hello, ladies and gentlemen.</li>
+          <li>very nice to be with you.</li>
+          <li>how is everyone doing here today?</li>
+          <li>I'm glad to be here with you today</li>
+          <li>it's my/a pleasure to present this presentation.</li>
+        </ul>
+      </div>
+      </div>
 
     <div class="option-container">
-
+      <ul class="option-list">
+        <li><a href='#'>sentence</a></li>
+        <li>words</li>
+        <li>번역</li>
+      </ul>
     </div>
 
 </div>

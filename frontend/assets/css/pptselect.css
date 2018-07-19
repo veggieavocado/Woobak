@@ -1,0 +1,71 @@
+*{
+  margin: 0;
+  padding : 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 755px;
+}
+
+a: link
+a: visited {
+  color: #5D6063;
+  text-decoration: none;
+}
+a.hover {
+  text-decoration: underline;
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  background-color: blue;
+}
+
+  .ppt-select-title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10%;
+  }
+
+    .card-header {
+      height: 20%;
+      padding: 10px;
+      margin: 5px;
+
+      font-size: 1.2em;
+      }
+
+      .card-body {
+        height: 60%;
+        padding: 10px;
+        border-bottom: 1px solid grey;
+
+        font-size: 0.7em;
+      }
+    .ppt-select-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+    width: 800px;
+    height: 500px;
+    margin: 50px 0;
+    background-color: var(--light-gray);
+  }
+
+    /* .item {
+      display: flex;
+      flex-direction: column;
+      background-color: #536D7A;
+      color: white;
+
+
+      width: 30%;
+      height: 30%;
+    }
+
+    .item-text:hover */
