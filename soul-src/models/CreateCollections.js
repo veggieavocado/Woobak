@@ -1,10 +1,10 @@
 // reference: https://velopert.com/594
 
-var mongoose = require('mongoose');
-var db = mongoose.connection;   // CONNECT TO MONGODB SERVER
-var Schema = mongoose.Schema;
-var url = "mongodb://localhost:27017/woobak";
-var MongoClient = require('mongodb').MongoClient;
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+const url = "mongodb://localhost:27017/woobak";
+const MongoClient = require('mongodb').MongoClient;
 
 
 

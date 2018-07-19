@@ -1,9 +1,17 @@
-// start soul server on Soul Server in a Docker container
+// start soul server on Soul Server in a Dockercontainer
 const express = require('express');
+
 const axios = require('axios');
+
+const config = require('./.config/github');
+
 const app = express();
+
 const bodyParser = require('body-parser');
-const config = require('./.config/github.js');
+
+const Raven = require('raven');
+
+Raven.config('https://bc4f8ac717fc4b2aaf85df3ff7ef9873@sentry.io/1245153').install();
 // 몽고DB 사용 없이 외부 API 연결 작업을 한다
 // const mongoose = require('mongoose');
 //
@@ -416,10 +424,7 @@ app.get('/soul-api/:sprintnum/task', async (req, res) => {
 app.post('/soul-api/:sprintnum/:sprintname/task', (req, res) => {
   // POST할 때 받은 데이터값을 몽고디비로 보내서 저장한다
   // 저장에 성공하면 result가 1, 실패하면 0이다
-  const SprintNum = req.params.sprintnum; // URL에서 :id 부분 빼오기
   const Sprintname = req.param.sprintname;
-  var id, name = "";
-  var varObj = { id: "", name: "" };          // for Pass by reference
   var isSucces = new IsSucces({
     date: getDate(),
     success: true,
@@ -506,18 +511,18 @@ app.put('/soul-api/:sprintnum/task/:listid/:title/', (req, res) => {
 // !-     Vultr API      !- //
 const url = 'https://api.vultr.com/v1/server';
 const vultrAPI = 'NVB3TJSPCNHBCUKS5LML4R6LJ6T7J6OZIEBQ';
-var VultrAPI = require('vultr-api-wrapper');
-var Vultr = new VultrAPI({ api_key: vultrAPI });            // reference is in /unittest/vultrAPITest.js
+var VultrAPI = require('vultr-api-wrapper')
+let Vultr = new VultrAPI({ api_key: vultrAPI }); // reference is in /unittest/vultrAPITest.js
 
 
 app.get('/soul-api/server', async (req, res) => {
   // get avocado board lists
-  var isSucces = new IsSucces({
+  let isSucces = new IsSucces({
     date: getDate(),
     success: true,
-    ModuleName: '/soul-api/server'
+    ModuleName: '/soul-api/server',
   });
-  Vultr.server_list(function (err, status, result) {
+  Vultr.server_list((err, status, result) => {
     if (err) {
       res.json({ Error: "Not found" });
       res.status(404);
@@ -529,26 +534,25 @@ app.get('/soul-api/server', async (req, res) => {
       res.status(200);
       isSucces.save();
     }
-  })
+  });
 });
 
 // label, ip, status
 app.get('/soul-api/server/:serverid', async (req, res) => {
   // get avocado board lists
-  var server_id = req.params.serverid;
-  var Response = { LABEL: "", IP: "", STATUS: "" };
-  var flag = false;
-  console.log(server_id);
+  const ServerId = req.params.serverid;
+  const Response = { LABEL: '', IP: '', STATUS: '' };
+  console.log(ServerId);
   res.status(404);
-  var isSucces = new IsSucces({
+  const isSucces = new IsSucces({
     date: getDate(),
     success: false,
-    ModuleName: '/soul-api/server/:serverid'
+    ModuleName: '/soul-api/server/:serverid',
   });
-  Vultr.server_list(function (err, status, result) {
+  Vultr.server_list((err, status, result) => {
     for (i in result) {
       console.log('i', i, 'result', result[i].SUBID);
-      if (result[i].SUBID == server_id) {
+      if (result[i].SUBID == ServerId) {
         console.log('found!');
         Response.LABEL = result[i].label;
         Response.IP = result[i].main_ip;
@@ -562,20 +566,20 @@ app.get('/soul-api/server/:serverid', async (req, res) => {
     }
     isSucces.save();
     res.json(Response);
-  })
+  });
 });
 
 // soul-munin : 16375998
 app.get('/soul-api/server/:serverid/reinstall', async (req, res) => {
   // get avocado board lists
-  var server_id = req.params.serverid;
+  let server_id = req.params.serverid;
   console.log(server_id);
-  var isSucces = new IsSucces({
+  let isSucces = new IsSucces({
     date: getDate(),
     success: true,
-    ModuleName: '/soul-api/server/:serverid/reinstall'
+    ModuleName: '/soul-api/server/:serverid/reinstall',
   });
-  Vultr.server_reinstall({ SUBID: server_id }, function (err, status, result) {
+  Vultr.server_reinstall({ SUBID: server_id }, (err, status, result) => {
     if (err) {
       console.log(err);
       res.status(404);
@@ -589,19 +593,19 @@ app.get('/soul-api/server/:serverid/reinstall', async (req, res) => {
       res.json(result);
       isSucces.save();
     }
-  })
+  });
 });
 
 app.get('/soul-api/server/:serverid/stop', async (req, res) => {
   // get avocado board lists
-  var server_id = req.params.serverid;
+  let server_id = req.params.serverid;
   console.log(server_id);
-  var isSucces = new IsSucces({
+  let isSucces = new IsSucces({
     date: getDate(),
     success: true,
-    ModuleName: 'soul-api/server/:serverid/stop'
+    ModuleName: 'soul-api/server/:serverid/stop',
   });
-  Vultr.server_halt({ SUBID: server_id }, function (err, status, result) {
+  Vultr.server_halt({ SUBID: server_id }, (err, status, result) => {
     if (err) {
       console.log(err);
       res.json(err);
@@ -617,20 +621,18 @@ app.get('/soul-api/server/:serverid/stop', async (req, res) => {
     }
   });
 });
-
-
 
 
 app.get('/soul-api/server/:serverid/start', async (req, res) => {
   // get avocado board lists
-  var server_id = req.params.serverid;
+  let server_id = req.params.serverid;
   console.log(server_id);
-  var isSucces = new IsSucces({
+  let isSucces = new IsSucces({
     date: getDate(),
     success: true,
-    ModuleName: '/soul-api/server/:serverid/start'
+    ModuleName: '/soul-api/server/:serverid/start',
   });
-  Vultr.server_start({ SUBID: server_id }, function (err, status, result) {
+  Vultr.server_start({ SUBID: server_id }, (err, status, result) => {
     if (err) {
       console.log(err);
       res.json(err);
@@ -642,19 +644,19 @@ app.get('/soul-api/server/:serverid/start', async (req, res) => {
       res.json(result);
       isSucces.save();
     }
-  })
+  });
 });
 
 app.get('/soul-api/server/:serverid/reboot', async (req, res) => {
   // get avocado board lists
-  var server_id = req.params.serverid;
-  console.log(server_id);
-  var isSucces = new IsSucces({
+  const ServerId = req.params.serverid;
+  console.log(ServerId);
+  const isSucces = new IsSucces({
     date: getDate(),
     success: true,
-    ModuleName: '/task-api/list'
+    ModuleName: '/task-api/list',
   });
-  Vultr.server_reboot({ SUBID: server_id }, function (err, status, result) {
+  Vultr.server_reboot({ SUBID: server_id }, (err, status, result) => {
     if (err) {
       console.log(err);
       res.json(err);
@@ -668,16 +670,16 @@ app.get('/soul-api/server/:serverid/reboot', async (req, res) => {
       res.status(200);
       isSucces.save();
     }
-  })
+  });
 });
 
-const WoobakRepositoryId = config.WoobakRepositoryId;
-const SecToken = config.SecToken;
-const ExampleRequestId = config.ExampleRequestId;
-const BuildExampleId = config.BuildExampleId;
-const TravisURL = config.TravisURL;
-const GithubToken = config.GithubToken;
-const TravisToken = config.TravisToken;
+// const WoobakRepositoryId = config.WoobakRepositoryId;
+// const SecToken = config.SecToken;
+// const ExampleRequestId = config.ExampleRequestId;
+// const BuildExampleId = config.BuildExampleId;
+// const TravisURL = config.TravisURL;
+// const GithubToken = config.GithubToken;
+// const TravisToken = config.TravisToken;
 // var Travis = require('travis-ci');
 // var travis = new Travis({
 //   version: '2.0.0'
