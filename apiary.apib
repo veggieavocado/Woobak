@@ -62,3 +62,61 @@ HOST: https://veggieavocado.com/api/
                     }
                 ]
             }
+            
+            
+            
+## 2. 문장 API: /accounts/sentence/ [/accounts/sentence/]
+
+### 모든 유저 목록 받아오기 (GET) [GET]
+
+베지아보카도의 모든 유저 정보를 볼 수 있다.
+
++ Response 200 (application/json)
+
+        {
+          "count": 0,
+          "next": null,
+          "previous": null,
+          "results": []
+        }
+
+### 유저 생성 (POST) [POST]
+
+베지아보카도 유저를 생성할 수 있다. 유저 생성과 동시에 프로필(Profile) 모델에도
+자동으로 데이터가 등록된다.
+
++ Request (application/json)
+
+        {
+            "username": "apiarytest",
+            "email": "apiarytest@apiary.io",
+            "password": "apiarytest123"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /accounts/sentence/
+
+    + Body
+
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 0
+                    }, {
+                        "choice": "Python",
+                        "votes": 0
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 0
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 0
+                    }
+                ]
+            }
