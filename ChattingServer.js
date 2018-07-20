@@ -3,12 +3,12 @@ const express = require('express');
 
 const app = express();
 const http = require('http').Server(app); // 1
-const io = require('socket.io')(http);
-
+let io = require('socket.io-client');
 const Mongoose = require('mongoose');
+
 const url = 'mongodb://localhost:27017/woobak';
 Mongoose.connect(url);
-var db = Mongoose.Connection;
+const db = Mongoose.Connection;
 // db.on('error', function(err){
 //     console.log("Error", err);
 // });
@@ -26,7 +26,6 @@ const UserSchema = new Schema({
   },
   SessionId: {
     type: String,
-    unique: true,
     ref: 'SessionSchema',
   },
   ChatRoomId: {
@@ -45,7 +44,6 @@ const UserSchema = new Schema({
 const SessionSchema = new Schema({
   SessionId: {
     type: String,
-    unique: true,
   },
   LogoutTime: {
     type: [Date],
@@ -103,7 +101,7 @@ app.post('/Chat/Signin/:id/:pw/:pw2', (req, res) => {
       UserPw: pw,
     });
     NewUser.save((error) => {
-    console.log('saving...');
+      console.log('saving...');
       if (error) {
         console.log(error);
         res.json({ result: 'failed!' });
@@ -113,4 +111,48 @@ app.post('/Chat/Signin/:id/:pw/:pw2', (req, res) => {
       res.status(200);
     });
   }
+});
+var socket = io.connect("http://localhost:3000");
+app.get('/Chat/connect', (req, res) => {
+  socket.on('connection');
+  socket.emit('CanIAccess', (err, response) => {
+    console.log(err);
+    console.log('response : ', response);
+    if (response === 400) {
+      console.log('Member Overflow!');
+      res.status(400);
+    }
+    else{
+      console.log('Join is okay!');
+      res.status(200);
+    }
+  });
+});
+
+app.get('/Chat/register/:id', (req, res) => {
+  _userName = req.params.id;
+  socket.emit('register', {userName:_userName}, function(err, response)  {
+    console.log(err);
+    console.log('response : ', response);
+    if (response == 400) {
+      console.log('Member Overflow!');
+    }
+    else{
+      console.log('Join is okay!');
+    }
+  });
+});
+
+app.get('/Chat/chatrooms', (req, res) => {
+  socket.emit('chatrooms', function(err, response)  {
+    console.log(err);
+    console.log('status : ', err);
+    console.log('response : ', response);
+    if (response == 400) {
+      console.log('Chat room is too many');
+    }
+    else{
+      console.log("You can join chat rooms!");
+    }
+  });
 });
