@@ -12,3 +12,5 @@ gitthub.py
 .pytest_cache/
 data/
 .config/github.js
+va_env/
+requirement_test.txt

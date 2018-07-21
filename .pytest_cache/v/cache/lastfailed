@@ -6,5 +6,6 @@
   "tests/django/test_sentences_api.py::UserAPITestCase::test_get_sentence": true,
   "tests/django/test_sentences_api.py::UserAPITestCase::test_post_sentence": true,
   "tests/django/test_sentences_api.py::UserAPITestCase::test_put_sentence": true,
+  "tests/django/test_texts.py::TextTestCase::test_text_is_created": true,
   "tests/django/test_texts.py::TextTestCase::test_user_is_created": true
 }
