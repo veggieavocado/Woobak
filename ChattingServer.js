@@ -3,7 +3,7 @@ const express = require('express');
 
 const app = express();
 const http = require('http').Server(app); // 1
-let io = require('socket.io-client');
+const io = require('socket.io-client');
 const Mongoose = require('mongoose');
 
 const url = 'mongodb://localhost:27017/woobak';
@@ -51,8 +51,11 @@ const SessionSchema = new Schema({
   LoginTime: {
     type: [Date],
   },
+  UserId: {
+    type: String,
+    ref: 'UserSchema',
+  },
 });
-
 const ChatSchema = new Schema({
   ChatRoomId: {
     type: Number,
@@ -112,7 +115,7 @@ app.post('/Chat/Signin/:id/:pw/:pw2', (req, res) => {
     });
   }
 });
-var socket = io.connect("http://localhost:3000");
+let socket = io.connect('http://localhost:3000');
 app.get('/Chat/connect', (req, res) => {
   socket.on('connection');
   socket.emit('CanIAccess', (err, response) => {
@@ -121,8 +124,7 @@ app.get('/Chat/connect', (req, res) => {
     if (response === 400) {
       console.log('Member Overflow!');
       res.status(400);
-    }
-    else{
+    } else {
       console.log('Join is okay!');
       res.status(200);
     }
@@ -131,7 +133,7 @@ app.get('/Chat/connect', (req, res) => {
 
 app.get('/Chat/register/:id', (req, res) => {
   _userName = req.params.id;
-  socket.emit('register', {userName:_userName}, function(err, response)  {
+  socket.emit('register', { userName: _userName }, (err, response) => {
     console.log(err);
     console.log('response : ', response);
     if (response == 400) {
@@ -144,7 +146,7 @@ app.get('/Chat/register/:id', (req, res) => {
 });
 
 app.get('/Chat/chatrooms', (req, res) => {
-  socket.emit('chatrooms', function(err, response)  {
+  socket.emit('chatrooms', (err, response) => {
     console.log(err);
     console.log('status : ', err);
     console.log('response : ', response);
@@ -153,6 +155,22 @@ app.get('/Chat/chatrooms', (req, res) => {
     }
     else{
       console.log("You can join chat rooms!");
+    }
+  });
+});
+
+app.post('/Chat/JoinChatroom/:ChatromId/:sessionId/', (req, res) => {
+  _Session = [];
+  _ChatroomId = req.params.id;
+  _Session.push(req.params.sessionId);
+  socket.emit('join', { ChatroomId: _ChatroomId, Session:_Session }, (err, response) => {
+    console.log(err);
+    console.log('response : ', response);
+    if (response == 400) {
+      console.log('Member Overflow!');
+    }
+    else{
+      console.log('Join is okay!');
     }
   });
 });
