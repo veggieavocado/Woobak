@@ -32,7 +32,7 @@ class TextTestCase(TestCase):
         userid = self.texts_test.userid
         type = self.texts_test.type
         source = self.texts_test.source
-        cartegory = self.texts_test.category
+        category = self.texts_test.category
         title = self.texts_test.title
         template = self.texts_test.template
         translated = self.texts_test.translated
