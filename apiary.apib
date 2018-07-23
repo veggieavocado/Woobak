@@ -65,11 +65,11 @@ HOST: https://veggieavocado.com/api/
             
             
             
-## 2. 문장 API: /accounts/sentence/ [/accounts/sentence/]
+## 2. 문장 API: /api/v1/sentence/ [/api/v1/sentence/]
 
-### 모든 유저 목록 받아오기 (GET) [GET]
+### 모든 문장 목록 받아오기 (GET) [GET]
 
-베지아보카도의 모든 유저 정보를 볼 수 있다.
+베지아보카도의 모든 문장 정보를 볼 수 있다.
 
 + Response 200 (application/json)
 
@@ -82,8 +82,7 @@ HOST: https://veggieavocado.com/api/
 
 ### 유저 생성 (POST) [POST]
 
-베지아보카도 유저를 생성할 수 있다. 유저 생성과 동시에 프로필(Profile) 모델에도
-자동으로 데이터가 등록된다.
+베지아보카도 템플릿 문장을 생성할 수 있다.
 
 + Request (application/json)
 
@@ -97,7 +96,7 @@ HOST: https://veggieavocado.com/api/
 
     + Headers
 
-            Location: /accounts/sentence/
+            Location: /api/v1/sentence/
 
     + Body
 
